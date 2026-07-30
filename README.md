@@ -6,6 +6,8 @@
 
 [Türkçe](#türkçe) · [English](#english)
 
+[LinkedIn](https://www.linkedin.com/in/yunus-emre-mert) · [GitHub](https://github.com/yunus-emre-mert)
+
 ---
 
 ## Türkçe
@@ -144,7 +146,8 @@ Nesne tespiti alt klasörleri: `airplane-detection/`, `teknofest-abdominal-ct/`,
 
 ### İletişim & lisans
 
-- [LinkedIn profilim](https://linkedin.com/in/YOUR-PROFILE) *(URL’yi kendi profilinizle güncelleyin)*
+- [LinkedIn profilim](https://www.linkedin.com/in/yunus-emre-mert)
+- [GitHub profilim](https://github.com/yunus-emre-mert)
 - Lisans: **MIT** — [LICENSE](LICENSE)
 
 Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-CNN, Detectron2, Ultralytics YOLOv5 vb.). Üçüncü taraf veri setleri ve kopyalanmış tutorial kodları bu repoda yer almaz.
@@ -287,7 +290,8 @@ Object-detection subfolders: `airplane-detection/`, `teknofest-abdominal-ct/`, `
 
 ### Contact & license
 
-- [LinkedIn profile](https://linkedin.com/in/YOUR-PROFILE) *(replace with your profile URL)*
+- [LinkedIn profile](https://www.linkedin.com/in/yunus-emre-mert)
+- [GitHub profile](https://github.com/yunus-emre-mert)
 - License: **MIT** — [LICENSE](LICENSE)
 
 Built with open-source libraries (Mask R-CNN, Detectron2, Ultralytics YOLOv5, and others). Third-party datasets and vendored tutorial code are not included in this repository.
