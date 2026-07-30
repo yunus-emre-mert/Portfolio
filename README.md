@@ -14,7 +14,7 @@
 
 ### Yönetici özeti
 
-**2024’ten bu yana** ticari R&D ve ürün geliştirmede odaklandığım alanlar: **giyilebilir 12-lead EKG** (donanım–yazılım, regülasyon) ve **multi-tenant SaaS** altyapısı. Lisans döneminde (2022–2023) bilgisayarlı görü ve medikal yapay zeka üzerine açık kaynak öğrenme pratikleri yaptım; bu çalışmaların kodu **`projects/`** altında paylaşılmıştır. Ticari projelerin kaynak kodu **NDA / fikri mülkiyet** nedeniyle bu depoda yer almaz.
+**Co-Founder & Product Engineer** olarak **2024’ten bu yana** ticari R&D ve ürün geliştirme: **giyilebilir 12-lead EKG** (donanım–yazılım, regülasyon) ve **multi-tenant SaaS** (veri izolasyonu, yetkilendirme, API). Lisans dönemi (2022–2023) bilgisayarlı görü / ML çalışmaları açık kaynak öğrenme pratikleri olarak **`projects/`** altında; ticari proje kaynak kodu **IP ve NDA** kapsamında bu depoda değildir.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
@@ -29,14 +29,14 @@
 #### Cormetry Health Teknoloji A.Ş. — Co-Founder & Product Engineer (2024 – güncel)
 
 - **TÜBİTAK BİGG 1512** (900.000 TL) destekli **giyilebilir 12-lead EKG** projesinde **500 Hz** pre-MVP prototip üretimi ve validasyon testleri.
-- **SolidWorks** ile mekanik muhafaza tasarımı, **DFM** (Design for Manufacturing), hızlı **3D prototipleme** ve tedarik yönetimi.
+- **SolidWorks / DFM** ile mekanik muhafaza tasarımı, hızlı **3D prototipleme** ve tedarik yönetimi.
 - Gerçek zamanlı biyomedikal veri işleme hatları, **CE-MDR** regülasyon uyum süreçleri ve **cross-platform mobil / web dashboard** entegrasyonu.
 
-#### Clinovatech & SaaS mimari çalışmaları
+#### Clinovatech & SaaS mimarisi
 
-- Ürün yönetimi gereksinimlerine uygun **multi-tenant veri izolasyonu**, **parametrik yetkilendirme** (**RLS & RPC** mimarisi) ve ilişkisel veritabanı (**Supabase / PostgreSQL**, **Flask API**) kurguları.
+- **Multi-tenant veri izolasyonu**, **RLS & RPC** yetkilendirme, **Supabase (PostgreSQL)**, **Flask API** ve ürün yönetimi süreçleri.
 
-> **Gizlilik notu:** Ticari ve girişim seviyesindeki projelerin kaynak kodları, **fikri mülkiyet (IP)** hakları ve **NDA** gizlilik anlaşmaları gereği bu kamuya açık depoda yer almamaktadır. Mimari detaylar ve teknik süreçler mülakat aşamasında paylaşılabilir.
+> **Gizlilik ve NDA:** Ticari projelere ait kaynak kodlar, **fikri mülkiyet (IP)** hakları ve **NDA** gizlilik anlaşmaları gereği bu kamuya açık depoda yer almaz. Mimari detaylar mülakat aşamasında aktarılabilir.
 
 ---
 
@@ -53,9 +53,9 @@
 
 ### Lisans dönemi: açık kaynak pratikleri (2022–2023)
 
-Lisans sürecinde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü/sinyal konularında **kişisel ve akademik pratik** olarak geliştirdiğim notebook’lar **`projects/`** altında **yıl → alan → proje** düzenindedir. Ham veri setleri ve eğitilmiş model ağırlıkları repoda yoktur; kod, işlenmiş örnek çıktılar ve pipeline adımları paylaşılmıştır.
+Lisans döneminde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü/sinyal üzerine **kişisel / akademik pratik** notebook’ları **`projects/`** altında (**yıl → alan → proje**). Ham veri setleri ve model ağırlıkları repoda yoktur; kod ve örnek pipeline çıktıları paylaşılmıştır.
 
-- **AI mentörlüğü:** Lisans döneminde **alt sınıf lisans** ve **lise düzeyi** öğrencilere yapay zeka ve makine öğrenmesi konularında birebir ders ve mentörlük.
+- **Akademik & Teknik Mentörlük:** Lisans eğitimi sürecinde alt sınıf öğrencilerine ve genç geliştiricilere Yapay Zeka (AI) ve Makine Öğrenmesi alanlarında teknik mentörlük, mühendislik pratikleri ve yetkinlik aktarımı.
 
 | Alan | Çalışma | Bağlantı |
 |------|---------|----------|
@@ -66,7 +66,7 @@ Lisans sürecinde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü
 | Sınıflandırma | Histopatoloji (VGG16, Xception); veri hazırlığı | [VGG16](projects/2022/classification/vgg16-histopathology-classifier.ipynb) · [Xception](projects/2022/classification/xception-histopathology-classifier.ipynb) · [ikili Xception](projects/2022/classification/xception-binary-histopathology-classifier.ipynb) · [veri hazırlığı](projects/2022/classification/histopathology-dataset-preparation.ipynb) |
 | Nesne tespiti | Karın BT (Teknofest / Faster R-CNN), dermatoloji (YOLOv5, SAHI) | [2022 Teknofest](projects/2022/object-detection/teknofest-abdominal-ct/teknofest-abdominal-ct-detection.ipynb) · [2023 Faster R-CNN](projects/2023/object-detection/abdominal-ct-detection/faster-rcnn-abdominal-ct-detection.ipynb) · [YOLOv5](projects/2023/object-detection/dermatology-detection/yolov5-dermatology-detection.ipynb) · [SAHI](projects/2023/object-detection/dermatology-detection/yolov5-sahi-dermatology-detection.ipynb) |
 | Nesne tespiti | Uçak tespiti (R-CNN → Faster R-CNN / Detectron2); etiket aracı | [R-CNN](projects/2022/object-detection/airplane-detection/rcnn-airplane-detection.ipynb) · [Faster R-CNN](projects/2023/object-detection/airplane-detection/faster-rcnn-airplane-detection.ipynb) · [Detectron2](projects/2023/object-detection/airplane-detection/detectron2-airplane-detection.ipynb) · [XML→CSV](projects/2022/object-detection/tools/xml-annotation-to-csv.py) |
-| Segmentasyon | scikit-image ve demo | [2022](projects/2022/segmentation/segmentation-skimage.ipynb) · [2023](projects/2023/segmentation/segmentation-demo.ipynb) |
+| Segmentasyon | scikit-image; ResNet50 semantik segmentasyon (Keras) | [2022](projects/2022/segmentation/segmentation-skimage.ipynb) · [2023](projects/2023/segmentation/resnet50-semantic-segmentation.ipynb) |
 | Üretken modeller | Autoencoder, GAN (MURA dahil) | [autoencoder](projects/2022/generative/autoencoders.ipynb) · [GAN](projects/2022/generative/gans.ipynb) · [GAN v2](projects/2022/generative/gans-v2.ipynb) · [MURA](projects/2022/generative/mura-elbow-gans.ipynb) |
 | LLM | LLM çalışması | [notebook](projects/2023/llm/llm-prompt-experiment.ipynb) |
 
@@ -100,7 +100,7 @@ Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-C
 
 ### Executive summary
 
-Since **2024**, my primary focus is **commercial R&D and product engineering**: **wearable 12-lead ECG** (hardware–software, regulation) and **multi-tenant SaaS** infrastructure. During my bachelor’s (**2022–2023**), I built **open-source learning exercises** in computer vision and medical AI; code is under **`projects/`**. Commercial project **source code is not published** here due to **NDA and IP** obligations.
+**Co-Founder & Product Engineer** focused since **2024** on **commercial R&D and product development**: **wearable 12-lead ECG** (hardware–software, regulation) and **multi-tenant SaaS** (data isolation, authorization, API). Bachelor’s-era (**2022–2023**) computer vision / ML work lives under **`projects/`** as open-source learning practice; commercial **source code is not in this repo** under **IP and NDA**.
 
 | Focus (2024 – present) | Summary |
 |------------------------|---------|
@@ -115,14 +115,14 @@ Since **2024**, my primary focus is **commercial R&D and product engineering**: 
 #### Cormetry Health Teknoloji A.Ş. — Co-Founder & Product Engineer (2024 – present)
 
 - **TÜBİTAK BİGG 1512** (900,000 TRY) supported **wearable 12-lead ECG**: **500 Hz** pre-MVP prototype build and validation testing.
-- Mechanical enclosure design in **SolidWorks**, **DFM**, rapid **3D prototyping**, and supply management.
+- **SolidWorks / DFM** mechanical enclosure design, rapid **3D prototyping**, and supply management.
 - Real-time biomedical data processing pipelines, **CE-MDR** regulatory alignment, and **cross-platform mobile / web dashboard** integration.
 
 #### Clinovatech & SaaS architecture
 
-- **Multi-tenant data isolation**, **parameterized authorization** (**RLS & RPC**), and relational backends (**Supabase / PostgreSQL**, **Flask API**) aligned with product management requirements.
+- **Multi-tenant data isolation**, **RLS & RPC** authorization, **Supabase (PostgreSQL)**, **Flask API**, and product management workflows.
 
-> **Confidentiality notice:** Source code for these commercial and venture-stage projects is **not** in this public repository due to **intellectual property (IP)** rights and **NDA** agreements. Architecture and implementation details can be discussed during interviews.
+> **Confidentiality & NDA:** Commercial project source code is **not** in this public repository due to **intellectual property (IP)** and **NDA** obligations. Architecture details can be shared during interviews.
 
 ---
 
@@ -139,9 +139,9 @@ Since **2024**, my primary focus is **commercial R&D and product engineering**: 
 
 ### Undergraduate open-source practice (2022–2023)
 
-During my bachelor’s degree, these **personal and academic practice** notebooks cover computer vision, machine learning, and medical imaging/signals. Layout: **`projects/`** as **year → domain → project**. Raw datasets and trained weights are not in the repo; shared artifacts are code, sample outputs, and pipeline steps.
+Bachelor’s-era **personal / academic practice** in computer vision, machine learning, and medical imaging/signals under **`projects/`** (**year → domain → project**). Raw datasets and model weights are not in the repo; code and sample pipeline outputs are shared.
 
-- **AI mentoring:** During my bachelor’s, provided **one-on-one instruction and mentoring** in artificial intelligence and machine learning to **junior undergraduates** and **high-school students**.
+- **Technical Mentorship:** Provided applied technical mentorship and instructional guidance in AI & Machine Learning to junior undergraduate students and aspiring developers.
 
 | Area | Work | Link |
 |------|------|------|
@@ -152,7 +152,7 @@ During my bachelor’s degree, these **personal and academic practice** notebook
 | Classification | Histopathology (VGG16, Xception); dataset prep | [VGG16](projects/2022/classification/vgg16-histopathology-classifier.ipynb) · [Xception](projects/2022/classification/xception-histopathology-classifier.ipynb) · [binary Xception](projects/2022/classification/xception-binary-histopathology-classifier.ipynb) · [dataset prep](projects/2022/classification/histopathology-dataset-preparation.ipynb) |
 | Object detection | Abdominal CT (Teknofest / Faster R-CNN), dermatology (YOLOv5, SAHI) | [2022 Teknofest](projects/2022/object-detection/teknofest-abdominal-ct/teknofest-abdominal-ct-detection.ipynb) · [2023 Faster R-CNN](projects/2023/object-detection/abdominal-ct-detection/faster-rcnn-abdominal-ct-detection.ipynb) · [YOLOv5](projects/2023/object-detection/dermatology-detection/yolov5-dermatology-detection.ipynb) · [SAHI](projects/2023/object-detection/dermatology-detection/yolov5-sahi-dermatology-detection.ipynb) |
 | Object detection | Airplane detection (R-CNN → Faster R-CNN / Detectron2); annotation tool | [R-CNN](projects/2022/object-detection/airplane-detection/rcnn-airplane-detection.ipynb) · [Faster R-CNN](projects/2023/object-detection/airplane-detection/faster-rcnn-airplane-detection.ipynb) · [Detectron2](projects/2023/object-detection/airplane-detection/detectron2-airplane-detection.ipynb) · [XML→CSV](projects/2022/object-detection/tools/xml-annotation-to-csv.py) |
-| Segmentation | scikit-image and demo | [2022](projects/2022/segmentation/segmentation-skimage.ipynb) · [2023](projects/2023/segmentation/segmentation-demo.ipynb) |
+| Segmentation | scikit-image; ResNet50 semantic segmentation (Keras) | [2022](projects/2022/segmentation/segmentation-skimage.ipynb) · [2023](projects/2023/segmentation/resnet50-semantic-segmentation.ipynb) |
 | Generative models | Autoencoder, GAN (incl. MURA) | [autoencoder](projects/2022/generative/autoencoders.ipynb) · [GAN](projects/2022/generative/gans.ipynb) · [GAN v2](projects/2022/generative/gans-v2.ipynb) · [MURA](projects/2022/generative/mura-elbow-gans.ipynb) |
 | LLM | LLM work | [notebook](projects/2023/llm/llm-prompt-experiment.ipynb) |
 
@@ -174,8 +174,8 @@ During my bachelor’s degree, these **personal and academic practice** notebook
 
 ### Contact & license
 
-- [LinkedIn profile](https://www.linkedin.com/in/yunus-emre-mert)
-- [GitHub profile](https://github.com/yunus-emre-mert)
+- [LinkedIn](https://www.linkedin.com/in/yunus-emre-mert)
+- [GitHub](https://github.com/yunus-emre-mert)
 - License: **MIT** — [LICENSE](LICENSE)
 
 Built with open-source libraries (Mask R-CNN, Detectron2, Ultralytics YOLOv5, and others). Third-party datasets and vendored tutorial code are not included in this repository.
