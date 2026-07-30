@@ -55,7 +55,7 @@
 
 Lisans sürecinde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü/sinyal konularında **kişisel ve akademik pratik** olarak geliştirdiğim notebook’lar **`projects/`** altında **yıl → alan → proje** düzenindedir. Ham veri setleri ve eğitilmiş model ağırlıkları repoda yoktur; kod, işlenmiş örnek çıktılar ve pipeline adımları paylaşılmıştır.
 
-- **AI mentörlüğü / özel ders:** Lisans döneminde **alt sınıf lisans öğrencilerine** ve **lise seviyesindeki öğrencilere** yapay zeka ve makine öğrenmesi konularında özel ders ve mentörlük verdim — teknik iletişim ve bilgi aktarımı deneyimi.
+- **AI mentörlüğü:** Lisans döneminde **alt sınıf lisans** ve **lise düzeyi** öğrencilere yapay zeka ve makine öğrenmesi konularında birebir ders ve mentörlük.
 
 | Alan | Çalışma | Bağlantı |
 |------|---------|----------|
@@ -67,10 +67,10 @@ Lisans sürecinde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü
 | Nesne tespiti | Karın BT (Teknofest / Faster R-CNN), dermatoloji (YOLOv5, SAHI) | [2022 Teknofest](projects/2022/object-detection/teknofest-abdominal-ct/teknofest-abdominal-ct-detection.ipynb) · [2023 Faster R-CNN](projects/2023/object-detection/abdominal-ct-detection/faster-rcnn-abdominal-ct-detection.ipynb) · [YOLOv5](projects/2023/object-detection/dermatology-detection/yolov5-dermatology-detection.ipynb) · [SAHI](projects/2023/object-detection/dermatology-detection/yolov5-sahi-dermatology-detection.ipynb) |
 | Nesne tespiti | Uçak tespiti (R-CNN → Faster R-CNN / Detectron2); etiket aracı | [R-CNN](projects/2022/object-detection/airplane-detection/rcnn-airplane-detection.ipynb) · [Faster R-CNN](projects/2023/object-detection/airplane-detection/faster-rcnn-airplane-detection.ipynb) · [Detectron2](projects/2023/object-detection/airplane-detection/detectron2-airplane-detection.ipynb) · [XML→CSV](projects/2022/object-detection/tools/xml-annotation-to-csv.py) |
 | Segmentasyon | scikit-image ve demo | [2022](projects/2022/segmentation/segmentation-skimage.ipynb) · [2023](projects/2023/segmentation/segmentation-demo.ipynb) |
-| Üretken modeller | Autoencoder, GAN denemeleri (MURA dahil) | [autoencoder](projects/2022/generative/autoencoders.ipynb) · [GAN](projects/2022/generative/gans.ipynb) · [GAN v2](projects/2022/generative/gans-v2.ipynb) · [MURA](projects/2022/generative/mura-elbow-gans.ipynb) |
-| LLM | Erken LLM denemesi | [notebook](projects/2023/llm/llm-prompt-experiment.ipynb) |
+| Üretken modeller | Autoencoder, GAN (MURA dahil) | [autoencoder](projects/2022/generative/autoencoders.ipynb) · [GAN](projects/2022/generative/gans.ipynb) · [GAN v2](projects/2022/generative/gans-v2.ipynb) · [MURA](projects/2022/generative/mura-elbow-gans.ipynb) |
+| LLM | LLM çalışması | [notebook](projects/2023/llm/llm-prompt-experiment.ipynb) |
 
-`projects/` klasörleri: `classification/`, `object-detection/`, `medical/`, `segmentation/`, `generative/`, `llm/`. Colab şablonları: [`templates/`](templates/) (portföy teslimi değil). Notebook’ları GitHub’da açıp kaydırarak grafik ve örnek çıktıları inceleyebilir; yerel çalıştırma için Jupyter veya Colab kullanılabilir (bazı hücreler repoda olmayan veri seti bekler).
+`projects/` klasörleri: `classification/`, `object-detection/`, `medical/`, `segmentation/`, `generative/`, `llm/`. Colab şablonları: [`templates/`](templates/).
 
 ---
 
@@ -88,8 +88,8 @@ Lisans sürecinde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü
 
 ### İletişim & lisans
 
-- [LinkedIn profilim](https://www.linkedin.com/in/yunus-emre-mert)
-- [GitHub profilim](https://github.com/yunus-emre-mert)
+- [LinkedIn](https://www.linkedin.com/in/yunus-emre-mert)
+- [GitHub](https://github.com/yunus-emre-mert)
 - Lisans: **MIT** — [LICENSE](LICENSE)
 
 Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-CNN, Detectron2, Ultralytics YOLOv5 vb.). Üçüncü taraf veri setleri ve kopyalanmış tutorial kodları bu repoda yer almaz.
@@ -141,7 +141,7 @@ Since **2024**, my primary focus is **commercial R&D and product engineering**: 
 
 During my bachelor’s degree, these **personal and academic practice** notebooks cover computer vision, machine learning, and medical imaging/signals. Layout: **`projects/`** as **year → domain → project**. Raw datasets and trained weights are not in the repo; shared artifacts are code, sample outputs, and pipeline steps.
 
-- **AI tutoring & mentoring:** Delivered **private lessons and mentoring** in artificial intelligence and machine learning to **junior undergraduate students** and **high-school learners** — demonstrates technical communication and knowledge transfer.
+- **AI mentoring:** During my bachelor’s, provided **one-on-one instruction and mentoring** in artificial intelligence and machine learning to **junior undergraduates** and **high-school students**.
 
 | Area | Work | Link |
 |------|------|------|
@@ -153,10 +153,10 @@ During my bachelor’s degree, these **personal and academic practice** notebook
 | Object detection | Abdominal CT (Teknofest / Faster R-CNN), dermatology (YOLOv5, SAHI) | [2022 Teknofest](projects/2022/object-detection/teknofest-abdominal-ct/teknofest-abdominal-ct-detection.ipynb) · [2023 Faster R-CNN](projects/2023/object-detection/abdominal-ct-detection/faster-rcnn-abdominal-ct-detection.ipynb) · [YOLOv5](projects/2023/object-detection/dermatology-detection/yolov5-dermatology-detection.ipynb) · [SAHI](projects/2023/object-detection/dermatology-detection/yolov5-sahi-dermatology-detection.ipynb) |
 | Object detection | Airplane detection (R-CNN → Faster R-CNN / Detectron2); annotation tool | [R-CNN](projects/2022/object-detection/airplane-detection/rcnn-airplane-detection.ipynb) · [Faster R-CNN](projects/2023/object-detection/airplane-detection/faster-rcnn-airplane-detection.ipynb) · [Detectron2](projects/2023/object-detection/airplane-detection/detectron2-airplane-detection.ipynb) · [XML→CSV](projects/2022/object-detection/tools/xml-annotation-to-csv.py) |
 | Segmentation | scikit-image and demo | [2022](projects/2022/segmentation/segmentation-skimage.ipynb) · [2023](projects/2023/segmentation/segmentation-demo.ipynb) |
-| Generative models | Autoencoder, GAN experiments (incl. MURA) | [autoencoder](projects/2022/generative/autoencoders.ipynb) · [GAN](projects/2022/generative/gans.ipynb) · [GAN v2](projects/2022/generative/gans-v2.ipynb) · [MURA](projects/2022/generative/mura-elbow-gans.ipynb) |
-| LLM | Early LLM experiment | [notebook](projects/2023/llm/llm-prompt-experiment.ipynb) |
+| Generative models | Autoencoder, GAN (incl. MURA) | [autoencoder](projects/2022/generative/autoencoders.ipynb) · [GAN](projects/2022/generative/gans.ipynb) · [GAN v2](projects/2022/generative/gans-v2.ipynb) · [MURA](projects/2022/generative/mura-elbow-gans.ipynb) |
+| LLM | LLM work | [notebook](projects/2023/llm/llm-prompt-experiment.ipynb) |
 
-`projects/` folders: `classification/`, `object-detection/`, `medical/`, `segmentation/`, `generative/`, `llm/`. Colab starters: [`templates/`](templates/) (not portfolio deliverables). Open notebooks on GitHub and scroll for plots and sample outputs; run locally with Jupyter or Colab where needed (some cells expect datasets not shipped in this repo).
+`projects/` folders: `classification/`, `object-detection/`, `medical/`, `segmentation/`, `generative/`, `llm/`. Colab templates: [`templates/`](templates/).
 
 ---
 
