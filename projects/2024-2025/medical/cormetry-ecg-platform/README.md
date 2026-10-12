@@ -16,7 +16,7 @@
 
 | | |
 |---|---|
-| **Rol** | Ar-Ge Mühendisi / Proje Yürütücüsü (TÜBİTAK 1512). Yazılım tarafının tamamı (mobil, web, backend, cihaz entegrasyonu); firmware ve PCB entegrasyonu |
+| **Rol** | Ar-Ge Mühendisi / Proje Yürütücüsü (TÜBİTAK 1512). Yazılım tarafının uçtan uca tasarımı ve geliştirilmesi (mobil, web, backend, cihaz entegrasyonu); firmware ve PCB entegrasyonu; yatırımcı ve hakem sunumları |
 | **Dönem** | 2024 – güncel |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
 | **Alan** | Kardiyoloji / dijital sağlık / medikal cihaz yazılımı |
@@ -24,13 +24,13 @@
 
 **Öne çıkanlar**
 
-- Cihazdan buluta, buluttan doktor ekranına kadar **tüm yazılım hattını tek başıma** tasarlayıp geliştirdim.
+- Cihazdan buluta, buluttan doktor ekranına kadar **yazılım hattını uçtan uca** tasarladım ve geliştirdim.
 - **Hasta / doktor rolleri** ve **veritabanı düzeyinde veri izolasyonu**: her doktor yalnızca kendi hastalarını, her hasta yalnızca kendi kayıtlarını görür.
 - 8 fiziksel kanaldan **12 derivasyonlu**, EKG kâğıdı görünümünde inceleme (mobil ve web).
 - Makine öğrenmesi kullanmayan, **açıklanabilir, kural tabanlı otomatik EKG analizi**.
 - Bluetooth üzerinde veri kaybına dayanıklı sinyal işleme ve simülatörle doğrulanmış kalibrasyon.
 - Dış tedarikçiden alınan firmware ve PCB geliştirmesinin **yazılım gereksinimlerine göre entegrasyonu ve gerçek cihazla doğrulanması**.
-- **TÜBİTAK BİGG 1512** projesinin uçtan uca yürütülmesi: iş planı, dönem raporları, bütçe takibi, hakem sunumu ve canlı prototip demosu.
+- **TÜBİTAK BİGG 1512** projesinin uçtan uca yönetilmesi: iş planı, dönem raporları, bütçe takibi, **yatırımcı ve hakem sunumlarında teknik sunumlar** ve canlı prototip demosu.
 
 ### Problem
 
@@ -91,10 +91,11 @@ flowchart LR
 
 ### TÜBİTAK BİGG 1512 proje yürütmesi
 
-Proje, **TÜBİTAK BİGG 1512** kapsamında **900.000 TL hibe** ile desteklendi. Projeyi uçtan uca yürüttüm:
+Proje, **TÜBİTAK BİGG 1512** kapsamında **900.000 TL hibe** ile desteklendi. Projeyi uçtan uca yönettim:
 
 - İş planına göre iş-zaman, kapsam ve bütçe takibi; dönem raporları.
 - TÜBİTAK hakem değerlendirmelerinde proje sunumu ve prototipin canlı demosu.
+- Yatırımcılara yönelik teknik sunumlar.
 
 ### Donanım entegrasyonu
 
@@ -121,11 +122,13 @@ Firmware ve PCB geliştirmesi dış hizmet olarak alındı. Bu süreçte:
 
 ### Rolüm
 
-- Ar-Ge Mühendisi ve TÜBİTAK 1512 Proje Yürütücüsü olarak projenin uçtan uca yürütülmesi.
-- Mobil, web, backend ve cihaz entegrasyonunun tamamının geliştirilmesi.
+- Ar-Ge Mühendisi ve TÜBİTAK 1512 Proje Yürütücüsü olarak projenin uçtan uca yönetilmesi.
+- Yatırımcı ve hakem sunumlarında projenin teknik sunumu ve canlı prototip demosu.
+- Mobil, web, backend ve cihaz entegrasyonunun uçtan uca geliştirilmesi.
 - Hasta / doktor rol modeli ve veritabanı düzeyinde yetkilendirme (RLS).
 - Gömülü cihazdan gelen sinyal için uçtan uca veri hattı ve kural tabanlı EKG analizi.
 - Dış tedarikçiden gelen firmware ve PCB teslimlerinin yazılım gereksinimlerine göre entegrasyonu ve gerçek cihazla doğrulanması.
+- Klinik veri toplama sürecinde aktif rol — [EKG'den koroner darlık tahmini](../../../2026/medical/ecg-coronary-stenosis/README.md).
 
 ### Durum
 
@@ -141,7 +144,7 @@ An end-to-end platform built at **Cormetry Health**: a **mobile app** that recei
 
 | | |
 |---|---|
-| **Role** | R&D Engineer / Project Executor (TÜBİTAK 1512). Entire software side (mobile, web, backend, device integration); firmware and PCB integration |
+| **Role** | R&D Engineer / Project Executor (TÜBİTAK 1512). End-to-end design and development of the software side (mobile, web, backend, device integration); firmware and PCB integration; investor and reviewer presentations |
 | **Period** | 2024 – present |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
 | **Domain** | Cardiology / digital health / medical device software |
@@ -149,13 +152,13 @@ An end-to-end platform built at **Cormetry Health**: a **mobile app** that recei
 
 **Highlights**
 
-- Designed and built **the whole software pipeline on my own**, from the device to the cloud to the doctor's screen.
+- Designed and developed **the software pipeline end to end**, from the device to the cloud to the doctor's screen.
 - **Patient / doctor roles** with **database-level data isolation**: each doctor sees only their own patients, and each patient sees only their own recordings.
 - **12-lead** review in an ECG-paper view (mobile and web), derived from 8 physical channels.
 - **Explainable, rule-based automated ECG analysis**, without machine learning.
 - Signal handling that tolerates data loss over Bluetooth, and calibration verified with a simulator.
 - **Integrated and validated the outsourced firmware and PCB** against software requirements, on the real device.
-- **Executed the TÜBİTAK BİGG 1512 project end to end:** work plan, period reports, budget tracking, reviewer presentation, and live prototype demo.
+- **Managed the TÜBİTAK BİGG 1512 project end to end:** work plan, period reports, budget tracking, **technical presentations to investors and reviewers**, and live prototype demos.
 
 ### Problem
 
@@ -216,10 +219,11 @@ flowchart LR
 
 ### TÜBİTAK BİGG 1512 project execution
 
-The project was funded with a **900,000 TRY grant** under **TÜBİTAK BİGG 1512**. I executed the project end to end:
+The project was funded with a **900,000 TRY grant** under **TÜBİTAK BİGG 1512**. I managed the project end to end:
 
 - Work-time, scope, and budget tracking against the business plan; period reports.
 - Project presentation and a live prototype demo at TÜBİTAK reviewer evaluations.
+- Technical presentations to investors.
 
 ### Hardware integration
 
@@ -246,11 +250,13 @@ Firmware and PCB development were outsourced. In this process I:
 
 ### My role
 
-- Executed the project end to end as an R&D Engineer and TÜBİTAK 1512 Project Executor.
-- Built all of mobile, web, backend, and device integration.
+- Managed the project end to end as an R&D Engineer and TÜBİTAK 1512 Project Executor.
+- Technical presentations and live prototype demos for investors and reviewers.
+- End-to-end development of mobile, web, backend, and device integration.
 - Patient / doctor role model and database-level authorization (RLS).
 - End-to-end data pipeline for the embedded device signal and rule-based ECG analysis.
 - Integrated vendor firmware and PCB deliveries against software requirements and validated them on the real device.
+- Active role in the clinical data collection process — [Coronary stenosis prediction from ECG](../../../2026/medical/ecg-coronary-stenosis/README.md).
 
 ### Status
 

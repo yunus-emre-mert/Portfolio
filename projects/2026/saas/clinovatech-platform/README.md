@@ -1,4 +1,4 @@
-# Clinovatech — Multi-Tenant B2B SaaS Platform (Backend Architecture)
+# Clinovatech — Multi-Tenant B2B SaaS Platform (Backend Engineering)
 
 [Türkçe](#türkçe) · [English](#english)
 
@@ -10,11 +10,11 @@
 
 ### Özet
 
-Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RLS dahil, Yazılım Mühendisi olarak tek başıma geliştirdim**. Kapsam; veri modeli, çok kiracılık ve veri izolasyonu, yetkilendirme modeli, serverless katman, istemci veri erişim katmanı ve yeni özelliklerin geliştirme, test ve pilot ortamları üzerinden canlıya alınma sürecidir.
+Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RLS dahil, Yazılım Mühendisi (Backend & Sistemler) olarak uçtan uca tasarladım ve geliştirdim**. Kapsam; veri modeli, çok kiracılık ve veri izolasyonu, yetkilendirme modeli, serverless katman, istemci veri erişim katmanı ve yeni özelliklerin geliştirme, test ve pilot ortamları üzerinden canlıya alınma sürecidir.
 
 | | |
 |---|---|
-| **Rol** | Yazılım Mühendisi. Multi-tenant backend, veritabanı düzeyinde RLS dahil, tek başıma |
+| **Rol** | Yazılım Mühendisi (Backend & Sistemler), Sözleşmeli. Multi-tenant backend’in, veritabanı düzeyinde RLS dahil, uçtan uca tasarımı ve geliştirilmesi |
 | **Dönem** | 2025 – 2026 |
 | **Alan** | Sağlık / klinik yönetimi, diş klinikleri odaklı B2B SaaS |
 | **İstemciler** | Web (React + TypeScript), mobil (Expo / React Native) |
@@ -220,11 +220,11 @@ flowchart LR
 
 ### Summary
 
-As a **Software Engineer**, I **built the multi-tenant B2B SaaS backend for clinics single-handedly, including database-level RLS**. The scope covers the data model, multi-tenancy and data isolation, the authorization model, the serverless layer, the client data-access layer, and the release process that takes new features through development, test, and pilot environments to production.
+As a **Software Engineer (Backend & Systems)**, I **designed and developed the multi-tenant B2B SaaS backend for clinics end to end, including database-level RLS**. The scope covers the data model, multi-tenancy and data isolation, the authorization model, the serverless layer, the client data-access layer, and the release process that takes new features through development, test, and pilot environments to production.
 
 | | |
 |---|---|
-| **Role** | Software Engineer. Multi-tenant backend, including database-level RLS, built single-handedly |
+| **Role** | Software Engineer (Backend & Systems), Contract. End-to-end design and development of the multi-tenant backend, including database-level RLS |
 | **Period** | 2025 – 2026 |
 | **Domain** | Healthcare / clinic management, B2B SaaS focused on dental clinics |
 | **Clients** | Web (React + TypeScript), mobile (Expo / React Native) |

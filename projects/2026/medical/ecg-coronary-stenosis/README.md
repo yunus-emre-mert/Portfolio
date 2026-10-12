@@ -16,7 +16,7 @@
 
 | | |
 |---|---|
-| **Rol** | Medikal Yapay Zeka Mühendisi. ~1000 hastalık kohort hattı, SSL model eğitimi ve etiketleme uygulaması |
+| **Rol** | Medikal Yapay Zeka Mühendisi. Klinik veri toplama süreci, ~1000 hastalık kohort hattı, SSL model eğitimi ve etiketleme uygulaması |
 | **Dönem** | 2026 |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
 | **Alan** | Kardiyoloji / medikal yapay zeka |
@@ -89,7 +89,7 @@ flowchart LR
 
 ### Rolüm
 
-- Medikal Yapay Zeka Mühendisi olarak ~1000 hastalık EKG–anjiyo kohortunun toplanması ve işlenmesi.
+- Medikal Yapay Zeka Mühendisi olarak klinik veri toplama sürecinde yer aldım; ~1000 hastalık EKG–anjiyo kohortunun toplanmasını ve işlenmesini uçtan uca yürüttüm.
 - Ham cihaz verisinin işlenmesi, filtre doğrulaması ve kalite kontrolü.
 - Kohort analizi, eşleme ve kilitli veri bölme hattının geliştirilmesi.
 - SSL temel modelleri (ECG-FM, HuBERT-ECG, ST-MEM, xECG) üzerinde gözetimli ince ayar ve precision öncelikli değerlendirme.
@@ -109,7 +109,7 @@ A research project at **Cormetry Health** that aims to predict angiographically 
 
 | | |
 |---|---|
-| **Role** | Medical AI Engineer. ~1000-patient cohort pipeline, SSL model training, and labeling app |
+| **Role** | Medical AI Engineer. Clinical data collection process, ~1000-patient cohort pipeline, SSL model training, and labeling app |
 | **Period** | 2026 |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
 | **Domain** | Cardiology / medical AI |
@@ -182,7 +182,7 @@ flowchart LR
 
 ### My role
 
-- As a Medical AI Engineer, collected and processed the ~1000-patient ECG–angiography cohort.
+- As a Medical AI Engineer, took part in the clinical data collection process and managed the collection and processing of the ~1000-patient ECG–angiography cohort end to end.
 - Raw device data processing, filter verification, and quality control.
 - Built the cohort analysis, pairing, and locked data-split pipeline.
 - Supervised fine-tuning of SSL foundation models (ECG-FM, HuBERT-ECG, ST-MEM, xECG) and precision-first evaluation.
