@@ -10,15 +10,15 @@
 
 ## Summary
 
-**Backend Engineer** with domain expertise in Medical AI and scalable data pipelines. I design service boundaries, data contracts, and the infrastructure that keeps multi-tenant clinical systems isolated and fast under load.
+**Backend Engineer.** I design and build the services behind multi-tenant products: a clear API, separate data for each customer, and slow work kept off the request.
 
-At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend for clinics: **PostgreSQL row-level security (RLS)** for tenant isolation, a package-and-module authorization model, **FastAPI** request contracts, **Redis** on read-heavy paths, and **RabbitMQ / Celery** for work that stays off the request path. At **Cormetry Health** (2024 – November 2026) I designed the platform API and the device-to-cloud path for a wearable 12-lead ECG: BLE ingestion, real-time signal validation pipelines, and clinical data workflows that feed both product features and model evaluation. Commercial **source code is not in this repo** under **IP and NDA**.
+At **Clinovatech** I owned the backend of a clinic SaaS product. Each clinic's data stays separate, packages and permissions change without a code change, and the API, cache, and background jobs are separate parts of the system. At **Cormetry Health** (2024 – November 2026) I built the API that carries wearable ECG recordings from the device to the cloud and the doctor panel. Commercial source code is not in this repo under **IP and NDA**.
 
 | Focus (2024 – present) | Summary |
 |------------------------|---------|
-| **Clinovatech — system design** | Software Engineer (Backend & Systems), Contract. Multi-tenant B2B SaaS: RLS tenant isolation, package/module authorization, FastAPI + Pydantic contracts, SQLAlchemy/Alembic, Redis, RabbitMQ, Celery, pytest — [case study](projects/2026/saas/clinovatech-platform/README.md) |
-| **Cormetry Health — API & data path** | Software Engineer (2024 – November 2026). Platform API, BLE device ingestion, real-time signal pipelines, and clinical cohort pipelines — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [labeling](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Data engineering & ML integration** | High-volume time-series pipelines and model integration (PTB-XL, clinical cohorts), arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [details](#data-engineering-ml-integration) |
+| **Clinovatech — system design** | Software Engineer (Backend & Systems), Contract. Clinic SaaS backend: tenant isolation, packages and permissions, API, cache, and background jobs — [case study](projects/2026/saas/clinovatech-platform/README.md) |
+| **Cormetry Health — API and data path** | Software Engineer (2024 – November 2026). API from the wearable device to the cloud and the doctor panel — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [labeling](projects/2026/medical/ecg-coronary-stenosis/README.md) |
+| **Data pipelines** | Preparing recordings so the software can use them — [details](#data-engineering-ml-integration) |
 
 ---
 

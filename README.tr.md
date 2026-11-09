@@ -10,15 +10,15 @@
 
 ## Özet
 
-Medikal yapay zeka ve ölçeklenebilir veri boru hatlarında alan uzmanlığı olan bir **Backend Mühendisiyim**. Çok kiracılı klinik sistemleri yük altında izole ve hızlı tutan servis sınırlarını, veri sözleşmelerini ve altyapıyı tasarlarım.
+**Backend Mühendisiyim.** Çok kiracılı ürünlerin arkasındaki servisleri tasarlar ve geliştiririm: net bir API, her müşterinin verisinin ayrı kalması ve yavaş işin istekten çıkarılması.
 
-**Clinovatech**’te klinikler için çok kiracılı B2B SaaS backend’inin mimarisini üstlendim: kiracı izolasyonu için **PostgreSQL satır düzeyi güvenlik (RLS)**, paket ve modül yetkilendirme modeli, **FastAPI** istek sözleşmeleri, okuma ağırlıklı yollarda **Redis**, istek yolunun dışında kalan işler için **RabbitMQ / Celery**. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir 12 derivasyonlu EKG için platform API’sini ve cihazdan buluta veri yolunu tasarladım: BLE alımı, gerçek zamanlı sinyal doğrulama hatları ve hem ürün özelliklerini hem model değerlendirmesini besleyen klinik veri akışları. Ticari **kaynak kod bu depoda yoktur**; **IP ve NDA** kapsamındadır.
+**Clinovatech**’te bir klinik SaaS ürününün backend’ini üstlendim. Her kliniğin verisi ayrı kalır, paket ve yetkiler kod değişikliği olmadan ayarlanır, API, önbellek ve arka plan işleri sistemin ayrı parçalarıdır. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir EKG kayıtlarını cihazdan buluta ve doktor paneline taşıyan API’yi geliştirdim. Ticari kaynak kod bu depoda yoktur; **IP ve NDA** kapsamındadır.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
-| **Clinovatech — sistem tasarımı** | Software Engineer (Backend & Systems), Sözleşmeli. Çok kiracılı B2B SaaS: RLS kiracı izolasyonu, paket/modül yetkilendirme, FastAPI + Pydantic sözleşmeleri, SQLAlchemy/Alembic, Redis, RabbitMQ, Celery, pytest — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
-| **Cormetry Health — API ve veri yolu** | Software Engineer (2024 – Kasım 2026). Platform API’si, BLE cihaz alımı, gerçek zamanlı sinyal hatları ve klinik kohort hatları — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [etiketleme](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Veri mühendisliği ve ML entegrasyonu** | Yüksek hacimli zaman serisi hatları ve model entegrasyonu (PTB-XL, klinik kohortlar), arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [detay](#veri-muhendisligi-ve-ml-entegrasyonu) |
+| **Clinovatech — sistem tasarımı** | Software Engineer (Backend & Systems), Sözleşmeli. Klinik SaaS backend’i: kiracı izolasyonu, paket ve yetkiler, API, önbellek ve arka plan işleri — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
+| **Cormetry Health — API ve veri yolu** | Software Engineer (2024 – Kasım 2026). Giyilebilir cihazdan buluta ve doktor paneline giden API — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [etiketleme](projects/2026/medical/ecg-coronary-stenosis/README.md) |
+| **Veri hatları** | Kayıtları yazılımın kullanabileceği veriye hazırlama — [detay](#veri-muhendisligi-ve-ml-entegrasyonu) |
 
 ---
 
