@@ -16,15 +16,16 @@
 
 | | |
 |---|---|
-| **Rol** | Ar-Ge Mühendisi / Proje Yürütücüsü (TÜBİTAK 1512). Yazılım tarafının uçtan uca tasarımı ve geliştirilmesi (mobil, web, backend, cihaz entegrasyonu); firmware ve PCB entegrasyonu; yatırımcı ve hakem sunumları |
+| **Rol** | Software Engineer. Yazılım tarafının uçtan uca tasarımı ve geliştirilmesi (mobil, web, backend, FastAPI); firmware ve PCB entegrasyonu; TÜBİTAK 1512 yürütmesi, yatırımcı ve hakem sunumları |
 | **Dönem** | 2024 – güncel |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
 | **Alan** | Kardiyoloji / dijital sağlık / medikal cihaz yazılımı |
-| **Çekirdek teknolojiler** | React Native (Expo), React + Vite, TypeScript, Supabase (PostgreSQL, Auth, Storage, RLS), Bluetooth Low Energy |
+| **Çekirdek teknolojiler** | FastAPI, Pydantic, pytest, React Native (Expo), React + Vite, TypeScript, Supabase (PostgreSQL, Auth, Storage, RLS), Bluetooth Low Energy |
 
 **Öne çıkanlar**
 
 - Cihazdan buluta, buluttan doktor ekranına kadar **yazılım hattını uçtan uca** tasarladım ve geliştirdim.
+- Platform için **FastAPI** servisi; istek ve yanıt sözleşmeleri **Pydantic** ile, davranış **pytest** ile doğrulanır.
 - **Hasta / doktor rolleri** ve **veritabanı düzeyinde veri izolasyonu**: her doktor yalnızca kendi hastalarını, her hasta yalnızca kendi kayıtlarını görür.
 - 8 fiziksel kanaldan **12 derivasyonlu**, EKG kâğıdı görünümünde inceleme (mobil ve web).
 - Makine öğrenmesi kullanmayan, **açıklanabilir, kural tabanlı otomatik EKG analizi**.
@@ -42,14 +43,21 @@ Klinik EKG cihazları pahalı, sabit ve verileri paylaşmak zahmetli. Hedef; has
 flowchart LR
     device[EKG_cihazi] -->|Bluetooth| mobile[Mobil_uygulama_hasta]
     mobile --> cloud["Bulut: veritabani + dosya deposu"]
-    cloud --> mobile
+    mobile --> api["FastAPI + Pydantic"]
+    api --> cloud
     cloud --> web[Doktor_web_paneli]
+    web --> api
     web --> analysis[Otomatik_EKG_analizi]
 ```
 
 1. **EKG cihazı:** Medikal sınıf 24-bit analog ön uç, mikrodenetleyici ve BLE modülünden oluşan, 10 elektrotla 500 örnek/saniye ölçüm yapan taşınabilir cihaz.
 2. **Mobil uygulama (hasta):** Cihazı bulur, bağlanır, kısa bir EKG kaydı alır, sinyali işler ve buluta yükler. Geçmiş kayıtlar 12 derivasyonlu EKG kâğıdı görünümünde izlenir.
 3. **Doktor web paneli:** Doktor kendisine atanmış hastaları ve kayıtlarını görür, filtrelenmiş 12 derivasyon görünümünü inceler ve otomatik analiz sonuçlarını okur.
+4. **Platform API’si:** FastAPI servisi, mobil ve web istemcilerinin yanında durur. Veri, kimlik ve dosya katmanı Supabase üzerinde kalır.
+
+### Platform API’si
+
+Platform için bir **FastAPI** servisi yazdım. İstek ve yanıt sözleşmeleri **Pydantic** modelleriyle tanımlı. Servisin davranışı **pytest** ile doğrulanır. Veri, kimlik ve dosya katmanı **Supabase** (PostgreSQL, Auth, Storage, RLS) üzerinde durur.
 
 ### Roller ve veri güvenliği
 
@@ -117,18 +125,19 @@ Firmware ve PCB geliştirmesi dış hizmet olarak alındı. Bu süreçte:
 
 - **Mobil:** React Native, Expo, TypeScript, Bluetooth Low Energy, React Navigation
 - **Web:** React, Vite, TypeScript, Radix UI
-- **Backend:** Supabase (PostgreSQL, Auth, Storage, Row Level Security)
+- **Backend:** Supabase (PostgreSQL, Auth, Storage, Row Level Security), FastAPI, Pydantic
+- **Test:** pytest
 - **Araçlar:** npm workspaces, EAS Build, Vercel
 
 ### Rolüm
 
-- Ar-Ge Mühendisi ve TÜBİTAK 1512 Proje Yürütücüsü olarak projenin uçtan uca yönetilmesi.
-- Yatırımcı ve hakem sunumlarında projenin teknik sunumu ve canlı prototip demosu.
-- Mobil, web, backend ve cihaz entegrasyonunun uçtan uca geliştirilmesi.
+- Software Engineer olarak mobil, web, backend ve cihaz entegrasyonunun uçtan uca geliştirilmesi.
+- Platform API’si: FastAPI servisi, Pydantic sözleşmeleri ve pytest.
+- TÜBİTAK 1512 kapsamında proje yürütmesi: iş planı, dönem raporları, yatırımcı ve hakem sunumları, canlı prototip demosu.
 - Hasta / doktor rol modeli ve veritabanı düzeyinde yetkilendirme (RLS).
 - Gömülü cihazdan gelen sinyal için uçtan uca veri hattı ve kural tabanlı EKG analizi.
 - Dış tedarikçiden gelen firmware ve PCB teslimlerinin yazılım gereksinimlerine göre entegrasyonu ve gerçek cihazla doğrulanması.
-- Klinik veri toplama sürecinde aktif rol — [EKG'den koroner darlık tahmini](../../../2026/medical/ecg-coronary-stenosis/README.md).
+- Klinik veri toplama sürecinde aktif rol — [EKG'den koroner darlık tahmini](../../../2026/medical/ecg-coronary-stenosis/README.md). PTB-XL sınıflandırma araştırması — [proje](../../../2026/medical/ecg-ptbxl-ensemble/README.md).
 
 ### Durum
 
@@ -144,15 +153,16 @@ An end-to-end platform built at **Cormetry Health**: a **mobile app** that recei
 
 | | |
 |---|---|
-| **Role** | R&D Engineer / Project Executor (TÜBİTAK 1512). End-to-end design and development of the software side (mobile, web, backend, device integration); firmware and PCB integration; investor and reviewer presentations |
+| **Role** | Software Engineer. End-to-end design and development of the software side (mobile, web, backend, FastAPI); firmware and PCB integration; TÜBİTAK 1512 execution, investor and reviewer presentations |
 | **Period** | 2024 – present |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
 | **Domain** | Cardiology / digital health / medical device software |
-| **Core technologies** | React Native (Expo), React + Vite, TypeScript, Supabase (PostgreSQL, Auth, Storage, RLS), Bluetooth Low Energy |
+| **Core technologies** | FastAPI, Pydantic, pytest, React Native (Expo), React + Vite, TypeScript, Supabase (PostgreSQL, Auth, Storage, RLS), Bluetooth Low Energy |
 
 **Highlights**
 
 - Designed and developed **the software pipeline end to end**, from the device to the cloud to the doctor's screen.
+- A **FastAPI** service for the platform; request and response contracts with **Pydantic**, behavior checked with **pytest**.
 - **Patient / doctor roles** with **database-level data isolation**: each doctor sees only their own patients, and each patient sees only their own recordings.
 - **12-lead** review in an ECG-paper view (mobile and web), derived from 8 physical channels.
 - **Explainable, rule-based automated ECG analysis**, without machine learning.
@@ -170,14 +180,21 @@ Clinical ECG devices are expensive, stationary, and make sharing data cumbersome
 flowchart LR
     device[ECG_device] -->|Bluetooth| mobile[Mobile_app_patient]
     mobile --> cloud["Cloud: database + file storage"]
-    cloud --> mobile
+    mobile --> api["FastAPI + Pydantic"]
+    api --> cloud
     cloud --> web[Doctor_web_panel]
+    web --> api
     web --> analysis[Automated_ECG_analysis]
 ```
 
 1. **ECG device:** A portable device with a medical-grade 24-bit analog front end, a microcontroller, and a BLE module, measuring through 10 electrodes at 500 samples per second.
 2. **Mobile app (patient):** Finds and connects to the device, takes a short ECG recording, processes the signal, and uploads it. Past recordings are shown in a 12-lead ECG-paper view.
 3. **Doctor web panel:** The doctor sees assigned patients and their recordings, reviews the filtered 12-lead view, and reads the automated analysis results.
+4. **Platform API:** A FastAPI service sits beside the mobile and web clients. Data, identity, and files stay on Supabase.
+
+### Platform API
+
+I built a **FastAPI** service for the platform. Request and response contracts are **Pydantic** models. Service behavior is checked with **pytest**. Data, identity, and files stay on **Supabase** (PostgreSQL, Auth, Storage, RLS).
 
 ### Roles and data security
 
@@ -245,18 +262,19 @@ Firmware and PCB development were outsourced. In this process I:
 
 - **Mobile:** React Native, Expo, TypeScript, Bluetooth Low Energy, React Navigation
 - **Web:** React, Vite, TypeScript, Radix UI
-- **Backend:** Supabase (PostgreSQL, Auth, Storage, Row Level Security)
+- **Backend:** Supabase (PostgreSQL, Auth, Storage, Row Level Security), FastAPI, Pydantic
+- **Tests:** pytest
 - **Tools:** npm workspaces, EAS Build, Vercel
 
 ### My role
 
-- Managed the project end to end as an R&D Engineer and TÜBİTAK 1512 Project Executor.
-- Technical presentations and live prototype demos for investors and reviewers.
-- End-to-end development of mobile, web, backend, and device integration.
+- As a Software Engineer, end-to-end development of mobile, web, backend, and device integration.
+- Platform API: FastAPI service, Pydantic contracts, and pytest.
+- TÜBİTAK 1512 project execution: work plan, period reports, investor and reviewer presentations, and live prototype demos.
 - Patient / doctor role model and database-level authorization (RLS).
 - End-to-end data pipeline for the embedded device signal and rule-based ECG analysis.
 - Integrated vendor firmware and PCB deliveries against software requirements and validated them on the real device.
-- Active role in the clinical data collection process — [Coronary stenosis prediction from ECG](../../../2026/medical/ecg-coronary-stenosis/README.md).
+- Active role in the clinical data collection process — [Coronary stenosis prediction from ECG](../../../2026/medical/ecg-coronary-stenosis/README.md). PTB-XL classification research — [project](../../../2026/medical/ecg-ptbxl-ensemble/README.md).
 
 ### Status
 

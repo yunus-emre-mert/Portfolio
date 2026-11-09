@@ -7,7 +7,7 @@ Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet — Yıldız Technical University
 
 - arXiv: [2609.12803](https://arxiv.org/abs/2609.12803) (eess.SP, Sep 2026)
 - PDF: [`2609.12803v1.pdf`](paper/2609.12803v1.pdf)
-- Context: R&D work carried out at **Cormetry Health** as R&D Engineer / Medical AI Engineer (wearable 12-lead ECG).
+- Context: Research carried out at **Cormetry Health** as **Software Engineer** (wearable 12-lead ECG). Platform: [12-lead ECG case study](../../../2024-2025/medical/cormetry-ecg-platform/README.md). Related cohort work: [coronary stenosis](../ecg-coronary-stenosis/README.md).
 
 > **Türkçe özet:** PTB-XL v1.0.3 üzerinde 5 tanısal üst sınıf (`NORM`, `MI`, `STTC`, `CD`, `HYP`) için çok etiketli 12 derivasyon EKG sınıflandırması. 1D-ResNet18, Bidirectional Mamba, xLSTM, CWT-ViT-KAN ve ECGFounder karşılaştırıldı; heterojen ensemble (soft voting, stacking) uygulandı. En iyi sonuç stacking ile Macro AUROC **0.936**, AUPRC **0.836**. Veri seti rehberi: [ptbxl-dataset-guide.md](docs/ptbxl-dataset-guide.md).
 

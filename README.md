@@ -1,8 +1,8 @@
 # Yunus Emre Mert
 
-**R&D Mühendisi | Medikal Yapay Zeka (EKG / Sinyal & Görüntü İşleme) | Mekatronik Mühendisi**
+**Yazılım Mühendisi | Backend (Python, FastAPI)**
 
-*R&D Engineer | Medical AI (ECG / Signal & Image Processing) | Mechatronics Engineer*
+*Software Engineer | Backend (Python, FastAPI)*
 
 [Türkçe](#türkçe) · [English](#english)
 
@@ -14,32 +14,18 @@
 
 ### Özet
 
-**R&D Engineer** olarak **2024’ten bu yana** medikal yapay zeka ve biyomedikal sistemler üzerinde çalışıyorum: **12-lead EKG için derin öğrenme araştırması** (PTB-XL, arXiv 2609.12803), **giyilebilir 12-lead EKG** donanım–yazılım geliştirme ve regülasyon, ve **RLS tabanlı multi-tenant SaaS backend’inin uçtan uca tasarımı ve geliştirilmesi**. Lisans dönemi (2022–2023) bilgisayarlı görü / ML çalışmaları açık kaynak öğrenme pratikleri olarak **`projects/`** altındadır; ticari proje kaynak kodu **IP ve NDA** kapsamında bu depoda değildir.
+**Software Engineer** olarak **2024’ten bu yana** sağlık ürünlerinde backend ve yazılım geliştiriyorum: **Clinovatech**’te veritabanı düzeyinde RLS içeren multi-tenant B2B SaaS backend’i ve **FastAPI** mikroservisi (Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest); **Cormetry Health**’te giyilebilir 12-lead EKG platformunun yazılımı ve **FastAPI + Pydantic** API’si (pytest). Medikal yapay zeka araştırması ve lisans dönemi (2022–2023) bilgisayarlı görü / ML çalışmaları aşağıda; ticari proje kaynak kodu **IP ve NDA** kapsamında bu depoda değildir.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
+| **Clinovatech & SaaS** | Software Engineer (Backend & Systems), Sözleşmeli. Multi-tenant B2B SaaS backend’i (RLS) ve klinik platformu için FastAPI mikroservisi: Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
+| **Cormetry Health** | Software Engineer. Uçtan uca EKG platformu (cihaz + mobil + doktor paneli) ve FastAPI + Pydantic API (pytest). TÜBİTAK BİGG 1512 yürütmesi, donanım entegrasyonu ve yatırımcı / hakem sunumları sorumluluk kapsamında — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md); EKG + anjiyo ile koroner darlık araştırması — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md) |
 | **EKG yapay zeka araştırması (2026)** | PTB-XL çok etiketli sınıflandırma, 5 mimari + heterojen ensemble, arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [detay](#öne-çıkan-proje-ptb-xl-ekg-sınıflandırma-2026) |
-| **Cormetry Health** | TÜBİTAK BİGG 1512 giyilebilir 12-lead EKG projesinin uçtan uca yürütülmesi (Ar-Ge Mühendisi / Proje Yürütücüsü), 500 Hz prototip, SolidWorks/DFM, gerçek zamanlı sinyal işleme, CE-MDR, yatırımcı ve hakem sunumları; uçtan uca EKG platformu (cihaz + mobil + doktor paneli) — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md); EKG + anjiyo ile koroner darlık araştırması (klinik veri toplama, ~1000 hasta, SSL temel modeller) — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Clinovatech & SaaS** | Software Engineer (Backend & Systems), Sözleşmeli. Veritabanı düzeyinde RLS dahil multi-tenant B2B SaaS backend’inin uçtan uca tasarımı ve geliştirilmesi; kullanıcı / rol / paket / modül bazlı yetkilendirme, klinik bazlı özelleştirme — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
 | **Açık kaynak portföy (2022–2023)** | Sınıflandırma, nesne tespiti, medikal pipeline’lar — [detay tablo](#lisans-dönemi-açık-kaynak-pratikleri-20222023) |
 
 ---
 
-### R&D ve mühendislik deneyimi (2024 – güncel)
-
-#### Cormetry Health Teknoloji A.Ş. — R&D Engineer / Project Executor, TÜBİTAK 1512 (2024 – güncel)
-
-- **TÜBİTAK BİGG 1512** (900.000 TL hibe) destekli **giyilebilir 12-lead EKG** projesinde **500 Hz** prototip üretimi ve validasyon testleri.
-- **TÜBİTAK BİGG 1512 proje yürütmesi:** Projeyi uçtan uca yönettim; iş planı, bütçe takibi, dönem raporları; **yatırımcı ve TÜBİTAK hakem sunumlarında teknik sunum** ve canlı prototip demosu.
-- **SolidWorks / DFM** ile mekanik muhafaza tasarımı, hızlı **3D prototipleme** ve prototip parçalarının tedariki.
-- Gerçek zamanlı biyomedikal veri işleme hatları ve **CE-MDR** regülasyon uyum süreçleri.
-- **Uçtan uca 12 derivasyonlu EKG platformu:** Cihazdan Bluetooth ile veri alan cross-platform mobil uygulama, bulut altyapısı ve doktor web panelinden oluşan **yazılım tarafını uçtan uca** tasarladım ve geliştirdim (React Native / Expo, React + Vite, Supabase).
-- **Hasta / doktor rolleri:** Hasta kaydı kendi cihazıyla alır; doktor yalnızca kendisine atanmış hastaları ve kayıtlarını görür. Veri izolasyonu **veritabanı düzeyinde (RLS)** sağlanır; doktor panelinde **açıklanabilir, kural tabanlı otomatik EKG analizi** bulunur.
-- Dış kaynaklı **firmware ve PCB geliştirmesinin** yazılım gereksinimlerine göre entegrasyonu ve gerçek cihazla doğrulanması — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
-- **12-lead EKG sınıflandırma araştırması:** PTB-XL üzerinde CNN, state-space, rekürrent, transformer ve foundation model yaklaşımlarının karşılaştırması ve heterojen ensemble — [proje](#öne-çıkan-proje-ptb-xl-ekg-sınıflandırma-2026).
-- **EKG'den koroner darlık tahmini:** **Klinik veri toplama sürecinde** aktif rol aldım; **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini uçtan uca yürüttüm. Ham cihaz verisini doğru ölçek ve zamanla okudum, filtreleri cihazın resmi görüntüleyicisiyle doğruladım; kayıtları kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan gruplara ayırdım.
-- **SSL + gözetimli ince ayar:** Öz-denetimli ön-eğitilmiş EKG temel modellerini gözetimli eğitimle kohorta uyarladım ve kilitli test kümesinde **precision öncelikli** karar kuralıyla karşılaştırdım.
-- **Klinik EKG görüntüleme ve etiketleme uygulaması:** Hekimler aynı hastanın **EKG'sini ve anjiyo raporunu tek uygulamada** görüp etiketleyebilsin diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
+### Yazılım ve backend deneyimi (2024 – güncel)
 
 #### Clinovatech — Software Engineer (Backend & Systems), Sözleşmeli (2025 – 2026)
 
@@ -48,9 +34,28 @@
 - Paket–modül ve kullanıcı–modül yapısı sayesinde **kliniğe özel paket** ve **klinik parametreleri ile klinik bazlı özelleştirme**, kod değişikliği olmadan.
 - Diş klinikleri için iş modülleri: **randevu sistemi**, kliniğe özel **tedavi listeleri**, klinik bazında seçilebilen **tedavi akışı** (Plan → Tedavi → Ödeme veya Plan → Ödeme), **hasta listesi**, personel bazında hesaplama anı seçilebilen **hakediş sistemi**, **stok** ve **lab** modülleri.
 - **Veritabanı düzeyinde kiracı izolasyonu** (RLS), değiştirilemez denetim kaydı ve izole serverless ayrıcalıklı işlemler.
-- Yığın: **Supabase (PostgreSQL)**, Edge Functions, React / React Native, Docker ve CI/CD.
+- Klinik platformu için **FastAPI ve Pydantic** ile yeni bir mikroservis başlattım; istek ve yanıt sözleşmeleri tipli modellere dayanır.
+- Veritabanı katmanını **SQLAlchemy** modelleri ve **Alembic** şema göçleriyle yönettim.
+- Okuma ağırlıklı veride **Redis** ile önbellek.
+- E-posta ve ağır işleri **RabbitMQ ve Celery** ile arka plana aldım.
+- Servis davranışını **pytest** ile güvence altına aldım.
+- Yığın: **FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest**, Supabase (PostgreSQL), Edge Functions, Docker ve CI/CD.
 
 [Vaka analizi](projects/2026/saas/clinovatech-platform/README.md)
+
+#### Cormetry Health Teknoloji A.Ş. — Software Engineer (2024 – güncel)
+
+- **Uçtan uca 12 derivasyonlu EKG platformu:** Cihazdan Bluetooth ile veri alan cross-platform mobil uygulama, bulut altyapısı ve doktor web panelinden oluşan **yazılım tarafını uçtan uca** tasarladım ve geliştirdim (React Native / Expo, React + Vite, Supabase, **FastAPI**).
+- **Platform API’si:** FastAPI servisi; istek ve yanıt sözleşmeleri **Pydantic** ile, davranış **pytest** ile doğrulanır.
+- **Hasta / doktor rolleri:** Hasta kaydı kendi cihazıyla alır; doktor yalnızca kendisine atanmış hastaları ve kayıtlarını görür. Veri izolasyonu **veritabanı düzeyinde (RLS)** sağlanır; doktor panelinde **açıklanabilir, kural tabanlı otomatik EKG analizi** bulunur.
+- Dış kaynaklı **firmware ve PCB geliştirmesinin** yazılım gereksinimlerine göre entegrasyonu ve gerçek cihazla doğrulanması — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
+- **TÜBİTAK BİGG 1512 proje yürütmesi:** Projeyi uçtan uca yönettim; iş planı, bütçe takibi, dönem raporları; **yatırımcı ve TÜBİTAK hakem sunumlarında teknik sunum** ve canlı prototip demosu. **900.000 TL hibe** destekli **giyilebilir 12-lead EKG** projesinde **500 Hz** prototip üretimi ve validasyon testleri.
+- **SolidWorks / DFM** ile mekanik muhafaza tasarımı, hızlı **3D prototipleme** ve prototip parçalarının tedariki.
+- Gerçek zamanlı biyomedikal veri işleme hatları ve **CE-MDR** regülasyon uyum süreçleri.
+- **12-lead EKG sınıflandırma araştırması:** PTB-XL üzerinde CNN, state-space, rekürrent, transformer ve foundation model yaklaşımlarının karşılaştırması ve heterojen ensemble — [proje](#öne-çıkan-proje-ptb-xl-ekg-sınıflandırma-2026).
+- **EKG'den koroner darlık tahmini:** **Klinik veri toplama sürecinde** aktif rol aldım; **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini uçtan uca yürüttüm. Ham cihaz verisini doğru ölçek ve zamanla okudum, filtreleri cihazın resmi görüntüleyicisiyle doğruladım; kayıtları kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan gruplara ayırdım.
+- **SSL + gözetimli ince ayar:** Öz-denetimli ön-eğitilmiş EKG temel modellerini gözetimli eğitimle kohorta uyarladım ve kilitli test kümesinde **precision öncelikli** karar kuralıyla karşılaştırdım.
+- **Klinik EKG görüntüleme ve etiketleme uygulaması:** Hekimler aynı hastanın **EKG'sini ve anjiyo raporunu tek uygulamada** görüp etiketleyebilsin diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
 
 #### EMP Proje Danışmanlık Ltd. Şti. — Ar-Ge Mühendisi, Sözleşmeli (Ocak 2025 – Haziran 2025)
 
@@ -123,7 +128,8 @@ Lisans döneminde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü
 
 | Alan | Araçlar & konular |
 |------|-------------------|
-| **Programlama & altyapı** | Python, SQL şema tasarımı, Supabase (PostgreSQL), RLS & RPC mimarisi, Supabase Edge Functions (Deno), React (Vite) / React Native (Expo), TypeScript, Docker, GitHub Actions CI/CD, Flask API |
+| **Backend** | Python, FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest, Docker |
+| **Programlama & altyapı** | SQL şema tasarımı, Supabase (PostgreSQL), RLS & RPC mimarisi, Supabase Edge Functions (Deno), React (Vite) / React Native (Expo), TypeScript, GitHub Actions CI/CD, Flask API |
 | **AI & veri bilimi** | PyTorch, TensorFlow, YOLOv5/v7, Detectron2, OpenCV, SAHI, Scikit-learn, NumPy, Pandas |
 | **Derin öğrenme araştırması** | 1D-CNN / ResNet, Mamba (state-space modeller), xLSTM, ViT, KAN, öz-denetimli öğrenme (SSL) EKG temel modelleri, linear probing ve fine-tuning (ECGFounder, ECG-FM, HuBERT-ECG), ensemble learning (soft voting, stacking) |
 | **Donanım & prototipleme** | SolidWorks, 3D prototipleme, DFM, donanım–yazılım entegrasyonu, Bluetooth Low Energy cihaz entegrasyonu, gerçek zamanlı sinyal pipeline |
@@ -147,32 +153,18 @@ Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-C
 
 ### Summary
 
-**R&D Engineer** since **2024**, working on medical AI and biomedical systems: **deep learning research for 12-lead ECG** (PTB-XL, arXiv 2609.12803), **wearable 12-lead ECG** hardware–software development and regulation, and **end-to-end design and development of an RLS-based multi-tenant SaaS backend**. Bachelor’s-era (**2022–2023**) computer vision / ML work lives under **`projects/`** as open-source learning practice; commercial **source code is not in this repo** under **IP and NDA**.
+**Software Engineer** since **2024**, building backend and software for health products: at **Clinovatech**, a multi-tenant B2B SaaS backend with database-level RLS and a **FastAPI** microservice (Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest); at **Cormetry Health**, the software for a wearable 12-lead ECG platform and a **FastAPI + Pydantic** API (pytest). Medical AI research and bachelor’s-era (**2022–2023**) computer vision / ML work are below; commercial **source code is not in this repo** under **IP and NDA**.
 
 | Focus (2024 – present) | Summary |
 |------------------------|---------|
+| **Clinovatech & SaaS** | Software Engineer (Backend & Systems), Contract. Multi-tenant B2B SaaS backend (RLS) and a FastAPI microservice for the clinic platform: Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest — [case study](projects/2026/saas/clinovatech-platform/README.md) |
+| **Cormetry Health** | Software Engineer. End-to-end ECG platform (device + mobile + doctor panel) and a FastAPI + Pydantic API (pytest). TÜBİTAK BİGG 1512 execution, hardware integration, and investor / reviewer presentations sit in the scope of the role — [case study](projects/2024-2025/medical/cormetry-ecg-platform/README.md); ECG + angiography coronary stenosis research — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md) |
 | **ECG AI research (2026)** | PTB-XL multi-label classification, 5 architectures + heterogeneous ensemble, arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [details](#featured-project-ptb-xl-ecg-classification-2026) |
-| **Cormetry Health** | End-to-end execution of the TÜBİTAK BİGG 1512 wearable 12-lead ECG project (R&D Engineer / Project Executor), 500 Hz prototype, SolidWorks/DFM, real-time signal processing, CE-MDR, investor and reviewer presentations; end-to-end ECG platform (device + mobile + doctor panel) — [case study](projects/2024-2025/medical/cormetry-ecg-platform/README.md); ECG + angiography coronary stenosis research (clinical data collection, ~1000 patients, SSL foundation models) — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Clinovatech & SaaS** | Software Engineer (Backend & Systems), Contract. End-to-end design and development of a multi-tenant B2B SaaS backend, including database-level RLS; user / role / package / module-based authorization, clinic-level customization — [case study](projects/2026/saas/clinovatech-platform/README.md) |
 | **Open-source portfolio (2022–2023)** | Classification, detection, medical pipelines — [summary table](#undergraduate-open-source-practice-20222023) |
 
 ---
 
-### R&D & engineering experience (2024 – present)
-
-#### Cormetry Health Teknoloji A.Ş. — R&D Engineer / Project Executor, TÜBİTAK 1512 (2024 – present)
-
-- **TÜBİTAK BİGG 1512** (900,000 TRY grant) supported **wearable 12-lead ECG**: **500 Hz** prototype build and validation testing.
-- **TÜBİTAK BİGG 1512 project execution:** Managed the project end to end: work plan, budget tracking, period reports; **technical presentations to investors and TÜBİTAK reviewers** and live prototype demos.
-- **SolidWorks / DFM** mechanical enclosure design, rapid **3D prototyping**, and procurement of prototype parts.
-- Real-time biomedical data processing pipelines and **CE-MDR** regulatory alignment.
-- **End-to-end 12-lead ECG platform:** Designed and developed **the software side end to end**: a cross-platform mobile app that receives data from the device over Bluetooth, the cloud backend, and a doctor web panel (React Native / Expo, React + Vite, Supabase).
-- **Patient / doctor roles:** Patients take recordings with their own device; a doctor sees only the patients assigned to them and their recordings. Data isolation is enforced **at the database level (RLS)**, and the doctor panel includes **explainable, rule-based automated ECG analysis**.
-- Integration and real-device validation of the **outsourced firmware and PCB development**, driven by software requirements — [case study](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
-- **12-lead ECG classification research:** comparison of CNN, state-space, recurrent, transformer and foundation-model approaches plus heterogeneous ensembles on PTB-XL — [project](#featured-project-ptb-xl-ecg-classification-2026).
-- **Coronary stenosis prediction from ECG:** Took an active role in the **clinical data collection process** and managed the collection and processing of an ECG–angiography cohort of **~1000 patients** end to end. Raw device data was read at the correct scale and timing, filters were verified against the device's official viewer, and records were split by quality and pairing into usable / review / excluded groups.
-- **SSL + supervised fine-tuning:** I adapted self-supervised pretrained ECG foundation models to the cohort with supervised training and compared them on a locked test set with a **precision-first** decision rule.
-- **Clinical ECG viewing and labeling app:** Built a local desktop app (PySide6) so clinicians can view the same patient's **ECG and angiography report in one app** and label the recording — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md).
+### Software & backend experience (2024 – present)
 
 #### Clinovatech — Software Engineer (Backend & Systems), Contract (2025 – 2026)
 
@@ -181,9 +173,28 @@ Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-C
 - Separate package–module and user–module structures enable **clinic-specific packages** and **per-clinic customization through clinic parameters**, without code changes.
 - Business modules for dental clinics: an **appointment system**, clinic-specific **treatment lists**, a per-clinic selectable **treatment flow** (Plan → Treatment → Payment or Plan → Payment), a **patient list**, an **earnings system** with a per-staff calculation trigger, and **stock** and **lab** modules.
 - **Database-level tenant isolation** (RLS), immutable audit log, and isolated serverless privileged operations.
-- Stack: **Supabase (PostgreSQL)**, Edge Functions, React / React Native, Docker, and CI/CD.
+- Started a new microservice for the clinic platform with **FastAPI and Pydantic**; request and response contracts are typed models.
+- Managed the database layer with **SQLAlchemy** models and **Alembic** schema migrations.
+- Cached read-heavy data with **Redis**.
+- Moved email and heavy work to the background with **RabbitMQ and Celery**.
+- Locked down service behavior with **pytest**.
+- Stack: **FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest**, Supabase (PostgreSQL), Edge Functions, Docker, and CI/CD.
 
 [Case study](projects/2026/saas/clinovatech-platform/README.md)
+
+#### Cormetry Health Teknoloji A.Ş. — Software Engineer (2024 – present)
+
+- **End-to-end 12-lead ECG platform:** Designed and developed **the software side end to end**: a cross-platform mobile app that receives data from the device over Bluetooth, the cloud backend, and a doctor web panel (React Native / Expo, React + Vite, Supabase, **FastAPI**).
+- **Platform API:** A FastAPI service; request and response contracts with **Pydantic**, behavior checked with **pytest**.
+- **Patient / doctor roles:** Patients take recordings with their own device; a doctor sees only the patients assigned to them and their recordings. Data isolation is enforced **at the database level (RLS)**, and the doctor panel includes **explainable, rule-based automated ECG analysis**.
+- Integration and real-device validation of the **outsourced firmware and PCB development**, driven by software requirements — [case study](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
+- **TÜBİTAK BİGG 1512 project execution:** Managed the project end to end: work plan, budget tracking, period reports; **technical presentations to investors and TÜBİTAK reviewers** and live prototype demos. **500 Hz** prototype build and validation testing on the **wearable 12-lead ECG** project supported by a **900,000 TRY grant**.
+- **SolidWorks / DFM** mechanical enclosure design, rapid **3D prototyping**, and procurement of prototype parts.
+- Real-time biomedical data processing pipelines and **CE-MDR** regulatory alignment.
+- **12-lead ECG classification research:** comparison of CNN, state-space, recurrent, transformer and foundation-model approaches plus heterogeneous ensembles on PTB-XL — [project](#featured-project-ptb-xl-ecg-classification-2026).
+- **Coronary stenosis prediction from ECG:** Took an active role in the **clinical data collection process** and managed the collection and processing of an ECG–angiography cohort of **~1000 patients** end to end. Raw device data was read at the correct scale and timing, filters were verified against the device's official viewer, and records were split by quality and pairing into usable / review / excluded groups.
+- **SSL + supervised fine-tuning:** I adapted self-supervised pretrained ECG foundation models to the cohort with supervised training and compared them on a locked test set with a **precision-first** decision rule.
+- **Clinical ECG viewing and labeling app:** Built a local desktop app (PySide6) so clinicians can view the same patient's **ECG and angiography report in one app** and label the recording — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md).
 
 #### EMP Proje Danışmanlık Ltd. Şti. — R&D Engineer, Contract (January 2025 – June 2025)
 
@@ -256,7 +267,8 @@ Bachelor’s-era **personal / academic practice** in computer vision, machine le
 
 | Area | Tools & topics |
 |------|----------------|
-| **Programming & infrastructure** | Python, SQL schema design, Supabase (PostgreSQL), RLS & RPC architecture, Supabase Edge Functions (Deno), React (Vite) / React Native (Expo), TypeScript, Docker, GitHub Actions CI/CD, Flask API |
+| **Backend** | Python, FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest, Docker |
+| **Programming & infrastructure** | SQL schema design, Supabase (PostgreSQL), RLS & RPC architecture, Supabase Edge Functions (Deno), React (Vite) / React Native (Expo), TypeScript, GitHub Actions CI/CD, Flask API |
 | **AI & data science** | PyTorch, TensorFlow, YOLOv5/v7, Detectron2, OpenCV, SAHI, Scikit-learn, NumPy, Pandas |
 | **Deep learning research** | 1D-CNN / ResNet, Mamba (state-space models), xLSTM, ViT, KAN, self-supervised learning (SSL) ECG foundation models, linear probing and fine-tuning (ECGFounder, ECG-FM, HuBERT-ECG), ensemble learning (soft voting, stacking) |
 | **Hardware & prototyping** | SolidWorks, 3D prototyping, DFM, hardware–software integration, Bluetooth Low Energy device integration, real-time signal pipelines |
@@ -274,4 +286,4 @@ Bachelor’s-era **personal / academic practice** in computer vision, machine le
 
 Built with open-source libraries (Mask R-CNN, Detectron2, Ultralytics YOLOv5, and others). Third-party datasets and vendored tutorial code are not included in this repository.
 
-**Suggested GitHub repo topics:** `machine-learning`, `deep-learning`, `computer-vision`, `medical-imaging`, `jupyter-notebook`, `healthcare-ai`, `ecg`, `ptb-xl`, `saas`, `multi-tenant`, `supabase`
+**Suggested GitHub repo topics:** `python`, `fastapi`, `backend`, `postgresql`, `sqlalchemy`, `redis`, `celery`, `pytest`, `saas`, `multi-tenant`
