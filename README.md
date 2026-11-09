@@ -10,9 +10,9 @@
 
 ## Summary
 
-**Backend Engineer.** I design and build the services behind multi-tenant products: a clear API, separate data for each customer, and slow work kept off the request.
+I am a **Backend Engineer and Systems Architect** who designs scalable, multi-tenant SaaS products and data-intensive applications. My focus is to analyze and clarify complex business scenarios, turn them into solid database schemas, and build the end-to-end data pipelines the system needs.
 
-At **Clinovatech** I owned the backend of a clinic SaaS product. Each clinic's data stays separate, packages and permissions change without a code change, and the API, cache, and background jobs are separate parts of the system. At **Cormetry Health** (2024 – November 2026) I built the API that carries wearable ECG recordings from the device to the cloud and the doctor panel. Commercial source code is not in this repo under **IP and NDA**.
+At **Clinovatech** I designed the backend architecture of a clinic SaaS platform end to end: I modeled business requirements into database tables, set up tenant isolation at the database level (RLS), and built a dynamic authorization system that does not require code changes. At **Cormetry Health** (2024 – November 2026) I architected the asynchronous pipelines, cloud infrastructure, and API contracts that process high-volume medical data (ECG) from wearable IoT devices. Commercial project source code is not in this repository under **IP and NDA**.
 
 | Focus (2024 – present) | Summary |
 |------------------------|---------|
