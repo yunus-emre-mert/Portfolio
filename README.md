@@ -14,12 +14,12 @@
 
 ### Özet
 
-**2024’ten bu yana** sağlık ürünlerinin sunucu tarafını kuruyorum. **Clinovatech**’te kliniklere hizmet veren multi-tenant SaaS backend’ini ve yanında çalışan servisi uçtan uca tasarladım: kiracı izolasyonu, yetkilendirme, şema göçleri, önbellek ve arka plan işleri. **Cormetry Health**’te (2024 – Kasım 2026) EKG platformunun API katmanını ve veri izolasyonunu geliştirdim. Uygulama, model eğitimi ve lisans dönemi çalışmaları aşağıda; ticari kaynak kod **IP ve NDA** kapsamında bu depoda değildir.
+**2024’ten bu yana** Ar-Ge projelerinin yazılım tarafında geliştirici olarak çalışıyorum. **Clinovatech**’te kliniklere hizmet veren multi-tenant SaaS backend’ini uçtan uca tasarladım ve geliştirdim: kiracı izolasyonu, yetkilendirme, şema göçleri, önbellek ve arka plan işleri. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir EKG cihazının platform yazılımını, mobil uygulama tasarımını ve hekimlerin kayıt etiketlemesi için Windows uygulamasını geliştirdim. Model eğitimi ve lisans dönemi çalışmaları aşağıda; ticari kaynak kod **IP ve NDA** kapsamında bu depoda değildir.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
 | **Clinovatech & SaaS** | Software Engineer (Backend & Systems), Sözleşmeli. Multi-tenant B2B SaaS backend’i (RLS) ve klinik platformu için FastAPI mikroservisi: Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
-| **Cormetry Health** | Software Engineer (2024 – Kasım 2026). EKG platformunun API katmanı ve veritabanı düzeyinde hasta / doktor izolasyonu. Ürün tarafı: cihaz, mobil uygulama ve doktor paneli — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md); EKG + anjiyo araştırması — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md) |
+| **Cormetry Health** | Software Engineer (2024 – Kasım 2026). Giyilebilir EKG platformunun yazılımı, mobil uygulama tasarımı ve hekim etiketlemesi için Windows uygulaması — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [etiketleme](projects/2026/medical/ecg-coronary-stenosis/README.md) |
 | **EKG yapay zeka araştırması (2026)** | PTB-XL çok etiketli sınıflandırma, 5 mimari + heterojen ensemble, arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [detay](#öne-çıkan-proje-ptb-xl-ekg-sınıflandırma-2026) |
 | **Açık kaynak portföy (2022–2023)** | Sınıflandırma, nesne tespiti, medikal pipeline’lar — [detay tablo](#lisans-dönemi-açık-kaynak-pratikleri-20222023) |
 
@@ -153,12 +153,12 @@ Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-C
 
 ### Summary
 
-Since **2024** I have been building the server side of health products. At **Clinovatech** I designed a multi-tenant SaaS backend for clinics and the service beside it: tenant isolation, authorization, schema migrations, caching, and background work. At **Cormetry Health** (2024 – November 2026) I built the API layer and data isolation for an ECG platform. Applications, model training, and bachelor’s-era work are below; commercial **source code is not in this repo** under **IP and NDA**.
+Since **2024** I have worked as a developer on the software side of R&D projects. At **Clinovatech** I designed and built the multi-tenant SaaS backend for clinics end to end: tenant isolation, authorization, schema migrations, caching, and background work. At **Cormetry Health** (2024 – November 2026) I developed the software platform for a wearable ECG device, the mobile app design, and the Windows application clinicians use to label recordings. Model training and bachelor’s-era work are below; commercial **source code is not in this repo** under **IP and NDA**.
 
 | Focus (2024 – present) | Summary |
 |------------------------|---------|
 | **Clinovatech & SaaS** | Software Engineer (Backend & Systems), Contract. Multi-tenant B2B SaaS backend (RLS) and a FastAPI microservice for the clinic platform: Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest — [case study](projects/2026/saas/clinovatech-platform/README.md) |
-| **Cormetry Health** | Software Engineer (2024 – November 2026). API layer for the ECG platform and database-level patient / doctor isolation. Product side: device, mobile app, and doctor panel — [case study](projects/2024-2025/medical/cormetry-ecg-platform/README.md); ECG + angiography research — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md) |
+| **Cormetry Health** | Software Engineer (2024 – November 2026). Software platform for a wearable ECG device, mobile app design, and a Windows application clinicians use to label recordings — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [labeling](projects/2026/medical/ecg-coronary-stenosis/README.md) |
 | **ECG AI research (2026)** | PTB-XL multi-label classification, 5 architectures + heterogeneous ensemble, arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [details](#featured-project-ptb-xl-ecg-classification-2026) |
 | **Open-source portfolio (2022–2023)** | Classification, detection, medical pipelines — [summary table](#undergraduate-open-source-practice-20222023) |
 
