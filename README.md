@@ -18,7 +18,7 @@ At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend f
 |------------------------|---------|
 | **Clinovatech — system design** | Software Engineer (Backend & Systems), Contract. Multi-tenant B2B SaaS: RLS tenant isolation, package/module authorization, FastAPI + Pydantic contracts, SQLAlchemy/Alembic, Redis, RabbitMQ, Celery, pytest — [case study](projects/2026/saas/clinovatech-platform/README.md) |
 | **Cormetry Health — API & data path** | Software Engineer (2024 – November 2026). Platform API, BLE device ingestion, real-time signal pipelines, and clinical cohort pipelines — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [labeling](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Domain expertise — Medical AI** | ECG data pipelines and model integration (PTB-XL, clinical cohorts), arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [research](#domain-expertise-medical-ai--research) |
+| **Domain expertise — Applied Medical AI** | High-volume ECG pipelines and model integration (PTB-XL, clinical cohorts), arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [details](#domain-expertise-applied-medical-ai--research) |
 
 ---
 
@@ -60,7 +60,9 @@ At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend f
 
 ---
 
-## Domain Expertise: Medical AI & Research
+## Domain Expertise: Applied Medical AI & Research
+
+This section is applied domain expertise: processing high-volume medical signals, building the data pipelines those workloads depend on, and integrating models behind a stable contract a backend can consume. The PTB-XL path below takes public 12-lead recordings from a fixed split and cached tensors through one scoring interface. The papers record the same kind of work on clinical ECG and histopathology pipelines.
 
 ### PTB-XL ECG data and evaluation pipeline (2026)
 
@@ -130,7 +132,7 @@ Bachelor’s-era **personal / academic practice** in computer vision, machine le
 | **Backend & API** | Python, FastAPI, Pydantic, pytest, Flask; API clients: React (Vite), React Native (Expo), TypeScript |
 | **Databases & Caching** | PostgreSQL, SQLAlchemy, Alembic, Redis, Supabase, SQL schema design |
 | **Asynchronous & Messaging** | RabbitMQ, Celery |
-| **Infrastructure & Security** | Docker, GitHub Actions CI/CD, PostgreSQL RLS, Supabase Edge Functions (Deno), RPC |
+| **Infrastructure & Cloud** | AWS (EC2), Docker, GitHub Actions CI/CD, PostgreSQL RLS, Supabase Edge Functions (Deno), RPC |
 | **Domain Expertise: AI & Medical Data** | PyTorch, TensorFlow, Scikit-learn, NumPy, Pandas, OpenCV; 12-lead ECG signal processing, BLE real-time signal pipelines, clinical cohort pipelines (ECG–angiography pairing, de-identification), PTB-XL / WFDB, DICOM; foundation-model fine-tuning and ensemble scoring (ECGFounder, ECG-FM, HuBERT-ECG); YOLOv5/v7, Detectron2, SAHI; PySide6 clinical labeling app; Jupyter, Google Colab |
 
 ---
