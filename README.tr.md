@@ -10,9 +10,9 @@
 
 ## Özet
 
-**Backend Mühendisiyim.** Çok kiracılı ürünlerin arkasındaki servisleri tasarlar ve geliştiririm: net bir API, her müşterinin verisinin ayrı kalması ve yavaş işin istekten çıkarılması.
+Ölçeklenebilir, çok kiracılı (multi-tenant) SaaS ürünleri ve veri yoğunluklu uygulamalar tasarlayan bir **Backend Mühendisi ve Sistem Mimarıyım**. Temel odak noktam; karmaşık iş senaryolarını analiz edip netleştirmek, bunları sağlam veritabanı şemalarına (schema design) dönüştürmek ve sistemin ihtiyaç duyduğu uçtan uca veri boru hatlarını (data pipelines) inşa etmektir.
 
-**Clinovatech**’te bir klinik SaaS ürününün backend’ini üstlendim. Her kliniğin verisi ayrı kalır, paket ve yetkiler kod değişikliği olmadan ayarlanır, API, önbellek ve arka plan işleri sistemin ayrı parçalarıdır. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir EKG kayıtlarını cihazdan buluta ve doktor paneline taşıyan API’yi geliştirdim. Ticari kaynak kod bu depoda yoktur; **IP ve NDA** kapsamındadır.
+**Clinovatech**’te bir klinik SaaS platformunun backend mimarisini uçtan uca tasarladım: İş gereksinimlerini veritabanı tablolarına modeledim, veritabanı düzeyinde kiracı izolasyonu (RLS) kurguladım ve kod değişikliği gerektirmeyen dinamik bir yetkilendirme sistemi kurdum. **Cormetry Health**’te (2024 – Kasım 2026) ise giyilebilir IoT cihazlarından gelen yüksek hacimli medikal veriyi (EKG) işleyen asenkron boru hatlarını, bulut altyapısını ve API sözleşmelerini mimari olarak şekillendirdim. Ticari projelere ait kaynak kodlar **IP ve NDA** kapsamında olduğu için bu depoda yer almaz.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
