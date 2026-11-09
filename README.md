@@ -14,7 +14,7 @@
 
 ### Özet
 
-**2024’ten bu yana** çok kiracılı (multi-tenant) B2B SaaS mimarileri, ölçeklenebilir FastAPI mikroservisleri ve yüksek hacimli veri işleme hatları (data pipelines) geliştiren bir **Backend Mühendisiyim**. **Clinovatech**’te kliniklere hizmet veren multi-tenant SaaS backend’ini uçtan uca tasarladım ve geliştirdim: kiracı izolasyonu, yetkilendirme, şema göçleri, önbellek ve arka plan işleri. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir EKG cihazının platform yazılımını, mobil uygulama tasarımını ve hekimlerin kayıt etiketlemesi için Windows uygulamasını geliştirdim. Model eğitimi ve lisans dönemi çalışmaları aşağıda; ticari kaynak kod **IP ve NDA** kapsamında bu depoda değildir.
+Çok kiracılı (multi-tenant) B2B SaaS mimarileri, ölçeklenebilir FastAPI mikroservisleri ve yüksek hacimli veri işleme hatları (data pipelines) geliştiren bir **Backend Mühendisiyim**. **Clinovatech**’te kliniklere hizmet veren multi-tenant SaaS backend’ini uçtan uca tasarladım ve geliştirdim: kiracı izolasyonu, yetkilendirme, şema göçleri, önbellek ve arka plan işleri. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir EKG cihazının platform yazılımını, mobil uygulama tasarımını ve hekimlerin kayıt etiketlemesi için Windows uygulamasını geliştirdim. Model eğitimi ve lisans dönemi çalışmaları aşağıda; ticari kaynak kod **IP ve NDA** kapsamında bu depoda değildir.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
@@ -25,7 +25,7 @@
 
 ---
 
-### Backend deneyimi (2024 – güncel)
+### Backend deneyimi (2023 – güncel)
 
 #### Clinovatech — Software Engineer (Backend & Systems), Sözleşmeli (2025 – 2026)
 
@@ -54,6 +54,10 @@
 - **EKG'den koroner darlık tahmini:** **Klinik veri toplama sürecinde** aktif rol aldım; **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini uçtan uca yürüttüm. Ham cihaz verisini doğru ölçek ve zamanla okudum, filtreleri cihazın resmi görüntüleyicisiyle doğruladım; kayıtları kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan gruplara ayırdım.
 - **SSL + gözetimli ince ayar:** Öz-denetimli ön-eğitilmiş EKG temel modellerini gözetimli eğitimle kohorta uyarladım ve kilitli test kümesinde **precision öncelikli** karar kuralıyla karşılaştırdım.
 - **Klinik EKG görüntüleme ve etiketleme uygulaması:** Hekimler aynı hastanın **EKG'sini ve anjiyo raporunu tek uygulamada** görüp etiketleyebilsin diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
+
+#### CorPal Dijital Sağlık Teknolojileri A.Ş. — Software Developer, Yarı Zamanlı (Mart 2023 – Ağustos 2023)
+
+- Kronik hasta yönetimi platformunun Firebase tabanlı bulut veri altyapısı entegrasyonunu, hastalardan alınan ses verilerinin işlenmesi (audio data processing) süreçlerini ve Flutter tabanlı mobil uygulama geliştirmesini yürüttüm.
 
 > **Gizlilik ve NDA:** Ticari projelere ait kaynak kodlar, **fikri mülkiyet (IP)** hakları ve **NDA** gizlilik anlaşmaları gereği bu kamuya açık depoda yer almaz. Mimari detaylar mülakat aşamasında aktarılabilir.
 
@@ -146,7 +150,7 @@ Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-C
 
 ### Summary
 
-**Backend Engineer** specializing in multi-tenant B2B SaaS architectures, scalable FastAPI microservices, and high-volume data pipelines since **2024**. At **Clinovatech** I designed and built the multi-tenant SaaS backend for clinics end to end: tenant isolation, authorization, schema migrations, caching, and background work. At **Cormetry Health** (2024 – November 2026) I developed the software platform for a wearable ECG device, the mobile app design, and the Windows application clinicians use to label recordings. Model training and bachelor’s-era work are below; commercial **source code is not in this repo** under **IP and NDA**.
+**Backend Engineer** specializing in multi-tenant B2B SaaS architectures, scalable FastAPI microservices, and high-volume data pipelines. At **Clinovatech** I designed and built the multi-tenant SaaS backend for clinics end to end: tenant isolation, authorization, schema migrations, caching, and background work. At **Cormetry Health** (2024 – November 2026) I developed the software platform for a wearable ECG device, the mobile app design, and the Windows application clinicians use to label recordings. Model training and bachelor’s-era work are below; commercial **source code is not in this repo** under **IP and NDA**.
 
 | Focus (2024 – present) | Summary |
 |------------------------|---------|
@@ -157,7 +161,7 @@ Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-C
 
 ---
 
-### Backend experience (2024 – present)
+### Backend experience (2023 – present)
 
 #### Clinovatech — Software Engineer (Backend & Systems), Contract (2025 – 2026)
 
@@ -186,6 +190,10 @@ Projeler açık kaynak kütüphanelerden yararlanılarak geliştirildi (Mask R-C
 - **Coronary stenosis prediction from ECG:** Took an active role in the **clinical data collection process** and managed the collection and processing of an ECG–angiography cohort of **~1000 patients** end to end. Raw device data was read at the correct scale and timing, filters were verified against the device's official viewer, and records were split by quality and pairing into usable / review / excluded groups.
 - **SSL + supervised fine-tuning:** I adapted self-supervised pretrained ECG foundation models to the cohort with supervised training and compared them on a locked test set with a **precision-first** decision rule.
 - **Clinical ECG viewing and labeling app:** Built a local desktop app (PySide6) so clinicians can view the same patient's **ECG and angiography report in one app** and label the recording — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md).
+
+#### CorPal Dijital Sağlık Teknolojileri A.Ş. — Software Developer, Part-Time (March 2023 – August 2023)
+
+- Developed the Firebase cloud data infrastructure integration, patient audio data processing pipelines, and the Flutter-based mobile application for a chronic patient management platform.
 
 > **Confidentiality & NDA:** Commercial project source code is **not** in this public repository due to **intellectual property (IP)** and **NDA** obligations. Architecture details can be shared during interviews.
 
