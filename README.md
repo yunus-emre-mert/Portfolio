@@ -48,7 +48,7 @@ At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend f
 - **IoT ingestion:** Specified **BLE transmission protocols** and **real-time signal validation pipelines** with the hardware team, and verified firmware integration on the physical device against the software contract — [case study](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
 - **Clinical data pipeline:** Ran collection and processing for an ECG–angiography cohort of **~1000 patients**: raw device samples read at the correct scale and timing, filters checked against the device's official viewer, and records gated into usable / review / excluded sets by quality and pairing.
 - **Model integration:** Adapted pretrained ECG foundation models into a supervised evaluation pipeline and compared them on a locked test set under a **precision-first** decision rule, so model output is a system decision with a fixed contract.
-- **PTB-XL evaluation pipeline:** Built the shared data and scoring path used to compare model families and heterogeneous ensembles — [pipeline](#ptb-xl-ecg-data-and-evaluation-pipeline-2026).
+- **PTB-XL evaluation pipeline:** Built the shared data and scoring path used to compare model families and heterogeneous ensembles — [project](projects/2026/medical/ecg-ptbxl-ensemble/README.md).
 - **Labeling workstation:** Built a local desktop app (PySide6) so clinicians view one patient's **ECG and angiography report together** and write labels back into the cohort pipeline — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md).
 - **TÜBİTAK BİGG 1512 delivery:** Ran the wearable **12-lead ECG** project end to end (work plan, budget, period reports), including technical presentations to investors and TÜBİTAK reviewers and live prototype demos. **500 Hz** prototype build and validation under a **900,000 TRY** grant.
 
@@ -64,40 +64,21 @@ At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend f
 
 ## Data Engineering & ML Integration
 
-I build data pipelines that process high-volume time-series data and integrate AI models into software systems. The PTB-XL path below is that work on 12-lead ECG: a fixed split, cached tensors at 100 Hz and 500 Hz, and one scoring interface the rest of the system can call. The arXiv papers are the same evidence in writing: Python and complex data manipulation on clinical ECG and histopathology, from raw files and label maps to model-ready inputs.
+Pipelines for high-volume time-series and imaging data, with model output behind a contract the rest of the system can call. The notes below are the projects. The papers sit directly under them as the written record of the Python and data-manipulation work.
 
-### PTB-XL ECG data and evaluation pipeline (2026)
+**PTB-XL ECG pipeline (2026).** Official `strat_fold` split on PTB-XL v1.0.3, SCP codes mapped to five diagnostic superclasses, 100 Hz and 500 Hz tensor caches, and one scoring interface per record. Test fold 10: stacking reached Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. [Project](projects/2026/medical/ecg-ptbxl-ensemble/README.md)
 
-**Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** — Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet (Yıldız Technical University). arXiv [2609.12803](https://arxiv.org/abs/2609.12803) · [PDF](projects/2026/medical/ecg-ptbxl-ensemble/paper/2609.12803v1.pdf) · [project README](projects/2026/medical/ecg-ptbxl-ensemble/README.md)
+**BreaKHis histopathology pipeline.** Preprocessing across magnifications and a Python path from raw images to model-ready inputs: **89% accuracy**, **0.90 Macro F1**. [Notebook](projects/2023/medical/breast-cancer-data-pipeline.ipynb)
 
-- **Data contract:** PTB-XL v1.0.3, official `strat_fold` split (train 1–8, val 9, test 10), SCP codes mapped to 5 diagnostic superclasses (`NORM`, `MI`, `STTC`, `CD`, `HYP`).
-- **Pipeline:** Label materialization and 100 Hz / 500 Hz tensor caches, so training jobs read a stable artifact instead of re-parsing WFDB on every run.
-- **Integration surface:** One shared protocol module ([`ecg_common.py`](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/ecg_common.py): data module, trainer, metrics, ensemble helpers) so 1D-ResNet18, Bidirectional Mamba, xLSTM, CWT-ViT-KAN, and ECGFounder (native 500 Hz fine-tune) plug into the same evaluation path.
-- **Decision contract:** Class-wise thresholds tuned on validation only. Ensemble outputs — equal-weight soft voting, validation-weighted soft voting, and logistic-regression stacking — are a single prediction.
-- **Pipeline output (test fold 10):** The scoring interface returns one prediction per record. Stacking on that path reached Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. Best single model on the same path: ECGFounder (Macro AUROC 0.930, AUPRC 0.823). Best subset accuracy **0.630** (validation-weighted soft voting).
-
-| Notebook | Role |
-|----------|------|
-| [00 PTB-XL processing](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/00_ptbxl_colab_process.ipynb) | SCP → superclass labels, 100 Hz / 500 Hz tensor caches |
-| [01 1D-ResNet18](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/01_resnet18_1d_baseline.ipynb) | Baseline |
-| [02 Bidirectional Mamba](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/02_bidirectional_mamba_ssm.ipynb) · [02.1 xLSTM](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/02.1_xlstm.ipynb) | State-space and recurrent models |
-| [03 CWT-ViT-KAN](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/03_wavelet_kan_cwt_vit.ipynb) | Time–frequency + transformer |
-| [04 ECGFounder](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/04_ecgfounder_500.ipynb) | Foundation model fine-tune (500 Hz) |
-| [05 Heterogeneous ensemble](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/05_heterogeneous_ensemble.ipynb) | Soft voting + stacking |
-| [06 Visualization](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/06_visualize_experiment_results.ipynb) | Paper tables and figures |
-| [`ecg_common.py`](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/ecg_common.py) | Shared protocol: data module, trainer, metrics, ensemble helpers |
+**ECG image pipeline.** Labeling, denoising, and image-level preparation of ECG signals before they enter a detector.
 
 ### Publications (arXiv)
 
-Listed as evidence of Python and complex data manipulation: label maps, cohort gates, multi-rate caches, and image or signal preprocessing that a model can consume.
-
 | Paper | arXiv | Data work |
 |-------|-------|-----------|
-| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** | [2609.12803](https://arxiv.org/abs/2609.12803) | Python pipeline over a large public ECG time-series set: SCP label mapping, the official fold split, 100 Hz / 500 Hz tensor caches, and one scoring interface. |
-| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Python preprocessing across histopathology magnifications and a data pipeline that turns raw images into model-ready inputs (**89% accuracy**, **0.90 Macro F1** on that pipeline). |
-| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | Python labeling, denoising, and image-level preparation of ECG signals before they enter a detector. |
-
-*Related notebooks:* PTB-XL study — [pipeline](#ptb-xl-ecg-data-and-evaluation-pipeline-2026); histopathology and breast cancer pipeline work — [2022–2023 summary table](#undergraduate-open-source-practice-2022-2023).
+| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** — Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet (Yıldız Technical University) | [2609.12803](https://arxiv.org/abs/2609.12803) · [PDF](projects/2026/medical/ecg-ptbxl-ensemble/paper/2609.12803v1.pdf) | SCP label mapping, official fold split, 100 Hz / 500 Hz tensor caches, one scoring interface. |
+| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Magnification-wise preprocessing and a pipeline from raw histopathology images to model-ready inputs. |
+| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | Labeling, denoising, and image-level preparation of ECG signals. |
 
 ---
 
@@ -137,7 +118,7 @@ Bachelor’s-era **personal / academic practice** in computer vision, machine le
 | **Databases & Caching** | PostgreSQL, SQLAlchemy, Alembic, Redis, Supabase, SQL schema design |
 | **Asynchronous & Messaging** | RabbitMQ, Celery |
 | **Infrastructure & Cloud** | AWS (EC2), Docker, GitHub Actions CI/CD, PostgreSQL RLS, Supabase Edge Functions (Deno), RPC |
-| **Domain Expertise: AI & Medical Data** | PyTorch, TensorFlow, Scikit-learn, NumPy, Pandas, OpenCV; 12-lead ECG signal processing, BLE real-time signal pipelines, clinical cohort pipelines (ECG–angiography pairing, de-identification), PTB-XL / WFDB, DICOM; foundation-model fine-tuning and ensemble scoring (ECGFounder, ECG-FM, HuBERT-ECG); YOLOv5/v7, Detectron2, SAHI; PySide6 clinical labeling app; Jupyter, Google Colab |
+| **AI & ML** | PyTorch, TensorFlow, Scikit-learn, NumPy, Pandas, OpenCV; 12-lead ECG signal processing, BLE real-time signal pipelines, clinical cohort pipelines (ECG–angiography pairing, de-identification), PTB-XL / WFDB, DICOM; foundation-model fine-tuning and ensemble scoring (ECGFounder, ECG-FM, HuBERT-ECG); YOLOv5/v7, Detectron2, SAHI; PySide6 clinical labeling app; Jupyter, Google Colab |
 
 ---
 

@@ -48,7 +48,7 @@ Medikal yapay zeka ve ölçeklenebilir veri boru hatlarında alan uzmanlığı o
 - **IoT alımı:** Donanım ekibiyle **BLE iletim protokollerini** ve **gerçek zamanlı sinyal doğrulama hatlarını** belirledim; firmware entegrasyonunu fiziksel cihazda yazılım sözleşmesine göre doğruladım — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
 - **Klinik veri hattı:** **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini yürüttüm. Ham cihaz örnekleri doğru ölçek ve zamanla okundu, filtreler cihazın resmi görüntüleyicisiyle kontrol edildi, kayıtlar kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan kümelerine ayrıldı.
 - **Model entegrasyonu:** Önceden eğitilmiş EKG temel modellerini gözetimli bir değerlendirme hattına uyarladım ve kilitli test kümesinde **precision öncelikli** bir karar kuralıyla karşılaştırdım; model çıktısı sabit sözleşmeli bir sistem kararıdır.
-- **PTB-XL değerlendirme hattı:** Model ailelerini ve heterojen ensemble’ları karşılaştırmak için ortak veri ve skorlama yolunu kurdum — [hat](#ptb-xl-ekg-veri-ve-degerlendirme-hatti-2026).
+- **PTB-XL değerlendirme hattı:** Model ailelerini ve heterojen ensemble’ları karşılaştırmak için ortak veri ve skorlama yolunu kurdum — [proje](projects/2026/medical/ecg-ptbxl-ensemble/README.md).
 - **Etiketleme iş istasyonu:** Hekimler aynı hastanın **EKG’sini ve anjiyo raporunu birlikte** görsün ve etiketler kohort hattına yazılsın diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
 - **TÜBİTAK BİGG 1512 teslimi:** Giyilebilir **12-lead EKG** projesini uçtan uca yürüttüm (iş planı, bütçe, dönem raporları); yatırımcı ve TÜBİTAK hakemlerine teknik sunumlar ve canlı prototip demoları dahildir. **900.000 TL** hibe altında **500 Hz** prototip üretimi ve validasyon.
 
@@ -64,42 +64,21 @@ Medikal yapay zeka ve ölçeklenebilir veri boru hatlarında alan uzmanlığı o
 
 ## Veri Mühendisliği ve ML Entegrasyonu
 
-Yüksek hacimli zaman serisi verisini işleyen veri boru hatları kurar, yapay zeka modellerini yazılım sistemlerine entegre ederim. Aşağıdaki PTB-XL yolu bu işin 12 derivasyonlu EKG üzerindeki karşılığıdır: sabit bir bölme, 100 Hz ve 500 Hz tensör önbellekleri ve sistemin geri kalanının çağırabildiği tek bir skorlama arayüzü. arXiv yayınları aynı kanıtın yazılı halidir: klinik EKG ve histopatolojide, ham dosya ve etiket eşlemelerinden modele hazır girdilere kadar Python ve karmaşık veri işleme.
+Yüksek hacimli zaman serisi ve görüntü verisi için boru hatları; model çıktısı, sistemin geri kalanının çağırabildiği bir sözleşmenin arkasında. Aşağıdaki notlar projelerdir. Yayınlar hemen altlarında, bu Python ve veri işleme işinin yazılı kaydıdır.
 
-<a id="ptb-xl-ekg-veri-ve-degerlendirme-hatti-2026"></a>
+**PTB-XL EKG hattı (2026).** PTB-XL v1.0.3 üzerinde resmi `strat_fold` bölmesi, beş tanısal üst sınıfa eşlenen SCP kodları, 100 Hz ve 500 Hz tensör önbellekleri ve kayıt başına tek skorlama arayüzü. Test fold 10: stacking ile Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. [Proje](projects/2026/medical/ecg-ptbxl-ensemble/README.md)
 
-### PTB-XL EKG veri ve değerlendirme hattı (2026)
+**BreaKHis histopatoloji hattı.** Büyütme oranları boyunca ön işleme ve ham görüntüden modele hazır girdiye giden bir Python yolu: **%89 doğruluk**, **0.90 Macro F1**. [Notebook](projects/2023/medical/breast-cancer-data-pipeline.ipynb)
 
-**Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** — Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet (Yıldız Teknik Üniversitesi). arXiv [2609.12803](https://arxiv.org/abs/2609.12803) · [PDF](projects/2026/medical/ecg-ptbxl-ensemble/paper/2609.12803v1.pdf) · [proje README](projects/2026/medical/ecg-ptbxl-ensemble/README.md)
-
-- **Veri sözleşmesi:** PTB-XL v1.0.3, resmi `strat_fold` bölmesi (train 1–8, val 9, test 10), SCP kodlarının 5 tanısal üst sınıfa (`NORM`, `MI`, `STTC`, `CD`, `HYP`) eşlenmesi.
-- **Hat:** Etiketlerin üretilmesi ve 100 Hz / 500 Hz tensör önbellekleri; eğitim işleri her çalışmada WFDB’yi yeniden ayrıştırmak yerine kararlı bir artifakt okur.
-- **Entegrasyon yüzeyi:** Tek ortak protokol modülü ([`ecg_common.py`](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/ecg_common.py): veri modülü, trainer, metrikler, ensemble yardımcıları). 1D-ResNet18, Bidirectional Mamba, xLSTM, CWT-ViT-KAN ve ECGFounder (native 500 Hz fine-tune) aynı değerlendirme yoluna takılır.
-- **Karar sözleşmesi:** Sınıf bazlı eşikler yalnızca validasyonda ayarlanır. Ensemble çıktıları — eşit ağırlıklı soft voting, validasyon ağırlıklı soft voting ve lojistik regresyon tabanlı stacking — tek bir tahmindir.
-- **Hat çıktısı (test fold 10):** Skorlama arayüzü kayıt başına tek bir tahmin döner. Bu yolda stacking ile Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. Aynı yoldaki en iyi tekil model ECGFounder (Macro AUROC 0.930, AUPRC 0.823). En yüksek subset accuracy **0.630** (validasyon ağırlıklı soft voting).
-
-| Notebook | Rol |
-|----------|-----|
-| [00 PTB-XL işleme](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/00_ptbxl_colab_process.ipynb) | SCP → üst sınıf etiketleri, 100 Hz / 500 Hz tensör cache |
-| [01 1D-ResNet18](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/01_resnet18_1d_baseline.ipynb) | Baseline |
-| [02 Bidirectional Mamba](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/02_bidirectional_mamba_ssm.ipynb) · [02.1 xLSTM](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/02.1_xlstm.ipynb) | State-space ve rekürrent modeller |
-| [03 CWT-ViT-KAN](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/03_wavelet_kan_cwt_vit.ipynb) | Zaman–frekans + transformer |
-| [04 ECGFounder](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/04_ecgfounder_500.ipynb) | Foundation model fine-tune (500 Hz) |
-| [05 Heterojen ensemble](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/05_heterogeneous_ensemble.ipynb) | Soft voting + stacking |
-| [06 Görselleştirme](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/06_visualize_experiment_results.ipynb) | Makale tablo ve figürleri |
-| [`ecg_common.py`](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/ecg_common.py) | Ortak protokol: veri modülü, trainer, metrikler, ensemble yardımcıları |
+**EKG görüntü hattı.** EKG sinyallerinin bir dedektöre girmeden önce etiketlenmesi, gürültüsünün azaltılması ve görüntü düzeyinde hazırlanması.
 
 ### Yayınlar (arXiv)
 
-Python ve karmaşık veri işleme kanıtı olarak listelenir: etiket eşlemeleri, kohort kapıları, çok hızda önbellekler ve bir modelin tüketebileceği görüntü veya sinyal ön işleme.
-
 | Yayın | arXiv | Veri işi |
 |-------|-------|----------|
-| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** | [2609.12803](https://arxiv.org/abs/2609.12803) | Büyük bir kamuya açık EKG zaman serisi kümesi üzerinde Python hattı: SCP etiket eşlemesi, resmi fold bölmesi, 100 Hz / 500 Hz tensör önbellekleri ve tek bir skorlama arayüzü. |
-| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Histopatoloji büyütme oranları boyunca Python ön işleme ve ham görüntüleri modele hazır girdilere çeviren bir veri hattı (bu hat üzerinde **%89 doğruluk**, **0.90 Macro F1**). |
-| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | EKG sinyalleri bir dedektöre girmeden önce Python ile etiketleme, gürültü azaltma ve görüntü düzeyinde hazırlık. |
-
-*İlgili notebook’lar:* PTB-XL çalışması — [hat](#ptb-xl-ekg-veri-ve-degerlendirme-hatti-2026); histopatoloji ve meme kanseri pipeline çalışmaları — [2022–2023 özet tablosu](#lisans-donemi-acik-kaynak-pratikleri-2022-2023).
+| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** — Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet (Yıldız Teknik Üniversitesi) | [2609.12803](https://arxiv.org/abs/2609.12803) · [PDF](projects/2026/medical/ecg-ptbxl-ensemble/paper/2609.12803v1.pdf) | SCP etiket eşlemesi, resmi fold bölmesi, 100 Hz / 500 Hz tensör önbellekleri, tek skorlama arayüzü. |
+| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Büyütme oranına göre ön işleme ve ham histopatoloji görüntüsünden modele hazır girdiye giden hat. |
+| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | EKG sinyallerinin etiketlenmesi, gürültü azaltma ve görüntü düzeyinde hazırlık. |
 
 ---
 
@@ -139,7 +118,7 @@ Lisans döneminde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü
 | **Veritabanları ve önbellek** | PostgreSQL, SQLAlchemy, Alembic, Redis, Supabase, SQL şema tasarımı |
 | **Asenkron iş ve mesajlaşma** | RabbitMQ, Celery |
 | **Altyapı ve bulut** | AWS (EC2), Docker, GitHub Actions CI/CD, PostgreSQL RLS, Supabase Edge Functions (Deno), RPC |
-| **Alan uzmanlığı: yapay zeka ve medikal veri** | PyTorch, TensorFlow, Scikit-learn, NumPy, Pandas, OpenCV; 12 derivasyonlu EKG sinyal işleme, BLE gerçek zamanlı sinyal hatları, klinik kohort hatları (EKG–anjiyo eşleme, kimliksizleştirme), PTB-XL / WFDB, DICOM; temel model ince ayarı ve ensemble skorlama (ECGFounder, ECG-FM, HuBERT-ECG); YOLOv5/v7, Detectron2, SAHI; PySide6 klinik etiketleme uygulaması; Jupyter, Google Colab |
+| **AI ve ML** | PyTorch, TensorFlow, Scikit-learn, NumPy, Pandas, OpenCV; 12 derivasyonlu EKG sinyal işleme, BLE gerçek zamanlı sinyal hatları, klinik kohort hatları (EKG–anjiyo eşleme, kimliksizleştirme), PTB-XL / WFDB, DICOM; temel model ince ayarı ve ensemble skorlama (ECGFounder, ECG-FM, HuBERT-ECG); YOLOv5/v7, Detectron2, SAHI; PySide6 klinik etiketleme uygulaması; Jupyter, Google Colab |
 
 ---
 
