@@ -30,13 +30,14 @@ Medikal yapay zeka ve ölçeklenebilir veri boru hatlarında alan uzmanlığı o
 - Eksik bir uygulama filtresinin başka bir kliniğin satırlarını açamaması için **veritabanı düzeyinde kiracı izolasyonunu (RLS)** seçtim; değiştirilemez denetim kaydı ve izole serverless ayrıcalıklı işlemlerle güvenlik katmanını tamamladım.
 - Yetkilendirme modelini kullanıcı, rol, paket ve modül etrafında kurguladım: **3 abonelik paketi** ve paketler arasında taşınabilir **~20 modül**.
 - **Kliniğe özel paketleri** ve klinik parametrelerini, paket–modül ve kullanıcı–modül yapısıyla, kod değişikliği olmadan bir veri değişikliği haline getirdim.
-- Klinik platformu mikroservisini **FastAPI ve Pydantic** ile tanımladım: istek ve yanıt sözleşmeleri tipli modeller.
+- Klinik mikroservisini **FastAPI ve Pydantic** üzerinde kaynak odaklı bir **RESTful** HTTP arayüzü olarak tanımladım: koleksiyon ve kayıt yolları, standart HTTP metodları ve tipli JSON sözleşmesi.
+- Operasyon **CMS**’ini **RESTful Flask API** üzerine kurdum; klinikler, paketler, modüller ve klinik parametreleri tek panelden yönetilir.
 - Kalıcılık katmanını PostgreSQL (Supabase) üzerinde **SQLAlchemy** modelleri ve **Alembic** şema göçleriyle yönettim.
 - Okuma ağırlıklı uç noktaların önüne **Redis** koyarak veritabanı yükünü ve API gecikmesini düşürdüm.
 - E-posta ve ağır işleri **RabbitMQ ve Celery** üzerine alarak istek yolunu kısa tuttum.
 - Servis davranışını **pytest** ile güvence altına aldım.
 - Bu platform üzerinde diş kliniği alan modüllerini teslim ettim: randevu, kliniğe özel tedavi listeleri, seçilebilir tedavi akışı (Plan → Tedavi → Ödeme veya Plan → Ödeme), hasta listesi, hakediş, stok ve lab.
-- Yığın: **FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest**, Supabase Edge Functions, Docker ve CI/CD.
+- Yığın: **FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest, Flask (RESTful CMS)**, Supabase Edge Functions, Docker ve CI/CD.
 
 [Vaka analizi](projects/2026/saas/clinovatech-platform/README.md)
 
@@ -114,7 +115,7 @@ Lisans döneminde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü
 
 | Alan | Araçlar ve konular |
 |------|--------------------|
-| **Backend ve API** | Python, FastAPI, Pydantic, pytest, Flask; API istemcileri: React (Vite), React Native (Expo), TypeScript |
+| **Backend ve API** | Python, FastAPI, Pydantic, pytest, Flask (RESTful CMS); API istemcileri: React (Vite), React Native (Expo), TypeScript |
 | **Veritabanları ve önbellek** | PostgreSQL, SQLAlchemy, Alembic, Redis, Supabase, SQL şema tasarımı |
 | **Asenkron iş ve mesajlaşma** | RabbitMQ, Celery |
 | **Altyapı ve bulut** | AWS (EC2), Docker, GitHub Actions CI/CD, PostgreSQL RLS, Supabase Edge Functions (Deno), RPC |

@@ -1,15 +1,14 @@
-# Multi-Label 12-Lead ECG Classification on PTB-XL
+# PTB-XL ECG data and evaluation pipeline (2026)
 
-**Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative
-Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches**
+Official `strat_fold` split on PTB-XL v1.0.3, SCP codes mapped to five diagnostic superclasses (`NORM`, `MI`, `STTC`, `CD`, `HYP`), 100 Hz and 500 Hz tensor caches, and one scoring interface per record. Test fold 10: stacking reached Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**.
 
-Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet — Yıldız Technical University
+**Paper:** Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches — Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet (Yıldız Technical University).
 
 - arXiv: [2609.12803](https://arxiv.org/abs/2609.12803) (eess.SP, Sep 2026)
 - PDF: [`2609.12803v1.pdf`](paper/2609.12803v1.pdf)
-- Context: Research carried out at **Cormetry Health** as **Software Engineer** (wearable 12-lead ECG). Platform: [12-lead ECG case study](../../../2024-2025/medical/cormetry-ecg-platform/README.md). Related cohort work: [coronary stenosis](../ecg-coronary-stenosis/README.md).
+- Built at **Cormetry Health** as **Software Engineer**: the shared data and scoring path for the wearable 12-lead ECG work. Platform: [case study](../../../2024-2025/medical/cormetry-ecg-platform/README.md). Cohort pipeline: [labeling workstation](../ecg-coronary-stenosis/README.md).
 
-> **Türkçe özet:** PTB-XL v1.0.3 üzerinde 5 tanısal üst sınıf (`NORM`, `MI`, `STTC`, `CD`, `HYP`) için çok etiketli 12 derivasyon EKG sınıflandırması. 1D-ResNet18, Bidirectional Mamba, xLSTM, CWT-ViT-KAN ve ECGFounder karşılaştırıldı; heterojen ensemble (soft voting, stacking) uygulandı. En iyi sonuç stacking ile Macro AUROC **0.936**, AUPRC **0.836**. Veri seti rehberi: [ptbxl-dataset-guide.md](docs/ptbxl-dataset-guide.md).
+> **Türkçe özet:** PTB-XL v1.0.3 üzerinde resmi `strat_fold` bölmesi, beş tanısal üst sınıf (`NORM`, `MI`, `STTC`, `CD`, `HYP`), 100 Hz ve 500 Hz tensör önbellekleri ve kayıt başına tek skorlama arayüzü. Test fold 10: stacking ile Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. Veri seti rehberi: [ptbxl-dataset-guide.md](docs/ptbxl-dataset-guide.md).
 
 ## Results (PTB-XL test fold 10)
 

@@ -10,7 +10,7 @@
 
 ### Özet
 
-Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RLS dahil, Yazılım Mühendisi (Backend & Sistemler) olarak uçtan uca tasarladım ve geliştirdim**. Kapsam; veri modeli, çok kiracılık ve veri izolasyonu, yetkilendirme modeli, serverless katman, istemci veri erişim katmanı ve yeni özelliklerin geliştirme, test ve pilot ortamları üzerinden canlıya alınma sürecidir. Bu platformun yanında, klinik işleri için **FastAPI ve Pydantic** ile yeni bir mikroservis başlattım.
+Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RLS dahil, Yazılım Mühendisi (Backend & Sistemler) olarak uçtan uca tasarladım ve geliştirdim**. Kapsam; veri modeli, çok kiracılık ve veri izolasyonu, yetkilendirme modeli, serverless katman, istemci veri erişim katmanı ve yeni özelliklerin geliştirme, test ve pilot ortamları üzerinden canlıya alınma sürecidir. Bu platformun yanında klinik işleri için **FastAPI** üzerinde kaynak odaklı bir **RESTful** HTTP arayüzü kurdum.
 
 | | |
 |---|---|
@@ -18,7 +18,7 @@ Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RL
 | **Dönem** | 2025 – 2026 |
 | **Alan** | Sağlık / klinik yönetimi, diş klinikleri odaklı B2B SaaS |
 | **İstemciler** | Web (React + TypeScript), mobil (Expo / React Native) |
-| **Çekirdek teknolojiler** | FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest, Supabase (PostgreSQL, Auth, Storage), PL/pgSQL, Edge Functions (Deno), Python (Flask), TypeScript |
+| **Çekirdek teknolojiler** | FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest, Supabase (PostgreSQL, Auth, Storage), PL/pgSQL, Edge Functions (Deno), RESTful Flask API (CMS), TypeScript |
 
 **Öne çıkanlar**
 
@@ -28,8 +28,8 @@ Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RL
 - Klinik üyeliği, paket kapsamı, rol ve modül izni **tek bir yetki kararında** birleşir; aynı karar veritabanında ve arayüzde kullanılır.
 - Ayrıcalıklı işlemler yalnızca **sunucu tarafında, yetki doğrulamasından sonra** çalışır.
 - Web ve mobil istemciler **aynı backend'i ve aynı yetki modelini** paylaşır.
-- **Flask API tabanlı merkezi yönetim paneli:** Tüm klinik sistemi tek bir panelden yönetilir.
-- Klinik platformunun yanında **FastAPI + Pydantic** mikroservisi: SQLAlchemy ve Alembic ile veritabanı katmanı, Redis önbellek, RabbitMQ ve Celery ile arka plan işleri, pytest ile test.
+- **CMS (RESTful Flask API):** Klinik sistemi tek bir panelden yönetilir; panel bu REST API’ye bağlıdır.
+- **FastAPI mikroservisi:** kaynak odaklı RESTful HTTP, Pydantic sözleşmeleri, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest.
 
 ### Problem ve bağlam
 
@@ -41,7 +41,7 @@ Platform, farklı büyüklükteki kliniklere tek bir kod tabanından hizmet veri
 
 ### Mimari genel bakış
 
-- **Model:** Serverless / Backend-as-a-Service (BaaS). İş kuralları ağırlıklı olarak veritabanı katmanında ve izole serverless fonksiyonlarda konumlandırıldı. Bunun yanında, servis sınırı olan işler için bir **Python mikroservisi** (FastAPI) durur.
+- **Model:** Serverless / Backend-as-a-Service (BaaS). İş kuralları ağırlıklı olarak veritabanı katmanında ve izole serverless fonksiyonlarda konumlandırıldı. Bunun yanında, servis sınırı olan işler için kaynak odaklı bir **RESTful** HTTP servisi (FastAPI) durur.
 - **Çok kiracılık:** Paylaşımlı veritabanı ve şema; izolasyon veritabanı politikalarıyla zorunlu kılınır.
 - **İstemciler:** Web ve mobil uygulama aynı backend'e, aynı yetki modeliyle bağlanır.
 - **Frontend organizasyonu:** Özellik tabanlı katmanlı yapı; veri erişimi arayüz bileşenlerinden ayrılmıştır.
@@ -58,10 +58,10 @@ flowchart LR
     Edge -->|çağıran doğrulandıktan sonra| DB
     Edge --> Storage[Kiracı bazlı depolama]
     Jobs[Zamanlanmış işler] --> DB
-    Admin[Yönetim paneli] --> Flask[Flask API]
+    Admin[CMS] --> Flask[RESTful Flask API]
     Flask --> DB
     Auth --> Mail[Resend SMTP<br/>işlemsel e-postalar]
-    DAL --> Svc["FastAPI mikroservis<br/>Pydantic"]
+    DAL --> Svc["FastAPI<br/>RESTful HTTP"]
     Svc --> Redis[(Redis onbellek)]
     Svc --> DB
     Svc --> Queue[RabbitMQ]
@@ -70,11 +70,10 @@ flowchart LR
     Worker --> Mail
 ```
 
-### Python mikroservisi
+### FastAPI mikroservisi
 
-Klinik platformunun yanında, veritabanı ve edge katmanında durmayan işler için bir Python mikroservisi başlattım.
+Klinik işleri için **FastAPI** üzerinde kaynak odaklı bir **RESTful** HTTP arayüzü kurdum. Koleksiyon ve kayıt yolları standart HTTP metodlarıyla kurulur; istek ve yanıt sözleşmeleri Pydantic modelleridir.
 
-- **FastAPI ve Pydantic:** Servis sınırı ve tipli API sözleşmeleri. İstek ve yanıt modelleri Pydantic ile tanımlı.
 - **SQLAlchemy ve Alembic:** Veritabanı katmanı SQLAlchemy modelleriyle kurulur; şema değişiklikleri Alembic göçleriyle yönetilir.
 - **Redis:** Okuma ağırlıklı veride önbellek.
 - **RabbitMQ ve Celery:** E-posta ve ağır işler kuyruğa alınır ve arka planda çalışır.
@@ -123,9 +122,9 @@ flowchart LR
     Clinic --> Access
 ```
 
-### Merkezi yönetim paneli (Flask API)
+### CMS (RESTful Flask API)
 
-Platformun operasyonel yönetimi için **Flask API tabanlı bir yönetim paneli** geliştirdim. Tüm klinik sistemi bu tek panelden yönetilir:
+Platformun operasyonel yönetimi için bir **CMS** geliştirdim. Panel, **RESTful Flask API** üzerinden klinikleri, paketleri ve parametreleri yönetir:
 
 - **Klinik yönetimi:** Kliniklerin, sahiplerinin ve kullanıcılarının tek yerden yönetimi.
 - **Paket ve modül yapılandırması:** Paketlerin, modüllerin ve kliniğe özel paketlerin kod değişikliği olmadan panelden düzenlenmesi.
@@ -225,7 +224,7 @@ flowchart LR
 - **Mikroservis:** Python, FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest.
 - **Backend / veri:** Supabase (PostgreSQL, Auth, Storage), PL/pgSQL, zamanlanmış veritabanı işleri.
 - **Serverless:** Supabase Edge Functions (Deno).
-- **Yönetim paneli:** Python, Flask API.
+- **CMS:** Python, RESTful Flask API.
 - **E-posta:** Resend (SMTP).
 - **Frontend:** React 19, TypeScript, Vite, React Router, i18next, zengin metin editörü, grafikler, Excel/PDF dışa aktarım.
 - **Mobil:** Expo, React Native.
@@ -239,7 +238,7 @@ flowchart LR
 
 ### Summary
 
-As a **Software Engineer (Backend & Systems)**, I **designed and developed the multi-tenant B2B SaaS backend for clinics end to end, including database-level RLS**. The scope covers the data model, multi-tenancy and data isolation, the authorization model, the serverless layer, the client data-access layer, and the release process that takes new features through development, test, and pilot environments to production. Alongside this platform, I started a new microservice for clinic work with **FastAPI and Pydantic**.
+As a **Software Engineer (Backend & Systems)**, I **designed and developed the multi-tenant B2B SaaS backend for clinics end to end, including database-level RLS**. The scope covers the data model, multi-tenancy and data isolation, the authorization model, the serverless layer, the client data-access layer, and the release process that takes new features through development, test, and pilot environments to production. Alongside this platform, I built a resource-oriented **RESTful** HTTP interface on **FastAPI** for clinic work.
 
 | | |
 |---|---|
@@ -247,7 +246,7 @@ As a **Software Engineer (Backend & Systems)**, I **designed and developed the m
 | **Period** | 2025 – 2026 |
 | **Domain** | Healthcare / clinic management, B2B SaaS focused on dental clinics |
 | **Clients** | Web (React + TypeScript), mobile (Expo / React Native) |
-| **Core technologies** | FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest, Supabase (PostgreSQL, Auth, Storage), PL/pgSQL, Edge Functions (Deno), Python (Flask), TypeScript |
+| **Core technologies** | FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest, Supabase (PostgreSQL, Auth, Storage), PL/pgSQL, Edge Functions (Deno), RESTful Flask API (CMS), TypeScript |
 
 **Highlights**
 
@@ -257,8 +256,8 @@ As a **Software Engineer (Backend & Systems)**, I **designed and developed the m
 - Clinic membership, package scope, role, and module permission combine into **a single authorization decision**, used by both the database and the UI.
 - Privileged operations run only **on the server side, after authorization checks**.
 - Web and mobile clients share **the same backend and the same authorization model**.
-- **Central admin panel built on a Flask API:** The entire clinic system is managed from a single panel.
-- A **FastAPI + Pydantic** microservice beside the clinic platform: database layer with SQLAlchemy and Alembic, Redis cache, background work with RabbitMQ and Celery, tests with pytest.
+- **CMS (RESTful Flask API):** The clinic system is managed from one panel, and that panel talks to this REST API.
+- **FastAPI microservice:** resource-oriented RESTful HTTP, Pydantic contracts, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest.
 
 ### Problem and context
 
@@ -270,7 +269,7 @@ The platform serves clinics of different sizes from a single codebase. That crea
 
 ### Architecture overview
 
-- **Model:** Serverless / Backend-as-a-Service (BaaS). Business rules live mainly in the database layer and in isolated serverless functions. Beside that, a **Python microservice** (FastAPI) handles work that has its own service boundary.
+- **Model:** Serverless / Backend-as-a-Service (BaaS). Business rules live mainly in the database layer and in isolated serverless functions. Beside that, a resource-oriented **RESTful** HTTP service (FastAPI) handles work that has its own service boundary.
 - **Multi-tenancy:** Shared database and schema; isolation is enforced by database policies.
 - **Clients:** The web and mobile apps connect to the same backend with the same authorization model.
 - **Frontend organization:** Feature-based layered structure; data access is separated from UI components.
@@ -287,10 +286,10 @@ flowchart LR
     Edge -->|after caller is authorized| DB
     Edge --> Storage[Tenant-scoped storage]
     Jobs[Scheduled jobs] --> DB
-    Admin[Admin panel] --> Flask[Flask API]
+    Admin[CMS] --> Flask[RESTful Flask API]
     Flask --> DB
     Auth --> Mail[Resend SMTP<br/>transactional email]
-    DAL --> Svc["FastAPI microservice<br/>Pydantic"]
+    DAL --> Svc["FastAPI<br/>RESTful HTTP"]
     Svc --> Redis[(Redis cache)]
     Svc --> DB
     Svc --> Queue[RabbitMQ]
@@ -299,11 +298,10 @@ flowchart LR
     Worker --> Mail
 ```
 
-### Python microservice
+### FastAPI microservice
 
-I started a Python microservice beside the clinic platform for work that does not live only in the database and edge layer.
+I built a resource-oriented **RESTful** HTTP interface on **FastAPI** for clinic work. Collection and item paths use standard HTTP methods, and Pydantic models are the request and response contract.
 
-- **FastAPI and Pydantic:** The service boundary and typed API contracts. Request and response models are defined with Pydantic.
 - **SQLAlchemy and Alembic:** The database layer is built with SQLAlchemy models; schema changes are managed with Alembic migrations.
 - **Redis:** A cache for read-heavy data.
 - **RabbitMQ and Celery:** Email and heavy work are queued and run in the background.
@@ -352,9 +350,9 @@ flowchart LR
     Clinic --> Access
 ```
 
-### Central admin panel (Flask API)
+### CMS (RESTful Flask API)
 
-I built an **admin panel on top of a Flask API** for operating the platform. The entire clinic system is managed from this single panel:
+I built a **CMS** for operating the platform. The panel manages clinics, packages, and parameters through a **RESTful Flask API**:
 
 - **Clinic management:** Clinics, their owners, and their users managed in one place.
 - **Package and module configuration:** Packages, modules, and clinic-specific packages edited from the panel without code changes.
@@ -454,7 +452,7 @@ flowchart LR
 - **Microservice:** Python, FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest.
 - **Backend / data:** Supabase (PostgreSQL, Auth, Storage), PL/pgSQL, scheduled database jobs.
 - **Serverless:** Supabase Edge Functions (Deno).
-- **Admin panel:** Python, Flask API.
+- **CMS:** Python, RESTful Flask API.
 - **Email:** Resend (SMTP).
 - **Frontend:** React 19, TypeScript, Vite, React Router, i18next, rich-text editor, charts, Excel/PDF export.
 - **Mobile:** Expo, React Native.

@@ -30,13 +30,14 @@ At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend f
 - Chose **database-level tenant isolation (RLS)** so a missing application filter cannot expose another clinic's rows, and completed the security layer with an immutable audit log and isolated serverless privileged operations.
 - Designed the authorization model around users, roles, packages, and modules: **3 subscription packages** and **~20 modules portable across packages**.
 - Made **clinic-specific packages** and per-clinic parameters a data change, through package–module and user–module structures, without a code change.
-- Defined the clinic-platform microservice with **FastAPI and Pydantic**: request and response contracts as typed models.
+- Defined the clinic microservice on **FastAPI and Pydantic** as a resource-oriented **RESTful** HTTP interface: collection and item paths, standard HTTP methods, and a typed JSON contract.
+- Built the operations **CMS** on a **RESTful Flask API**, so clinics, packages, modules, and per-clinic parameters are managed from one panel.
 - Owned the persistence layer with **SQLAlchemy** models and **Alembic** schema migrations on PostgreSQL (Supabase).
 - Placed **Redis** in front of read-heavy endpoints to cut database load and API latency.
 - Moved email and heavy work onto **RabbitMQ and Celery** so the request path stays short.
 - Locked service behavior with **pytest**.
 - Delivered the dental-clinic domain modules on that platform: appointments, clinic-specific treatment lists, a selectable treatment flow (Plan → Treatment → Payment or Plan → Payment), patient list, earnings, stock, and lab.
-- Stack: **FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest**, Supabase Edge Functions, Docker, and CI/CD.
+- Stack: **FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest, Flask (RESTful CMS)**, Supabase Edge Functions, Docker, and CI/CD.
 
 [Case study](projects/2026/saas/clinovatech-platform/README.md)
 
@@ -114,7 +115,7 @@ Bachelor’s-era **personal / academic practice** in computer vision, machine le
 
 | Area | Tools & topics |
 |------|----------------|
-| **Backend & API** | Python, FastAPI, Pydantic, pytest, Flask; API clients: React (Vite), React Native (Expo), TypeScript |
+| **Backend & API** | Python, FastAPI, Pydantic, pytest, Flask (RESTful CMS); API clients: React (Vite), React Native (Expo), TypeScript |
 | **Databases & Caching** | PostgreSQL, SQLAlchemy, Alembic, Redis, Supabase, SQL schema design |
 | **Asynchronous & Messaging** | RabbitMQ, Celery |
 | **Infrastructure & Cloud** | AWS (EC2), Docker, GitHub Actions CI/CD, PostgreSQL RLS, Supabase Edge Functions (Deno), RPC |

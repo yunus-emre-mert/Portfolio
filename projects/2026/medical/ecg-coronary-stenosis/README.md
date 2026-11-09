@@ -1,6 +1,6 @@
-# EKG'den Koroner Darlık Tahmini — Anjiyo Eşlemeli Klinik Kohort ve SSL EKG Modelleri
+# Klinik EKG–Anjiyo Kohort Hattı ve Etiketleme İş İstasyonu
 
-*Predicting Coronary Stenosis from ECG — An Angiography-Paired Clinical Cohort and SSL ECG Models*
+*Clinical ECG–Angiography Cohort Pipeline and Labeling Workstation*
 
 [Türkçe](#türkçe) · [English](#english)
 
@@ -12,24 +12,24 @@
 
 ### Özet
 
-**Cormetry Health** bünyesinde yürütülen, dinlenme 12 derivasyon EKG'den anjiyografik olarak anlamlı koroner darlığı tahmin etmeyi hedefleyen bir araştırma projesi. **Yaklaşık 1000 hastanın EKG'sini anjiyo raporlarıyla birlikte toplayıp işledim** ve kayıtları analiz edip ayıran bir kohort hattı kurdum. Öz-denetimli (SSL) ön-eğitilmiş EKG temel modellerini (ECG-FM, HuBERT-ECG, ST-MEM, xECG) gözetimli ince ayarla bu kohorta uyarlayıp, kilitli test kümesinde precision öncelikli karar kuralıyla karşılaştırdım. Hekimlerin etiketleme yaparken zorlanmaması için, aynı hastanın EKG'sini ve anjiyo raporunu tek bir uygulamada gösteren ve etiketlemeyi sağlayan **yerel bir EKG görüntüleme ve etiketleme uygulaması** (PySide6) geliştirdim.
+**Cormetry Health**’te **~1000 hastalık** bir EKG–anjiyo kohortunun toplanmasını ve işlenmesini uçtan uca yürüttüm. Ham cihaz örnekleri doğru ölçek ve zamanla okundu, filtreler cihazın resmi görüntüleyicisiyle doğrulandı, kayıtlar kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan kümelerine ayrıldı. Önceden eğitilmiş EKG temel modelleri gözetimli bir değerlendirme hattına alındı ve kilitli test kümesinde **precision öncelikli** bir karar kuralıyla karşılaştırıldı. Hekimler aynı hastanın EKG’sini ve anjiyo raporunu birlikte görsün diye yerel bir masaüstü uygulama (PySide6) geliştirdim.
 
 | | |
 |---|---|
-| **Rol** | Software Engineer, Cormetry Health. Klinik veri toplama süreci, ~1000 hastalık kohort hattı, SSL model eğitimi ve etiketleme uygulaması |
+| **Rol** | Software Engineer, Cormetry Health. Klinik kohort hattı, model entegrasyonu ve etiketleme iş istasyonu |
 | **Dönem** | 2026 |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
-| **Alan** | Kardiyoloji / medikal yapay zeka |
+| **Alan** | Klinik veri hattı / model entegrasyonu |
 | **Veri** | ~1000 hasta, 12 derivasyon EKG + koroner anjiyografi raporu |
 | **Çekirdek teknolojiler** | Python, PyTorch, scikit-learn, SciPy, Hugging Face, PySide6 |
 
 **Öne çıkanlar**
 
-- **~1000 hastalık** EKG + anjiyo kohortu toplandı, işlendi ve kaliteye göre ayrıldı.
-- Ham cihaz verisi doğru biçimde okunup işlendi; ekran **filtreleri cihazın resmi görüntüleyicisiyle karşılaştırılarak doğrulandı**.
-- Tüm kayıtlar kalite ve eşleşme açısından analiz edildi; **kullanılabilir / kontrol gerektiren / dışlanan** gruplara ayrıldı.
-- **SSL ön-eğitilmiş EKG temel modelleri** ile **gözetimli ince ayar (supervised fine-tuning)** yapıldı ve modeller tek bir kilitli test kümesinde karşılaştırıldı.
-- Hekimler için **EKG ve anjiyo raporunu tek ekranda gösteren** yerel bir görüntüleme ve etiketleme uygulaması geliştirildi.
+- **~1000 hastalık** EKG–anjiyo kohortu toplandı, işlendi ve kalite ile eşleşmeye göre ayrıldı.
+- Ham cihaz verisi doğru ölçek ve zamanla okundu; **filtreler cihazın resmi görüntüleyicisiyle doğrulandı**.
+- Kayıtlar **kullanılabilir / kontrol gerektiren / dışlanan** gruplara ayrıldı.
+- Önceden eğitilmiş EKG temel modelleri kilitli bir değerlendirme hattında, **precision öncelikli** bir karar kuralıyla karşılaştırıldı.
+- Hekimler için **EKG ve anjiyo raporunu tek ekranda gösteren** yerel etiketleme uygulaması (PySide6).
 
 ### Problem
 
@@ -89,7 +89,7 @@ flowchart LR
 
 ### Rolüm
 
-- Software Engineer olarak klinik veri toplama sürecinde yer aldım; ~1000 hastalık EKG–anjiyo kohortunun toplanmasını ve işlenmesini uçtan uca yürüttüm. İlgili: [EKG platformu](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL](../ecg-ptbxl-ensemble/README.md).
+- Software Engineer olarak ~1000 hastalık EKG–anjiyo kohort hattını ve etiketleme iş istasyonunu uçtan uca yürüttüm. İlgili: [EKG platformu](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL hattı](../ecg-ptbxl-ensemble/README.md).
 - Ham cihaz verisinin işlenmesi, filtre doğrulaması ve kalite kontrolü.
 - Kohort analizi, eşleme ve kilitli veri bölme hattının geliştirilmesi.
 - SSL temel modelleri (ECG-FM, HuBERT-ECG, ST-MEM, xECG) üzerinde gözetimli ince ayar ve precision öncelikli değerlendirme.
@@ -97,7 +97,7 @@ flowchart LR
 
 ### Durum
 
-Araştırma projesi. Sonuçlar makalede raporlanacaktır. Kod ve veri, hasta gizliliği ve **IP / NDA** nedeniyle paylaşılmamaktadır.
+Kohort hattı ve yerel etiketleme uygulaması. Kod ve veri, hasta gizliliği ve **IP / NDA** nedeniyle paylaşılmaz.
 
 ---
 
@@ -105,24 +105,24 @@ Araştırma projesi. Sonuçlar makalede raporlanacaktır. Kod ve veri, hasta giz
 
 ### Summary
 
-A research project at **Cormetry Health** that aims to predict angiographically significant coronary stenosis from a resting 12-lead ECG. I collected and processed **ECGs from about 1000 patients together with their angiography reports**, and built a cohort pipeline that analyzes and splits the records. I adapted self-supervised (SSL) pretrained ECG foundation models (ECG-FM, HuBERT-ECG, ST-MEM, xECG) to this cohort with supervised fine-tuning and compared them on a locked test set with a precision-first decision rule. So that clinicians could label recordings in one place, I built a **local ECG viewing and labeling app** (PySide6) that shows the same patient's ECG and angiography report together.
+At **Cormetry Health** I ran collection and processing for an ECG–angiography cohort of **~1000 patients** end to end. Raw device samples were read at the correct scale and timing, filters were verified against the device's official viewer, and records were gated into usable / review / excluded sets by quality and pairing. Pretrained ECG foundation models were placed on a supervised evaluation pipeline and compared on a locked test set under a **precision-first** decision rule. I built a local desktop app (PySide6) so clinicians can view the same patient's ECG and angiography report together.
 
 | | |
 |---|---|
-| **Role** | Software Engineer, Cormetry Health. Clinical data collection process, ~1000-patient cohort pipeline, SSL model training, and labeling app |
+| **Role** | Software Engineer, Cormetry Health. Clinical cohort pipeline, model integration, and labeling workstation |
 | **Period** | 2026 |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
-| **Domain** | Cardiology / medical AI |
+| **Domain** | Clinical data pipeline / model integration |
 | **Data** | ~1000 patients, 12-lead ECG + coronary angiography report |
 | **Core technologies** | Python, PyTorch, scikit-learn, SciPy, Hugging Face, PySide6 |
 
 **Highlights**
 
-- Collected and processed an ECG + angiography cohort of **~1000 patients**, then split the records by quality.
-- Raw device data was read and processed correctly; display **filters were verified against the device's official viewer**.
-- All records were analyzed for quality and pairing, and split into **usable / needs-review / excluded** groups.
-- **SSL-pretrained ECG foundation models** with **supervised fine-tuning**, compared on one locked test set.
-- A local viewing and labeling app for doctors that **shows the ECG and the angiography report on one screen**.
+- Collected and processed an ECG–angiography cohort of **~1000 patients**, then gated records by quality and pairing.
+- Raw device data was read at the correct scale and timing; **filters were verified against the device's official viewer**.
+- Records were split into **usable / needs-review / excluded** groups.
+- Pretrained ECG foundation models were compared on a locked evaluation pipeline under a **precision-first** decision rule.
+- A local labeling app (PySide6) that **shows the ECG and the angiography report on one screen**.
 
 ### Problem
 
@@ -182,7 +182,7 @@ flowchart LR
 
 ### My role
 
-- As a Software Engineer, took part in the clinical data collection process and managed the collection and processing of the ~1000-patient ECG–angiography cohort end to end. Related: [ECG platform](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL](../ecg-ptbxl-ensemble/README.md).
+- As a Software Engineer, ran the ~1000-patient ECG–angiography cohort pipeline and the labeling workstation end to end. Related: [ECG platform](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL pipeline](../ecg-ptbxl-ensemble/README.md).
 - Raw device data processing, filter verification, and quality control.
 - Built the cohort analysis, pairing, and locked data-split pipeline.
 - Supervised fine-tuning of SSL foundation models (ECG-FM, HuBERT-ECG, ST-MEM, xECG) and precision-first evaluation.
@@ -190,4 +190,4 @@ flowchart LR
 
 ### Status
 
-Research project. Results will be reported in the paper. Code and data are not shared because of patient privacy and **IP / NDA**.
+Cohort pipeline and local labeling app. Code and data are not shared because of patient privacy and **IP / NDA**.

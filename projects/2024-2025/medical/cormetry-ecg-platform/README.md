@@ -1,6 +1,6 @@
-# Uçtan Uca 12 Derivasyonlu EKG Platformu — Cihaz, Mobil Uygulama ve Doktor Paneli
+# Cormetry Health — Platform API’si ve Cihazdan Buluta EKG Veri Yolu
 
-*End-to-End 12-Lead ECG Platform — Device, Mobile App, and Doctor Panel*
+*Cormetry Health — Platform API and Device-to-Cloud ECG Data Path*
 
 [Türkçe](#türkçe) · [English](#english)
 
@@ -12,11 +12,11 @@
 
 ### Özet
 
-**Cormetry Health** bünyesinde geliştirilen, taşınabilir bir 12 derivasyonlu EKG cihazından Bluetooth ile veri alan **mobil uygulama**, kayıtları güvenli şekilde saklayan **bulut altyapısı** ve kayıtları inceleyip analiz eden **doktor web paneli**nden oluşan uçtan uca bir platform. Platformda **hasta ve doktor rolleri** vardır: hasta kaydı kendi cihazıyla alır, kayıt otomatik olarak buluta yüklenir; **doktor yalnızca kendisine atanmış hastaları** ve onların kayıtlarını görür.
+**Cormetry Health**’te giyilebilir 12 derivasyonlu EKG için **platform API’sini** ve **cihazdan buluta veri yolunu** tasarladım. FastAPI servisinde istek ve yanıt sözleşmeleri **Pydantic** ile tanımlı, davranış **pytest** ile doğrulanır. Hasta kaydı kendi cihazından **Bluetooth Low Energy** ile alınır; doktor yalnızca kendisine atanmış hastaları görür ve bu izolasyon **veritabanında (RLS)** zorunludur. Aynı API mobil istemciye, bulut backend’ine ve doktor web paneline hizmet verir. Panelde açıklanabilir, kural tabanlı EKG analizi bir ürün özelliği olarak durur.
 
 | | |
 |---|---|
-| **Rol** | Software Engineer. Yazılım tarafının uçtan uca tasarımı ve geliştirilmesi (mobil, web, backend, FastAPI); firmware ve PCB entegrasyonu; TÜBİTAK 1512 yürütmesi, yatırımcı ve hakem sunumları |
+| **Rol** | Software Engineer (2024 – Kasım 2026). Platform API’si, BLE alımı, gerçek zamanlı sinyal hatları; firmware doğrulaması; TÜBİTAK 1512 yürütmesi |
 | **Dönem** | 2024 – Kasım 2026 |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
 | **Alan** | Kardiyoloji / dijital sağlık / medikal cihaz yazılımı |
@@ -24,11 +24,11 @@
 
 **Öne çıkanlar**
 
-- Cihazdan buluta, buluttan doktor ekranına kadar **yazılım hattını uçtan uca** tasarladım ve geliştirdim.
-- Platform için **FastAPI** servisi; istek ve yanıt sözleşmeleri **Pydantic** ile, davranış **pytest** ile doğrulanır.
-- **Hasta / doktor rolleri** ve **veritabanı düzeyinde veri izolasyonu**: her doktor yalnızca kendi hastalarını, her hasta yalnızca kendi kayıtlarını görür.
+- **Platform API’si:** FastAPI servisi; istek ve yanıt sözleşmeleri **Pydantic** ile, davranış **pytest** ile doğrulanır.
+- **Hasta / doktor rolleri** ve **veritabanı düzeyinde veri izolasyonu (RLS)**: doktor yalnızca kendisine atanmış hastaları, hasta yalnızca kendi kayıtlarını görür.
+- **Cihazdan buluta veri yolu:** BLE alımı, bulut backend’i ve doktor web paneli aynı API’nin arkasında durur.
 - 8 fiziksel kanaldan **12 derivasyonlu**, EKG kâğıdı görünümünde inceleme (mobil ve web).
-- Makine öğrenmesi kullanmayan, **açıklanabilir, kural tabanlı otomatik EKG analizi**.
+- Doktor panelinde **açıklanabilir, kural tabanlı otomatik EKG analizi**.
 - Bluetooth üzerinde veri kaybına dayanıklı sinyal işleme ve simülatörle doğrulanmış kalibrasyon.
 - Dış tedarikçiden alınan firmware ve PCB geliştirmesinin **yazılım gereksinimlerine göre entegrasyonu ve gerçek cihazla doğrulanması**.
 - **TÜBİTAK BİGG 1512** projesinin uçtan uca yönetilmesi: iş planı, dönem raporları, bütçe takibi, **yatırımcı ve hakem sunumlarında teknik sunumlar** ve canlı prototip demosu.
@@ -137,7 +137,7 @@ Firmware ve PCB geliştirmesi dış hizmet olarak alındı. Bu süreçte:
 - Hasta / doktor rol modeli ve veritabanı düzeyinde yetkilendirme (RLS).
 - Gömülü cihazdan gelen sinyal için uçtan uca veri hattı ve kural tabanlı EKG analizi.
 - Dış tedarikçiden gelen firmware ve PCB teslimlerinin yazılım gereksinimlerine göre entegrasyonu ve gerçek cihazla doğrulanması.
-- Klinik veri toplama sürecinde aktif rol — [EKG'den koroner darlık tahmini](../../../2026/medical/ecg-coronary-stenosis/README.md). PTB-XL sınıflandırma araştırması — [proje](../../../2026/medical/ecg-ptbxl-ensemble/README.md).
+- Klinik kohort hattı ve etiketleme iş istasyonu — [vaka analizi](../../../2026/medical/ecg-coronary-stenosis/README.md). PTB-XL değerlendirme hattı — [proje](../../../2026/medical/ecg-ptbxl-ensemble/README.md).
 
 ### Durum
 
@@ -149,11 +149,11 @@ Ticari ürün geliştirme. Kaynak kod, donanım detayları ve protokoller **IP /
 
 ### Summary
 
-An end-to-end platform built at **Cormetry Health**: a **mobile app** that receives data over Bluetooth from a portable 12-lead ECG device, a **cloud backend** that stores recordings securely, and a **doctor web panel** for reviewing and analyzing recordings. The platform has **patient and doctor roles**: the patient takes the recording with their own device and it is uploaded to the cloud automatically; **a doctor sees only the patients assigned to them** and their recordings.
+At **Cormetry Health** I designed the **platform API** and the **device-to-cloud data path** for a wearable 12-lead ECG. Request and response contracts on the FastAPI service are **Pydantic** models; behavior is checked with **pytest**. The patient records on their own device over **Bluetooth Low Energy**; a doctor sees only assigned patients, and that isolation is enforced **in the database (RLS)**. The same API serves the mobile client, the cloud backend, and the doctor web panel. Explainable, rule-based ECG analysis is a product feature on that panel.
 
 | | |
 |---|---|
-| **Role** | Software Engineer. End-to-end design and development of the software side (mobile, web, backend, FastAPI); firmware and PCB integration; TÜBİTAK 1512 execution, investor and reviewer presentations |
+| **Role** | Software Engineer (2024 – November 2026). Platform API, BLE ingestion, real-time signal pipelines; firmware validation; TÜBİTAK 1512 delivery |
 | **Period** | 2024 – November 2026 |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
 | **Domain** | Cardiology / digital health / medical device software |
@@ -161,11 +161,11 @@ An end-to-end platform built at **Cormetry Health**: a **mobile app** that recei
 
 **Highlights**
 
-- Designed and developed **the software pipeline end to end**, from the device to the cloud to the doctor's screen.
-- A **FastAPI** service for the platform; request and response contracts with **Pydantic**, behavior checked with **pytest**.
-- **Patient / doctor roles** with **database-level data isolation**: each doctor sees only their own patients, and each patient sees only their own recordings.
+- **Platform API:** FastAPI service; request and response contracts with **Pydantic**, behavior checked with **pytest**.
+- **Patient / doctor roles** with **database-level isolation (RLS)**: a doctor sees only assigned patients, and a patient sees only their own recordings.
+- **Device-to-cloud data path:** BLE ingestion, the cloud backend, and the doctor web panel sit behind the same API.
 - **12-lead** review in an ECG-paper view (mobile and web), derived from 8 physical channels.
-- **Explainable, rule-based automated ECG analysis**, without machine learning.
+- **Explainable, rule-based automated ECG analysis** on the doctor panel.
 - Signal handling that tolerates data loss over Bluetooth, and calibration verified with a simulator.
 - **Integrated and validated the outsourced firmware and PCB** against software requirements, on the real device.
 - **Managed the TÜBİTAK BİGG 1512 project end to end:** work plan, period reports, budget tracking, **technical presentations to investors and reviewers**, and live prototype demos.
@@ -274,7 +274,7 @@ Firmware and PCB development were outsourced. In this process I:
 - Patient / doctor role model and database-level authorization (RLS).
 - End-to-end data pipeline for the embedded device signal and rule-based ECG analysis.
 - Integrated vendor firmware and PCB deliveries against software requirements and validated them on the real device.
-- Active role in the clinical data collection process — [Coronary stenosis prediction from ECG](../../../2026/medical/ecg-coronary-stenosis/README.md). PTB-XL classification research — [project](../../../2026/medical/ecg-ptbxl-ensemble/README.md).
+- Clinical cohort pipeline and labeling workstation — [case study](../../../2026/medical/ecg-coronary-stenosis/README.md). PTB-XL evaluation pipeline — [project](../../../2026/medical/ecg-ptbxl-ensemble/README.md).
 
 ### Status
 
