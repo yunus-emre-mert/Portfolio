@@ -17,7 +17,7 @@
 | | |
 |---|---|
 | **Rol** | Software Engineer. Yazılım tarafının uçtan uca tasarımı ve geliştirilmesi (mobil, web, backend, FastAPI); firmware ve PCB entegrasyonu; TÜBİTAK 1512 yürütmesi, yatırımcı ve hakem sunumları |
-| **Dönem** | 2024 – güncel |
+| **Dönem** | 2024 – Kasım 2026 |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
 | **Alan** | Kardiyoloji / dijital sağlık / medikal cihaz yazılımı |
 | **Çekirdek teknolojiler** | FastAPI, Pydantic, pytest, React Native (Expo), React + Vite, TypeScript, Supabase (PostgreSQL, Auth, Storage, RLS), Bluetooth Low Energy |
@@ -154,7 +154,7 @@ An end-to-end platform built at **Cormetry Health**: a **mobile app** that recei
 | | |
 |---|---|
 | **Role** | Software Engineer. End-to-end design and development of the software side (mobile, web, backend, FastAPI); firmware and PCB integration; TÜBİTAK 1512 execution, investor and reviewer presentations |
-| **Period** | 2024 – present |
+| **Period** | 2024 – November 2026 |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
 | **Domain** | Cardiology / digital health / medical device software |
 | **Core technologies** | FastAPI, Pydantic, pytest, React Native (Expo), React + Vite, TypeScript, Supabase (PostgreSQL, Auth, Storage, RLS), Bluetooth Low Energy |
