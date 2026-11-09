@@ -8,50 +8,49 @@
 
 ---
 
-## Türkçe
+## Özet
 
-### Özet
+Medikal yapay zeka ve ölçeklenebilir veri boru hatlarında alan uzmanlığı olan bir **Backend Mühendisiyim**. Çok kiracılı klinik sistemleri yük altında izole ve hızlı tutan servis sınırlarını, veri sözleşmelerini ve altyapıyı tasarlarım.
 
-Çok kiracılı (multi-tenant) B2B SaaS mimarileri, ölçeklenebilir FastAPI mikroservisleri ve yüksek hacimli veri işleme hatları (data pipelines) geliştiren bir **Backend Mühendisiyim**. **Clinovatech**’te kliniklere hizmet veren multi-tenant SaaS backend’ini uçtan uca tasarladım ve geliştirdim: kiracı izolasyonu, yetkilendirme, şema göçleri, önbellek ve arka plan işleri. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir EKG cihazının platform yazılımını, mobil uygulama tasarımını ve hekimlerin kayıt etiketlemesi için Windows uygulamasını geliştirdim. Model eğitimi ve lisans dönemi çalışmaları aşağıda; ticari kaynak kod **IP ve NDA** kapsamında bu depoda değildir.
+**Clinovatech**’te klinikler için çok kiracılı B2B SaaS backend’inin mimarisini üstlendim: kiracı izolasyonu için **PostgreSQL satır düzeyi güvenlik (RLS)**, paket ve modül yetkilendirme modeli, **FastAPI** istek sözleşmeleri, okuma ağırlıklı yollarda **Redis**, istek yolunun dışında kalan işler için **RabbitMQ / Celery**. **Cormetry Health**’te (2024 – Kasım 2026) giyilebilir 12 derivasyonlu EKG için platform API’sini ve cihazdan buluta veri yolunu tasarladım: BLE alımı, gerçek zamanlı sinyal doğrulama hatları ve hem ürün özelliklerini hem model değerlendirmesini besleyen klinik veri akışları. Ticari **kaynak kod bu depoda yoktur**; **IP ve NDA** kapsamındadır.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
-| **Clinovatech & SaaS** | Software Engineer (Backend & Systems), Sözleşmeli. Multi-tenant B2B SaaS backend’i (RLS) ve klinik platformu için FastAPI mikroservisi: Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
-| **Cormetry Health** | Software Engineer (2024 – Kasım 2026). Giyilebilir EKG platformunun yazılımı, mobil uygulama tasarımı ve hekim etiketlemesi için Windows uygulaması — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [etiketleme](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **EKG yapay zeka araştırması (2026)** | PTB-XL çok etiketli sınıflandırma, 5 mimari + heterojen ensemble, arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [detay](#öne-çıkan-proje-ptb-xl-ekg-sınıflandırma-2026) |
-| **Açık kaynak portföy (2022–2023)** | Sınıflandırma, nesne tespiti, medikal pipeline’lar — [detay tablo](#lisans-dönemi-açık-kaynak-pratikleri-20222023) |
+| **Clinovatech — sistem tasarımı** | Software Engineer (Backend & Systems), Sözleşmeli. Çok kiracılı B2B SaaS: RLS kiracı izolasyonu, paket/modül yetkilendirme, FastAPI + Pydantic sözleşmeleri, SQLAlchemy/Alembic, Redis, RabbitMQ, Celery, pytest — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
+| **Cormetry Health — API ve veri yolu** | Software Engineer (2024 – Kasım 2026). Platform API’si, BLE cihaz alımı, gerçek zamanlı sinyal hatları ve klinik kohort hatları — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [etiketleme](projects/2026/medical/ecg-coronary-stenosis/README.md) |
+| **Veri mühendisliği ve ML entegrasyonu** | Yüksek hacimli zaman serisi hatları ve model entegrasyonu (PTB-XL, klinik kohortlar), arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [detay](#veri-muhendisligi-ve-ml-entegrasyonu) |
 
 ---
 
-### Backend deneyimi (2023 – güncel)
+## Backend deneyimi (2023 – güncel)
 
 #### Clinovatech — Software Engineer (Backend & Systems), Sözleşmeli (2025 – 2026)
 
-- Klinikler için multi-tenant B2B SaaS **backend’ini uçtan uca tasarladım ve geliştirdim**.
-- Kullanıcı, rol, paket ve modül bazlı yetkilendirme modelini kurguladım: **3 abonelik paketi** ve paketler arasında taşınabilir **~20 modül**.
-- Paket–modül ve kullanıcı–modül yapısıyla, kod değişikliği olmadan **kliniğe özel paket** ve klinik parametreleriyle özelleştirme sağladım.
-- Diş klinikleri için randevu, kliniğe özel tedavi listeleri, seçilebilir tedavi akışı (Plan → Tedavi → Ödeme veya Plan → Ödeme), hasta listesi, hakediş, stok ve lab modüllerini geliştirdim.
-- Kiracı izolasyonunu **veritabanı düzeyinde (RLS)** zorunlu kıldım; değiştirilemez denetim kaydı ve izole serverless ayrıcalıklı işlemlerle güvenlik katmanını tamamladım.
-- Klinik platformu için **FastAPI ve Pydantic** ile yeni bir mikroservis başlattım; istek ve yanıt sözleşmelerini tipli modellerle tanımladım.
-- Veritabanı katmanını **SQLAlchemy** modelleri ve **Alembic** şema göçleriyle yönettim.
-- Okuma ağırlıklı uç noktalarda Redis tabanlı önbellekleme (caching) katmanı kurgulayarak veritabanı yükünü ve yanıt sürelerini optimize ettim.
-- E-posta ve ağır işleri **RabbitMQ ve Celery** ile arka plana alarak istek yolunu kısalttım.
+- Klinikler için çok kiracılı B2B SaaS **backend’ini** açık sınırlar olarak tasarladım: API sözleşmeleri, veritabanı izolasyonu, önbellek ve asenkron iş.
+- Eksik bir uygulama filtresinin başka bir kliniğin satırlarını açamaması için **veritabanı düzeyinde kiracı izolasyonunu (RLS)** seçtim; değiştirilemez denetim kaydı ve izole serverless ayrıcalıklı işlemlerle güvenlik katmanını tamamladım.
+- Yetkilendirme modelini kullanıcı, rol, paket ve modül etrafında kurguladım: **3 abonelik paketi** ve paketler arasında taşınabilir **~20 modül**.
+- **Kliniğe özel paketleri** ve klinik parametrelerini, paket–modül ve kullanıcı–modül yapısıyla, kod değişikliği olmadan bir veri değişikliği haline getirdim.
+- Klinik platformu mikroservisini **FastAPI ve Pydantic** ile tanımladım: istek ve yanıt sözleşmeleri tipli modeller.
+- Kalıcılık katmanını PostgreSQL (Supabase) üzerinde **SQLAlchemy** modelleri ve **Alembic** şema göçleriyle yönettim.
+- Okuma ağırlıklı uç noktaların önüne **Redis** koyarak veritabanı yükünü ve API gecikmesini düşürdüm.
+- E-posta ve ağır işleri **RabbitMQ ve Celery** üzerine alarak istek yolunu kısa tuttum.
 - Servis davranışını **pytest** ile güvence altına aldım.
-- Yığın: **FastAPI, Pydantic, SQLAlchemy, Alembic, Redis, RabbitMQ, Celery, pytest**, Supabase (PostgreSQL), Edge Functions, Docker ve CI/CD.
+- Bu platform üzerinde diş kliniği alan modüllerini teslim ettim: randevu, kliniğe özel tedavi listeleri, seçilebilir tedavi akışı (Plan → Tedavi → Ödeme veya Plan → Ödeme), hasta listesi, hakediş, stok ve lab.
+- Yığın: **FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest**, Supabase Edge Functions, Docker ve CI/CD.
 
 [Vaka analizi](projects/2026/saas/clinovatech-platform/README.md)
 
 #### Cormetry Health Teknoloji A.Ş. — Software Engineer (2024 – Kasım 2026)
 
-- **Platform API’si:** FastAPI servisi; istek ve yanıt sözleşmeleri **Pydantic** ile, davranış **pytest** ile doğrulanır.
-- **Hasta / doktor rolleri:** Hasta kaydı kendi cihazıyla alır; doktor yalnızca kendisine atanmış hastaları ve kayıtlarını görür. Veri izolasyonu **veritabanı düzeyinde (RLS)** sağlanır.
-- **Uçtan uca 12 derivasyonlu EKG platformu:** Bu API’nin hizmet verdiği yazılım tarafını da geliştirdim: cihazdan Bluetooth ile veri alan mobil uygulama, bulut altyapısı ve doktor web paneli (React Native / Expo, React + Vite, Supabase). Doktor panelinde **açıklanabilir, kural tabanlı otomatik EKG analizi** bulunur.
-- Donanım ekibiyle **BLE veri iletim protokollerini** ve **gerçek zamanlı sinyal doğrulama hatlarını** koordine ettim; firmware entegrasyonunu yazılım gereksinimlerine göre gerçek cihazda doğruladım — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
-- **TÜBİTAK BİGG 1512 proje yürütmesi:** Projeyi uçtan uca yönettim; iş planı, bütçe takibi, dönem raporları; **yatırımcı ve TÜBİTAK hakem sunumlarında teknik sunum** ve canlı prototip demosu. **900.000 TL hibe** destekli **giyilebilir 12-lead EKG** projesinde **500 Hz** prototip üretimi ve validasyon testleri.
-- **12-lead EKG sınıflandırma araştırması:** PTB-XL üzerinde CNN, state-space, rekürrent, transformer ve foundation model yaklaşımlarının karşılaştırması ve heterojen ensemble — [proje](#öne-çıkan-proje-ptb-xl-ekg-sınıflandırma-2026).
-- **EKG'den koroner darlık tahmini:** **Klinik veri toplama sürecinde** aktif rol aldım; **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini uçtan uca yürüttüm. Ham cihaz verisini doğru ölçek ve zamanla okudum, filtreleri cihazın resmi görüntüleyicisiyle doğruladım; kayıtları kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan gruplara ayırdım.
-- **SSL + gözetimli ince ayar:** Öz-denetimli ön-eğitilmiş EKG temel modellerini gözetimli eğitimle kohorta uyarladım ve kilitli test kümesinde **precision öncelikli** karar kuralıyla karşılaştırdım.
-- **Klinik EKG görüntüleme ve etiketleme uygulaması:** Hekimler aynı hastanın **EKG'sini ve anjiyo raporunu tek uygulamada** görüp etiketleyebilsin diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
+- **Platform API’si:** Giyilebilir EKG platformu için FastAPI servisini tasarladım. İstek ve yanıt sözleşmeleri **Pydantic** modelleridir; davranış **pytest** ile doğrulanır.
+- **Erişim modeli:** Hasta kaydı kendi cihazıyla alır; doktor yalnızca kendisine atanmış hastaları ve kayıtlarını görür. İzolasyon **veritabanında (RLS)** zorunludur.
+- **Cihazdan buluta veri yolu:** API, cihaz verisini **Bluetooth Low Energy** ile alan mobil istemciye, bulut backend’ine ve doktor web paneline (React Native / Expo, React + Vite, Supabase) hizmet verir. Açıklanabilir, kural tabanlı EKG analizi bu panelde bir ürün özelliği olarak sunulur.
+- **IoT alımı:** Donanım ekibiyle **BLE iletim protokollerini** ve **gerçek zamanlı sinyal doğrulama hatlarını** belirledim; firmware entegrasyonunu fiziksel cihazda yazılım sözleşmesine göre doğruladım — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
+- **Klinik veri hattı:** **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini yürüttüm. Ham cihaz örnekleri doğru ölçek ve zamanla okundu, filtreler cihazın resmi görüntüleyicisiyle kontrol edildi, kayıtlar kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan kümelerine ayrıldı.
+- **Model entegrasyonu:** Önceden eğitilmiş EKG temel modellerini gözetimli bir değerlendirme hattına uyarladım ve kilitli test kümesinde **precision öncelikli** bir karar kuralıyla karşılaştırdım; model çıktısı sabit sözleşmeli bir sistem kararıdır.
+- **PTB-XL değerlendirme hattı:** Model ailelerini ve heterojen ensemble’ları karşılaştırmak için ortak veri ve skorlama yolunu kurdum — [hat](#ptb-xl-ekg-veri-ve-degerlendirme-hatti-2026).
+- **Etiketleme iş istasyonu:** Hekimler aynı hastanın **EKG’sini ve anjiyo raporunu birlikte** görsün ve etiketler kohort hattına yazılsın diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
+- **TÜBİTAK BİGG 1512 teslimi:** Giyilebilir **12-lead EKG** projesini uçtan uca yürüttüm (iş planı, bütçe, dönem raporları); yatırımcı ve TÜBİTAK hakemlerine teknik sunumlar ve canlı prototip demoları dahildir. **900.000 TL** hibe altında **500 Hz** prototip üretimi ve validasyon.
 
 #### CorPal Dijital Sağlık Teknolojileri A.Ş. — Software Developer, Yarı Zamanlı (Mart 2023 – Ağustos 2023)
 
@@ -61,15 +60,23 @@
 
 ---
 
-### Öne çıkan proje: PTB-XL EKG sınıflandırma (2026)
+<a id="veri-muhendisligi-ve-ml-entegrasyonu"></a>
+
+## Veri Mühendisliği ve ML Entegrasyonu
+
+Yüksek hacimli zaman serisi verisini işleyen veri boru hatları kurar, yapay zeka modellerini yazılım sistemlerine entegre ederim. Aşağıdaki PTB-XL yolu bu işin 12 derivasyonlu EKG üzerindeki karşılığıdır: sabit bir bölme, 100 Hz ve 500 Hz tensör önbellekleri ve sistemin geri kalanının çağırabildiği tek bir skorlama arayüzü. arXiv yayınları aynı kanıtın yazılı halidir: klinik EKG ve histopatolojide, ham dosya ve etiket eşlemelerinden modele hazır girdilere kadar Python ve karmaşık veri işleme.
+
+<a id="ptb-xl-ekg-veri-ve-degerlendirme-hatti-2026"></a>
+
+### PTB-XL EKG veri ve değerlendirme hattı (2026)
 
 **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** — Yunus Emre Mert, Ece Akdoğan, Hüseyin Üvet (Yıldız Teknik Üniversitesi). arXiv [2609.12803](https://arxiv.org/abs/2609.12803) · [PDF](projects/2026/medical/ecg-ptbxl-ensemble/paper/2609.12803v1.pdf) · [proje README](projects/2026/medical/ecg-ptbxl-ensemble/README.md)
 
-- **Görev:** PTB-XL v1.0.3 üzerinde 5 tanısal üst sınıf (`NORM`, `MI`, `STTC`, `CD`, `HYP`) için çok etiketli sınıflandırma.
-- **Modeller:** 1D-ResNet18, Bidirectional Mamba, xLSTM (sLSTM / mLSTM), CWT-ViT-KAN ve ECGFounder (native 500 Hz fine-tune).
-- **Ensemble:** Eşit ağırlıklı soft voting, validasyon ağırlıklı soft voting ve lojistik regresyon tabanlı stacking.
-- **Protokol:** Resmi `strat_fold` bölmesi (train 1–8, val 9, test 10), macro-AUPRC ile model seçimi, sadece validasyonda belirlenen sınıf bazlı eşikler.
-- **Sonuçlar (test fold 10):** En iyi tekil model ECGFounder (Macro AUROC 0.930, AUPRC 0.823); stacking ile Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**; en yüksek subset accuracy **0.630** (validasyon ağırlıklı soft voting).
+- **Veri sözleşmesi:** PTB-XL v1.0.3, resmi `strat_fold` bölmesi (train 1–8, val 9, test 10), SCP kodlarının 5 tanısal üst sınıfa (`NORM`, `MI`, `STTC`, `CD`, `HYP`) eşlenmesi.
+- **Hat:** Etiketlerin üretilmesi ve 100 Hz / 500 Hz tensör önbellekleri; eğitim işleri her çalışmada WFDB’yi yeniden ayrıştırmak yerine kararlı bir artifakt okur.
+- **Entegrasyon yüzeyi:** Tek ortak protokol modülü ([`ecg_common.py`](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/ecg_common.py): veri modülü, trainer, metrikler, ensemble yardımcıları). 1D-ResNet18, Bidirectional Mamba, xLSTM, CWT-ViT-KAN ve ECGFounder (native 500 Hz fine-tune) aynı değerlendirme yoluna takılır.
+- **Karar sözleşmesi:** Sınıf bazlı eşikler yalnızca validasyonda ayarlanır. Ensemble çıktıları — eşit ağırlıklı soft voting, validasyon ağırlıklı soft voting ve lojistik regresyon tabanlı stacking — tek bir tahmindir.
+- **Hat çıktısı (test fold 10):** Skorlama arayüzü kayıt başına tek bir tahmin döner. Bu yolda stacking ile Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. Aynı yoldaki en iyi tekil model ECGFounder (Macro AUROC 0.930, AUPRC 0.823). En yüksek subset accuracy **0.630** (validasyon ağırlıklı soft voting).
 
 | Notebook | Rol |
 |----------|-----|
@@ -82,21 +89,24 @@
 | [06 Görselleştirme](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/06_visualize_experiment_results.ipynb) | Makale tablo ve figürleri |
 | [`ecg_common.py`](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/ecg_common.py) | Ortak protokol: veri modülü, trainer, metrikler, ensemble yardımcıları |
 
+### Yayınlar (arXiv)
+
+Python ve karmaşık veri işleme kanıtı olarak listelenir: etiket eşlemeleri, kohort kapıları, çok hızda önbellekler ve bir modelin tüketebileceği görüntü veya sinyal ön işleme.
+
+| Yayın | arXiv | Veri işi |
+|-------|-------|----------|
+| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** | [2609.12803](https://arxiv.org/abs/2609.12803) | Büyük bir kamuya açık EKG zaman serisi kümesi üzerinde Python hattı: SCP etiket eşlemesi, resmi fold bölmesi, 100 Hz / 500 Hz tensör önbellekleri ve tek bir skorlama arayüzü. |
+| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Histopatoloji büyütme oranları boyunca Python ön işleme ve ham görüntüleri modele hazır girdilere çeviren bir veri hattı (bu hat üzerinde **%89 doğruluk**, **0.90 Macro F1**). |
+| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | EKG sinyalleri bir dedektöre girmeden önce Python ile etiketleme, gürültü azaltma ve görüntü düzeyinde hazırlık. |
+
+*İlgili notebook’lar:* PTB-XL çalışması — [hat](#ptb-xl-ekg-veri-ve-degerlendirme-hatti-2026); histopatoloji ve meme kanseri pipeline çalışmaları — [2022–2023 özet tablosu](#lisans-donemi-acik-kaynak-pratikleri-2022-2023).
+
 ---
 
-### Akademik yayınlar (arXiv)
+<a id="lisans-donemi-acik-kaynak-pratikleri-2022-2023"></a>
 
-| Yayın | arXiv | Özet |
-|-------|-------|------|
-| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** | [2609.12803](https://arxiv.org/abs/2609.12803) | PTB-XL üzerinde 5 derin öğrenme mimarisinin (ResNet, Mamba, xLSTM, CWT-ViT-KAN, ECGFounder) karşılaştırması ve heterojen ensemble; stacking ile Macro AUROC 0.936. |
-| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Histopatoloji görüntülerinde çoklu büyütme oranlarına göre ön işleme, veri pipeline mühendisliği ve CNN tabanlı sınıflandırma; Xception mimarisi ile **%89 doğruluk** ve **0.90 Macro F1**. |
-| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | EKG sinyal görüntülerinin etiketlenmesi, gürültü azaltma ve evrişimli sinir ağları ile kardiyovasküler hastalık tespiti. |
-
-*İlgili notebook’lar:* PTB-XL çalışması — [proje](#öne-çıkan-proje-ptb-xl-ekg-sınıflandırma-2026); histopatoloji ve meme kanseri pipeline çalışmaları — [2022–2023 özet tablosu](#lisans-dönemi-açık-kaynak-pratikleri-20222023).
-
----
-
-### Lisans dönemi: açık kaynak pratikleri (2022–2023)
+<details>
+<summary>Lisans dönemi: açık kaynak pratikleri (2022–2023)</summary>
 
 Lisans döneminde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü/sinyal üzerine **kişisel / akademik pratik** notebook’ları **`projects/`** altında (**yıl → alan → proje**). Ham veri setleri ve model ağırlıkları repoda yoktur; kod ve örnek pipeline çıktıları paylaşılmıştır.
 
@@ -117,24 +127,23 @@ Lisans döneminde bilgisayarlı görü, makine öğrenmesi ve medikal görüntü
 
 `projects/` klasörleri: `classification/`, `object-detection/`, `medical/`, `segmentation/`, `generative/`, `llm/`. Colab şablonları: [`templates/`](templates/).
 
----
-
-### Teknik yetkinlikler
-
-| Alan | Araçlar & konular |
-|------|-------------------|
-| **Backend** | Python, FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, Redis, RabbitMQ, Celery, pytest, Docker |
-| **Programlama & altyapı** | SQL şema tasarımı, Supabase (PostgreSQL), RLS & RPC mimarisi, Supabase Edge Functions (Deno), React (Vite) / React Native (Expo), TypeScript, GitHub Actions CI/CD, Flask API |
-| **AI & veri bilimi** | PyTorch, TensorFlow, YOLOv5/v7, Detectron2, OpenCV, SAHI, Scikit-learn, NumPy, Pandas |
-| **Derin öğrenme araştırması** | 1D-CNN / ResNet, Mamba (state-space modeller), xLSTM, ViT, KAN, öz-denetimli öğrenme (SSL) EKG temel modelleri, linear probing ve fine-tuning (ECGFounder, ECG-FM, HuBERT-ECG), ensemble learning (soft voting, stacking) |
-| **Veri entegrasyonu** | Bluetooth Low Energy (BLE) veri entegrasyonu, gerçek zamanlı sinyal pipeline |
-| **Medikal veri** | 12-lead EKG sinyal işleme, ham cihaz verisi ve filtre doğrulama, klinik veri hattı (EKG–anjiyo eşleme, kimliksizleştirme), PTB-XL / WFDB, DICOM |
-| **Masaüstü uygulama** | PySide6, PyInstaller — klinik EKG görüntüleme ve etiketleme uygulaması |
-| **Geliştirme ortamı** | Jupyter, Google Colab (GPU eğitimi), scikit-image |
+</details>
 
 ---
 
-### İletişim & lisans
+## Teknik yetkinlikler
+
+| Alan | Araçlar ve konular |
+|------|--------------------|
+| **Backend ve API** | Python, FastAPI, Pydantic, pytest, Flask; API istemcileri: React (Vite), React Native (Expo), TypeScript |
+| **Veritabanları ve önbellek** | PostgreSQL, SQLAlchemy, Alembic, Redis, Supabase, SQL şema tasarımı |
+| **Asenkron iş ve mesajlaşma** | RabbitMQ, Celery |
+| **Altyapı ve bulut** | AWS (EC2), Docker, GitHub Actions CI/CD, PostgreSQL RLS, Supabase Edge Functions (Deno), RPC |
+| **Alan uzmanlığı: yapay zeka ve medikal veri** | PyTorch, TensorFlow, Scikit-learn, NumPy, Pandas, OpenCV; 12 derivasyonlu EKG sinyal işleme, BLE gerçek zamanlı sinyal hatları, klinik kohort hatları (EKG–anjiyo eşleme, kimliksizleştirme), PTB-XL / WFDB, DICOM; temel model ince ayarı ve ensemble skorlama (ECGFounder, ECG-FM, HuBERT-ECG); YOLOv5/v7, Detectron2, SAHI; PySide6 klinik etiketleme uygulaması; Jupyter, Google Colab |
+
+---
+
+## İletişim ve lisans
 
 - [LinkedIn](https://www.linkedin.com/in/yunus-emre-mert)
 - [GitHub](https://github.com/yunus-emre-mert)

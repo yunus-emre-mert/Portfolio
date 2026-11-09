@@ -18,7 +18,7 @@ At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend f
 |------------------------|---------|
 | **Clinovatech — system design** | Software Engineer (Backend & Systems), Contract. Multi-tenant B2B SaaS: RLS tenant isolation, package/module authorization, FastAPI + Pydantic contracts, SQLAlchemy/Alembic, Redis, RabbitMQ, Celery, pytest — [case study](projects/2026/saas/clinovatech-platform/README.md) |
 | **Cormetry Health — API & data path** | Software Engineer (2024 – November 2026). Platform API, BLE device ingestion, real-time signal pipelines, and clinical cohort pipelines — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [labeling](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Domain expertise — Applied Medical AI** | High-volume ECG pipelines and model integration (PTB-XL, clinical cohorts), arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [details](#domain-expertise-applied-medical-ai--research) |
+| **Data engineering & ML integration** | High-volume time-series pipelines and model integration (PTB-XL, clinical cohorts), arXiv [2609.12803](https://arxiv.org/abs/2609.12803) — [details](#data-engineering-ml-integration) |
 
 ---
 
@@ -60,9 +60,11 @@ At **Clinovatech** I owned the architecture of a multi-tenant B2B SaaS backend f
 
 ---
 
-## Domain Expertise: Applied Medical AI & Research
+<a id="data-engineering-ml-integration"></a>
 
-This section is applied domain expertise: processing high-volume medical signals, building the data pipelines those workloads depend on, and integrating models behind a stable contract a backend can consume. The PTB-XL path below takes public 12-lead recordings from a fixed split and cached tensors through one scoring interface. The papers record the same kind of work on clinical ECG and histopathology pipelines.
+## Data Engineering & ML Integration
+
+I build data pipelines that process high-volume time-series data and integrate AI models into software systems. The PTB-XL path below is that work on 12-lead ECG: a fixed split, cached tensors at 100 Hz and 500 Hz, and one scoring interface the rest of the system can call. The arXiv papers are the same evidence in writing: Python and complex data manipulation on clinical ECG and histopathology, from raw files and label maps to model-ready inputs.
 
 ### PTB-XL ECG data and evaluation pipeline (2026)
 
@@ -72,7 +74,7 @@ This section is applied domain expertise: processing high-volume medical signals
 - **Pipeline:** Label materialization and 100 Hz / 500 Hz tensor caches, so training jobs read a stable artifact instead of re-parsing WFDB on every run.
 - **Integration surface:** One shared protocol module ([`ecg_common.py`](projects/2026/medical/ecg-ptbxl-ensemble/notebooks/ecg_common.py): data module, trainer, metrics, ensemble helpers) so 1D-ResNet18, Bidirectional Mamba, xLSTM, CWT-ViT-KAN, and ECGFounder (native 500 Hz fine-tune) plug into the same evaluation path.
 - **Decision contract:** Class-wise thresholds tuned on validation only. Ensemble outputs — equal-weight soft voting, validation-weighted soft voting, and logistic-regression stacking — are a single prediction.
-- **Held-out result (test fold 10):** Stacking reached Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. Best single model on the same path: ECGFounder (Macro AUROC 0.930, AUPRC 0.823). Best subset accuracy **0.630** (validation-weighted soft voting).
+- **Pipeline output (test fold 10):** The scoring interface returns one prediction per record. Stacking on that path reached Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. Best single model on the same path: ECGFounder (Macro AUROC 0.930, AUPRC 0.823). Best subset accuracy **0.630** (validation-weighted soft voting).
 
 | Notebook | Role |
 |----------|------|
@@ -87,11 +89,13 @@ This section is applied domain expertise: processing high-volume medical signals
 
 ### Publications (arXiv)
 
-| Paper | arXiv | Summary |
-|-------|-------|---------|
-| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** | [2609.12803](https://arxiv.org/abs/2609.12803) | Comparison of 5 deep learning architectures (ResNet, Mamba, xLSTM, CWT-ViT-KAN, ECGFounder) and heterogeneous ensembles on PTB-XL; stacking reaches Macro AUROC 0.936. |
-| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Preprocessing across histopathology magnifications, data pipeline engineering, and CNN-based classification; **89% accuracy** and **0.90 Macro F1** with the Xception architecture. |
-| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | ECG signal image labeling, denoising, and convolutional neural networks for cardiovascular disease detection. |
+Listed as evidence of Python and complex data manipulation: label maps, cohort gates, multi-rate caches, and image or signal preprocessing that a model can consume.
+
+| Paper | arXiv | Data work |
+|-------|-------|-----------|
+| **Multi-Label 12-Lead ECG Classification on the PTB-XL Dataset: A Comparative Evaluation of Deep Learning Architectures and Heterogeneous Ensemble Approaches** | [2609.12803](https://arxiv.org/abs/2609.12803) | Python pipeline over a large public ECG time-series set: SCP label mapping, the official fold split, 100 Hz / 500 Hz tensor caches, and one scoring interface. |
+| **Breast Cancer Diagnosis Using the BreaKHis Dataset** | [2309.01007](https://arxiv.org/abs/2309.01007) | Python preprocessing across histopathology magnifications and a data pipeline that turns raw images into model-ready inputs (**89% accuracy**, **0.90 Macro F1** on that pipeline). |
+| **CNN Based Detection of Cardiovascular Diseases from ECG Images** | [2408.16800](https://arxiv.org/abs/2408.16800) | Python labeling, denoising, and image-level preparation of ECG signals before they enter a detector. |
 
 *Related notebooks:* PTB-XL study — [pipeline](#ptb-xl-ecg-data-and-evaluation-pipeline-2026); histopathology and breast cancer pipeline work — [2022–2023 summary table](#undergraduate-open-source-practice-2022-2023).
 
