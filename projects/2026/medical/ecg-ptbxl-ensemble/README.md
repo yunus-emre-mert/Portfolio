@@ -6,7 +6,7 @@ Official `strat_fold` split on PTB-XL v1.0.3, SCP codes mapped to five diagnosti
 
 - arXiv: [2609.12803](https://arxiv.org/abs/2609.12803) (eess.SP, Sep 2026)
 - PDF: [`2609.12803v1.pdf`](paper/2609.12803v1.pdf)
-- Built at **Cormetry Health** as **Software Engineer**: the shared data and scoring path for the wearable 12-lead ECG work. Platform: [case study](../../../2024-2025/medical/cormetry-ecg-platform/README.md). Cohort pipeline: [labeling workstation](../ecg-coronary-stenosis/README.md).
+- Built at **Cormetry Health**: the shared data and scoring path for the wearable 12-lead ECG work. Platform: [case study](../../../2024-2025/medical/cormetry-ecg-platform/README.md). Cohort pipeline: [labeling workstation](../ecg-coronary-stenosis/README.md).
 
 > **Türkçe özet:** PTB-XL v1.0.3 üzerinde resmi `strat_fold` bölmesi, beş tanısal üst sınıf (`NORM`, `MI`, `STTC`, `CD`, `HYP`), 100 Hz ve 500 Hz tensör önbellekleri ve kayıt başına tek skorlama arayüzü. Test fold 10: stacking ile Macro AUROC **0.936**, AUPRC **0.836**, Macro F1 **0.763**. Veri seti rehberi: [ptbxl-dataset-guide.md](docs/ptbxl-dataset-guide.md).
 

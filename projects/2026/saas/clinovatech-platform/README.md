@@ -1,4 +1,4 @@
-# Clinovatech — Multi-Tenant B2B SaaS Platform (Backend Engineering)
+# Clinovatech — Multi-Tenant B2B SaaS Platform
 
 [Türkçe](#türkçe) · [English](#english)
 
@@ -10,11 +10,10 @@
 
 ### Özet
 
-Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RLS dahil, Yazılım Mühendisi (Backend & Sistemler) olarak uçtan uca tasarladım ve geliştirdim**. Kapsam; veri modeli, çok kiracılık ve veri izolasyonu, yetkilendirme modeli, serverless katman, istemci veri erişim katmanı ve yeni özelliklerin geliştirme, test ve pilot ortamları üzerinden canlıya alınma sürecidir. Bu platformun yanında klinik işleri için **FastAPI** üzerinde kaynak odaklı bir **RESTful** HTTP arayüzü kurdum.
+Klinikler için multi-tenant B2B SaaS **backend’ini, veritabanı düzeyinde RLS dahil, uçtan uca tasarladım ve geliştirdim**. Kapsam; veri modeli, çok kiracılık ve veri izolasyonu, yetkilendirme modeli, serverless katman, istemci veri erişim katmanı ve yeni özelliklerin geliştirme, test ve pilot ortamları üzerinden canlıya alınma sürecidir. Bu platformun yanında klinik işleri için **FastAPI** üzerinde kaynak odaklı bir **RESTful** HTTP arayüzü kurdum.
 
 | | |
 |---|---|
-| **Rol** | Yazılım Mühendisi (Backend & Sistemler), Sözleşmeli. Multi-tenant backend’in, veritabanı düzeyinde RLS dahil, uçtan uca tasarımı ve geliştirilmesi |
 | **Dönem** | 2025 – 2026 |
 | **Alan** | Sağlık / klinik yönetimi, diş klinikleri odaklı B2B SaaS |
 | **İstemciler** | Web (React + TypeScript), mobil (Expo / React Native) |
@@ -238,11 +237,10 @@ flowchart LR
 
 ### Summary
 
-As a **Software Engineer (Backend & Systems)**, I **designed and developed the multi-tenant B2B SaaS backend for clinics end to end, including database-level RLS**. The scope covers the data model, multi-tenancy and data isolation, the authorization model, the serverless layer, the client data-access layer, and the release process that takes new features through development, test, and pilot environments to production. Alongside this platform, I built a resource-oriented **RESTful** HTTP interface on **FastAPI** for clinic work.
+I **designed and developed the multi-tenant B2B SaaS backend for clinics end to end, including database-level RLS**. The scope covers the data model, multi-tenancy and data isolation, the authorization model, the serverless layer, the client data-access layer, and the release process that takes new features through development, test, and pilot environments to production. Alongside this platform, I built a resource-oriented **RESTful** HTTP interface on **FastAPI** for clinic work.
 
 | | |
 |---|---|
-| **Role** | Software Engineer (Backend & Systems), Contract. End-to-end design and development of the multi-tenant backend, including database-level RLS |
 | **Period** | 2025 – 2026 |
 | **Domain** | Healthcare / clinic management, B2B SaaS focused on dental clinics |
 | **Clients** | Web (React + TypeScript), mobile (Expo / React Native) |

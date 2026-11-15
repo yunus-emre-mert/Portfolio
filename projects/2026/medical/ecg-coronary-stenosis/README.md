@@ -16,7 +16,6 @@
 
 | | |
 |---|---|
-| **Rol** | Software Engineer, Cormetry Health. Klinik kohort hattı, model entegrasyonu ve etiketleme iş istasyonu |
 | **Dönem** | 2026 |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
 | **Alan** | Klinik veri hattı / model entegrasyonu |
@@ -87,9 +86,9 @@ flowchart LR
 - Etiketleme tamamen yerel çalışır; hasta verisi hiçbir sunucuya yüklenmez.
 - Üretici yazılımı yalnızca referans görüntüleyici olarak kullanıldı; tersine mühendislik yapılmadı.
 
-### Rolüm
+### Ne yaptım
 
-- Software Engineer olarak ~1000 hastalık EKG–anjiyo kohort hattını ve etiketleme iş istasyonunu uçtan uca yürüttüm. İlgili: [EKG platformu](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL hattı](../ecg-ptbxl-ensemble/README.md).
+- ~1000 hastalık EKG–anjiyo kohort hattını ve etiketleme iş istasyonunu uçtan uca yürüttüm. İlgili: [EKG platformu](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL hattı](../ecg-ptbxl-ensemble/README.md).
 - Ham cihaz verisinin işlenmesi, filtre doğrulaması ve kalite kontrolü.
 - Kohort analizi, eşleme ve kilitli veri bölme hattının geliştirilmesi.
 - SSL temel modelleri (ECG-FM, HuBERT-ECG, ST-MEM, xECG) üzerinde gözetimli ince ayar ve precision öncelikli değerlendirme.
@@ -109,7 +108,6 @@ At **Cormetry Health** I ran collection and processing for an ECG–angiography 
 
 | | |
 |---|---|
-| **Role** | Software Engineer, Cormetry Health. Clinical cohort pipeline, model integration, and labeling workstation |
 | **Period** | 2026 |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
 | **Domain** | Clinical data pipeline / model integration |
@@ -180,9 +178,9 @@ flowchart LR
 - Labeling runs fully locally; no patient data is uploaded to any server.
 - The vendor software was used only as a reference viewer; no reverse engineering was done.
 
-### My role
+### What I did
 
-- As a Software Engineer, ran the ~1000-patient ECG–angiography cohort pipeline and the labeling workstation end to end. Related: [ECG platform](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL pipeline](../ecg-ptbxl-ensemble/README.md).
+- Ran the ~1000-patient ECG–angiography cohort pipeline and the labeling workstation end to end. Related: [ECG platform](../../../2024-2025/medical/cormetry-ecg-platform/README.md) · [PTB-XL pipeline](../ecg-ptbxl-ensemble/README.md).
 - Raw device data processing, filter verification, and quality control.
 - Built the cohort analysis, pairing, and locked data-split pipeline.
 - Supervised fine-tuning of SSL foundation models (ECG-FM, HuBERT-ECG, ST-MEM, xECG) and precision-first evaluation.

@@ -1,7 +1,5 @@
 # Yunus Emre Mert
 
-**Backend Mühendisi**
-
 [🇬🇧 English (README.md)](README.md)
 
 [LinkedIn](https://www.linkedin.com/in/yunus-emre-mert) · [GitHub](https://github.com/yunus-emre-mert)
@@ -10,21 +8,21 @@
 
 ## Özet
 
-Ölçeklenebilir, çok kiracılı (multi-tenant) SaaS ürünleri ve veri yoğunluklu uygulamalar tasarlayan bir **Backend Mühendisi ve Sistem Mimarıyım**. Temel odak noktam; karmaşık iş senaryolarını analiz edip netleştirmek, bunları sağlam veritabanı şemalarına (schema design) dönüştürmek ve sistemin ihtiyaç duyduğu uçtan uca veri boru hatlarını (data pipelines) inşa etmektir.
+Ölçeklenebilir, çok kiracılı (multi-tenant) SaaS ürünleri ve veri yoğunluklu uygulamalar tasarlıyorum. Temel odak noktam; karmaşık iş senaryolarını analiz edip netleştirmek, bunları sağlam veritabanı şemalarına (schema design) dönüştürmek ve sistemin ihtiyaç duyduğu uçtan uca veri boru hatlarını (data pipelines) inşa etmektir.
 
 **Clinovatech**’te bir klinik SaaS platformunun backend mimarisini uçtan uca tasarladım: İş gereksinimlerini veritabanı tablolarına modeledim, veritabanı düzeyinde kiracı izolasyonu (RLS) kurguladım ve kod değişikliği gerektirmeyen dinamik bir yetkilendirme sistemi kurdum. **Cormetry Health**’te (2024 – Kasım 2026) ise giyilebilir IoT cihazlarından gelen yüksek hacimli medikal veriyi (EKG) işleyen asenkron boru hatlarını, bulut altyapısını ve API sözleşmelerini mimari olarak şekillendirdim. Ticari projelere ait kaynak kodlar **IP ve NDA** kapsamında olduğu için bu depoda yer almaz.
 
 | Odak (2024 – güncel) | Özet |
 |----------------------|------|
-| **Clinovatech — sistem tasarımı** | Software Engineer (Backend & Systems), Sözleşmeli. Klinik SaaS backend’i: kiracı izolasyonu, paket ve yetkiler, API, önbellek ve arka plan işleri — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
-| **Cormetry Health — API ve veri yolu** | Software Engineer (2024 – Kasım 2026). Giyilebilir cihazdan buluta ve doktor paneline giden API — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [etiketleme](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Veri hatları** | Kayıtları yazılımın kullanabileceği veriye hazırlama — [detay](#veri-muhendisligi-ve-ml-entegrasyonu) |
+| **Clinovatech — sistem tasarımı** | 2025–2026. Klinik SaaS backend’i: kiracı izolasyonu, paket ve yetkiler, API, önbellek ve arka plan işleri — [vaka analizi](projects/2026/saas/clinovatech-platform/README.md) |
+| **Cormetry Health — API ve veri yolu** | 2024 – Kasım 2026. Giyilebilir cihazdan buluta ve doktor paneline giden API — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [etiketleme](projects/2026/medical/ecg-coronary-stenosis/README.md) |
+| **Veri hatları** | Kayıtları yazılımın kullanabileceği veriye hazırlama — [detay](#veri-hatlari-ve-model-entegrasyonu) |
 
 ---
 
-## Backend deneyimi (2023 – güncel)
+## Projeler (2023 – güncel)
 
-#### Clinovatech — Software Engineer (Backend & Systems), Sözleşmeli (2025 – 2026)
+#### Clinovatech — Çok Kiracılı Klinik SaaS (2025–2026)
 
 - Klinikler için çok kiracılı B2B SaaS **backend’ini** açık sınırlar olarak tasarladım: API sözleşmeleri, veritabanı izolasyonu, önbellek ve asenkron iş.
 - Eksik bir uygulama filtresinin başka bir kliniğin satırlarını açamaması için **veritabanı düzeyinde kiracı izolasyonunu (RLS)** seçtim; değiştirilemez denetim kaydı ve izole serverless ayrıcalıklı işlemlerle güvenlik katmanını tamamladım.
@@ -41,19 +39,25 @@
 
 [Vaka analizi](projects/2026/saas/clinovatech-platform/README.md)
 
-#### Cormetry Health Teknoloji A.Ş. — Software Engineer (2024 – Kasım 2026)
+#### Cormetry Health — Platform API’si ve Cihazdan Buluta EKG Veri Yolu (2024 – Kasım 2026)
 
 - **Platform API’si:** Giyilebilir EKG platformu için FastAPI servisini tasarladım. İstek ve yanıt sözleşmeleri **Pydantic** modelleridir; davranış **pytest** ile doğrulanır.
 - **Erişim modeli:** Hasta kaydı kendi cihazıyla alır; doktor yalnızca kendisine atanmış hastaları ve kayıtlarını görür. İzolasyon **veritabanında (RLS)** zorunludur.
 - **Cihazdan buluta veri yolu:** API, cihaz verisini **Bluetooth Low Energy** ile alan mobil istemciye, bulut backend’ine ve doktor web paneline (React Native / Expo, React + Vite, Supabase) hizmet verir. Açıklanabilir, kural tabanlı EKG analizi bu panelde bir ürün özelliği olarak sunulur.
 - **IoT alımı:** Donanım ekibiyle **BLE iletim protokollerini** ve **gerçek zamanlı sinyal doğrulama hatlarını** belirledim; firmware entegrasyonunu fiziksel cihazda yazılım sözleşmesine göre doğruladım — [vaka analizi](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
-- **Klinik veri hattı:** **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini yürüttüm. Ham cihaz örnekleri doğru ölçek ve zamanla okundu, filtreler cihazın resmi görüntüleyicisiyle kontrol edildi, kayıtlar kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan kümelerine ayrıldı.
-- **Model entegrasyonu:** Önceden eğitilmiş EKG temel modellerini gözetimli bir değerlendirme hattına uyarladım ve kilitli test kümesinde **precision öncelikli** bir karar kuralıyla karşılaştırdım; model çıktısı sabit sözleşmeli bir sistem kararıdır.
-- **PTB-XL değerlendirme hattı:** Model ailelerini ve heterojen ensemble’ları karşılaştırmak için ortak veri ve skorlama yolunu kurdum — [proje](projects/2026/medical/ecg-ptbxl-ensemble/README.md).
-- **Etiketleme iş istasyonu:** Hekimler aynı hastanın **EKG’sini ve anjiyo raporunu birlikte** görsün ve etiketler kohort hattına yazılsın diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
 - **TÜBİTAK BİGG 1512 teslimi:** Giyilebilir **12-lead EKG** projesini uçtan uca yürüttüm (iş planı, bütçe, dönem raporları); yatırımcı ve TÜBİTAK hakemlerine teknik sunumlar ve canlı prototip demoları dahildir. **900.000 TL** hibe altında **500 Hz** prototip üretimi ve validasyon.
 
-#### CorPal Dijital Sağlık Teknolojileri A.Ş. — Software Developer, Yarı Zamanlı (Mart 2023 – Ağustos 2023)
+#### EKG–Anjiyo Kohort Hattı ve Etiketleme İş İstasyonu (2026)
+
+- **Klinik veri hattı:** **~1000 hastalık** EKG–anjiyo kohortunun toplanmasını ve işlenmesini yürüttüm. Ham cihaz örnekleri doğru ölçek ve zamanla okundu, filtreler cihazın resmi görüntüleyicisiyle kontrol edildi, kayıtlar kalite ve eşleşmeye göre kullanılabilir / kontrol / dışlanan kümelerine ayrıldı.
+- **Model entegrasyonu:** Önceden eğitilmiş EKG temel modellerini gözetimli bir değerlendirme hattına uyarladım ve kilitli test kümesinde **precision öncelikli** bir karar kuralıyla karşılaştırdım; model çıktısı sabit sözleşmeli bir sistem kararıdır.
+- **Etiketleme iş istasyonu:** Hekimler aynı hastanın **EKG’sini ve anjiyo raporunu birlikte** görsün ve etiketler kohort hattına yazılsın diye yerel bir masaüstü uygulaması (PySide6) geliştirdim — [vaka analizi](projects/2026/medical/ecg-coronary-stenosis/README.md).
+
+#### PTB-XL EKG Hattı (2026)
+
+- **PTB-XL değerlendirme hattı:** Model ailelerini ve heterojen ensemble’ları karşılaştırmak için ortak veri ve skorlama yolunu kurdum — [proje](projects/2026/medical/ecg-ptbxl-ensemble/README.md).
+
+#### CorPal — Kronik Hasta Yönetimi (Mart 2023 – Ağustos 2023)
 
 - Kronik hasta yönetimi platformunun Firebase tabanlı bulut veri altyapısı entegrasyonunu, hastalardan alınan ses verilerinin işlenmesi (audio data processing) süreçlerini ve Flutter tabanlı mobil uygulama geliştirmesini yürüttüm.
 
@@ -61,9 +65,9 @@
 
 ---
 
-<a id="veri-muhendisligi-ve-ml-entegrasyonu"></a>
+<a id="veri-hatlari-ve-model-entegrasyonu"></a>
 
-## Veri Mühendisliği ve ML Entegrasyonu
+## Veri hatları ve model entegrasyonu
 
 Yüksek hacimli zaman serisi ve görüntü verisi için boru hatları; model çıktısı, sistemin geri kalanının çağırabildiği bir sözleşmenin arkasında. Aşağıdaki notlar projelerdir. Yayınlar hemen altlarında, bu Python ve veri işleme işinin yazılı kaydıdır.
 

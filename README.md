@@ -1,7 +1,5 @@
 # Yunus Emre Mert
 
-**Backend Engineer**
-
 [🇹🇷 Türkçe (README.tr.md)](README.tr.md)
 
 [LinkedIn](https://www.linkedin.com/in/yunus-emre-mert) · [GitHub](https://github.com/yunus-emre-mert)
@@ -10,21 +8,21 @@
 
 ## Summary
 
-I am a **Backend Engineer and Systems Architect** who designs scalable, multi-tenant SaaS products and data-intensive applications. My focus is to analyze and clarify complex business scenarios, turn them into solid database schemas, and build the end-to-end data pipelines the system needs.
+I design scalable, multi-tenant SaaS products and data-intensive applications. My focus is to analyze and clarify complex business scenarios, turn them into solid database schemas, and build the end-to-end data pipelines the system needs.
 
 At **Clinovatech** I designed the backend architecture of a clinic SaaS platform end to end: I modeled business requirements into database tables, set up tenant isolation at the database level (RLS), and built a dynamic authorization system that does not require code changes. At **Cormetry Health** (2024 – November 2026) I architected the asynchronous pipelines, cloud infrastructure, and API contracts that process high-volume medical data (ECG) from wearable IoT devices. Commercial project source code is not in this repository under **IP and NDA**.
 
 | Focus (2024 – present) | Summary |
 |------------------------|---------|
-| **Clinovatech — system design** | Software Engineer (Backend & Systems), Contract. Clinic SaaS backend: tenant isolation, packages and permissions, API, cache, and background jobs — [case study](projects/2026/saas/clinovatech-platform/README.md) |
-| **Cormetry Health — API and data path** | Software Engineer (2024 – November 2026). API from the wearable device to the cloud and the doctor panel — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [labeling](projects/2026/medical/ecg-coronary-stenosis/README.md) |
-| **Data pipelines** | Preparing recordings so the software can use them — [details](#data-engineering-ml-integration) |
+| **Clinovatech — system design** | 2025–2026. Clinic SaaS backend: tenant isolation, packages and permissions, API, cache, and background jobs — [case study](projects/2026/saas/clinovatech-platform/README.md) |
+| **Cormetry Health — API and data path** | 2024 – November 2026. API from the wearable device to the cloud and the doctor panel — [platform](projects/2024-2025/medical/cormetry-ecg-platform/README.md) · [labeling](projects/2026/medical/ecg-coronary-stenosis/README.md) |
+| **Data pipelines** | Preparing recordings so the software can use them — [details](#data-pipelines-and-model-integration) |
 
 ---
 
-## Backend experience (2023 – present)
+## Projects (2023 – present)
 
-#### Clinovatech — Software Engineer (Backend & Systems), Contract (2025 – 2026)
+#### Clinovatech — Multi-Tenant Clinic SaaS (2025–2026)
 
 - Architected the multi-tenant B2B SaaS **backend for clinics** as explicit boundaries: API contracts, database isolation, cache, and asynchronous work.
 - Chose **database-level tenant isolation (RLS)** so a missing application filter cannot expose another clinic's rows, and completed the security layer with an immutable audit log and isolated serverless privileged operations.
@@ -41,19 +39,25 @@ At **Clinovatech** I designed the backend architecture of a clinic SaaS platform
 
 [Case study](projects/2026/saas/clinovatech-platform/README.md)
 
-#### Cormetry Health Teknoloji A.Ş. — Software Engineer (2024 – November 2026)
+#### Cormetry Health — Platform API and Device-to-Cloud ECG Path (2024–November 2026)
 
 - **Platform API:** Designed the FastAPI service for the wearable ECG platform. Request and response contracts are **Pydantic** models; behavior is checked with **pytest**.
 - **Access model:** Patients record on their own device; a doctor reads only assigned patients and their recordings. Isolation is enforced **at the database (RLS)**.
 - **Device-to-cloud data path:** The API serves a mobile client that ingests device data over **Bluetooth Low Energy**, a cloud backend, and a doctor web panel (React Native / Expo, React + Vite, Supabase). Explainable, rule-based ECG analysis is delivered through that panel as a product feature.
 - **IoT ingestion:** Specified **BLE transmission protocols** and **real-time signal validation pipelines** with the hardware team, and verified firmware integration on the physical device against the software contract — [case study](projects/2024-2025/medical/cormetry-ecg-platform/README.md).
-- **Clinical data pipeline:** Ran collection and processing for an ECG–angiography cohort of **~1000 patients**: raw device samples read at the correct scale and timing, filters checked against the device's official viewer, and records gated into usable / review / excluded sets by quality and pairing.
-- **Model integration:** Adapted pretrained ECG foundation models into a supervised evaluation pipeline and compared them on a locked test set under a **precision-first** decision rule, so model output is a system decision with a fixed contract.
-- **PTB-XL evaluation pipeline:** Built the shared data and scoring path used to compare model families and heterogeneous ensembles — [project](projects/2026/medical/ecg-ptbxl-ensemble/README.md).
-- **Labeling workstation:** Built a local desktop app (PySide6) so clinicians view one patient's **ECG and angiography report together** and write labels back into the cohort pipeline — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md).
 - **TÜBİTAK BİGG 1512 delivery:** Ran the wearable **12-lead ECG** project end to end (work plan, budget, period reports), including technical presentations to investors and TÜBİTAK reviewers and live prototype demos. **500 Hz** prototype build and validation under a **900,000 TRY** grant.
 
-#### CorPal Dijital Sağlık Teknolojileri A.Ş. — Software Developer, Part-Time (March 2023 – August 2023)
+#### ECG–Angiography Cohort and Labeling Workstation (2026)
+
+- **Clinical data pipeline:** Ran collection and processing for an ECG–angiography cohort of **~1000 patients**: raw device samples read at the correct scale and timing, filters checked against the device's official viewer, and records gated into usable / review / excluded sets by quality and pairing.
+- **Model integration:** Adapted pretrained ECG foundation models into a supervised evaluation pipeline and compared them on a locked test set under a **precision-first** decision rule, so model output is a system decision with a fixed contract.
+- **Labeling workstation:** Built a local desktop app (PySide6) so clinicians view one patient's **ECG and angiography report together** and write labels back into the cohort pipeline — [case study](projects/2026/medical/ecg-coronary-stenosis/README.md).
+
+#### PTB-XL ECG Pipeline (2026)
+
+- **PTB-XL evaluation pipeline:** Built the shared data and scoring path used to compare model families and heterogeneous ensembles — [project](projects/2026/medical/ecg-ptbxl-ensemble/README.md).
+
+#### CorPal — Chronic Patient Management (March 2023–August 2023)
 
 - Developed the Firebase cloud data infrastructure integration, patient audio data processing pipelines, and the Flutter-based mobile application for a chronic patient management platform.
 
@@ -61,9 +65,9 @@ At **Clinovatech** I designed the backend architecture of a clinic SaaS platform
 
 ---
 
-<a id="data-engineering-ml-integration"></a>
+<a id="data-pipelines-and-model-integration"></a>
 
-## Data Engineering & ML Integration
+## Data pipelines and model integration
 
 Pipelines for high-volume time-series and imaging data, with model output behind a contract the rest of the system can call. The notes below are the projects. The papers sit directly under them as the written record of the Python and data-manipulation work.
 

@@ -16,7 +16,6 @@
 
 | | |
 |---|---|
-| **Rol** | Software Engineer (2024 – Kasım 2026). Platform API’si, BLE alımı, gerçek zamanlı sinyal hatları; firmware doğrulaması; TÜBİTAK 1512 yürütmesi |
 | **Dönem** | 2024 – Kasım 2026 |
 | **Kurum** | Cormetry Health Teknoloji A.Ş. |
 | **Alan** | Kardiyoloji / dijital sağlık / medikal cihaz yazılımı |
@@ -129,9 +128,9 @@ Firmware ve PCB geliştirmesi dış hizmet olarak alındı. Bu süreçte:
 - **Test:** pytest
 - **Araçlar:** npm workspaces, EAS Build, Vercel
 
-### Rolüm
+### Ne yaptım
 
-- Software Engineer olarak mobil, web, backend ve cihaz entegrasyonunun uçtan uca geliştirilmesi.
+- Mobil, web, backend ve cihaz entegrasyonunun uçtan uca geliştirilmesi.
 - Platform API’si: FastAPI servisi, Pydantic sözleşmeleri ve pytest.
 - TÜBİTAK 1512 kapsamında proje yürütmesi: iş planı, dönem raporları, yatırımcı ve hakem sunumları, canlı prototip demosu.
 - Hasta / doktor rol modeli ve veritabanı düzeyinde yetkilendirme (RLS).
@@ -153,7 +152,6 @@ At **Cormetry Health** I designed the **platform API** and the **device-to-cloud
 
 | | |
 |---|---|
-| **Role** | Software Engineer (2024 – November 2026). Platform API, BLE ingestion, real-time signal pipelines; firmware validation; TÜBİTAK 1512 delivery |
 | **Period** | 2024 – November 2026 |
 | **Organization** | Cormetry Health Teknoloji A.Ş. |
 | **Domain** | Cardiology / digital health / medical device software |
@@ -266,9 +264,9 @@ Firmware and PCB development were outsourced. In this process I:
 - **Tests:** pytest
 - **Tools:** npm workspaces, EAS Build, Vercel
 
-### My role
+### What I did
 
-- As a Software Engineer, end-to-end development of mobile, web, backend, and device integration.
+- End-to-end development of mobile, web, backend, and device integration.
 - Platform API: FastAPI service, Pydantic contracts, and pytest.
 - TÜBİTAK 1512 project execution: work plan, period reports, investor and reviewer presentations, and live prototype demos.
 - Patient / doctor role model and database-level authorization (RLS).
